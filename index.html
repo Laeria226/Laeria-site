@@ -807,7 +807,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
         <div class="prevenir">
           <p class="pv-t">Préviens-moi à l’ouverture des commandes</p>
           <p class="pv-gift">En cadeau, reçois <em>Le Carnet du Voile</em> : 13 pages illustrées pour découvrir les mondes du livre, sans rien dévoiler de la fin.</p>
-          <div class="pv-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="e645c2f0-be10-460c-aa6d-cf1352cb07ac"></script></div>
+          <a class="pv-dl gift-trigger" href="#carnet-offert">Recevoir le carnet offert</a>
         </div>
       </div>
     </div>
@@ -1219,10 +1219,11 @@ window.LAERIA_COMMANDES_OUVERTES = false;
      en arrivant à la section du livre, au moins 40 s après la fermeture. Au plus 2 fois par visite. */
   function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
   function sset(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
-  if((window.LAERIA_HASH||location.hash)==='#carnet-offert'){ setTimeout(open,700); }
+  function whenReady(cb){ var t0=Date.now(); (function chk(){ if(back.querySelector('.cv-embed iframe')||Date.now()-t0>8000) cb(); else setTimeout(chk,250); })(); }
+  if((window.LAERIA_HASH||location.hash)==='#carnet-offert'){ whenReady(open); }
   if(get('cv_inscrit')) return;
   var shows=parseInt(sget('cv_shows')||'0',10), firstTimer=null;
-  function autoOpen(){ if(get('cv_inscrit')||back.classList.contains('on')||shows>=2) return; shows++; sset('cv_shows',String(shows)); open(); }
+  function autoOpen(){ if(get('cv_inscrit')||back.classList.contains('on')||shows>=2) return; shows++; sset('cv_shows',String(shows)); whenReady(open); }
   var intro=document.querySelector('.intro');
   function passed(){ if(!intro) return true; var end=intro.offsetTop+intro.offsetHeight-innerHeight*1.05; return window.scrollY>=end; }
   function check(){
