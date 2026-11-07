@@ -802,12 +802,13 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       </dl>
       <div class="order">
         <a class="btn solid buy" href="https://buy.stripe.com/9B614p2oP0z61L1eBWabK01" target="_blank" rel="noopener">Commander le livre · 19,90&nbsp;€</a>
-        <p class="note">Paiement sécurisé par Stripe · Livraison 5,40&nbsp;€ (Belgique et France)</p>
         <div class="prevenir">
           <p class="pv-t">Préviens-moi à l’ouverture des commandes</p>
           <p class="pv-gift">En cadeau, reçois <em>Le Carnet du Voile</em> : 13 pages illustrées pour découvrir les mondes du livre, sans rien dévoiler de la fin.</p>
           <a class="pv-dl gift-trigger" href="#carnet-offert">Recevoir le carnet offert</a>
         </div>
+        <p class="note">Paiement sécurisé par Stripe · Livraison 5,40&nbsp;€ (Belgique et France)</p>
+
       </div>
     </div>
   </div>
@@ -1150,24 +1151,17 @@ window.LAERIA_COMMANDES_OUVERTES = false;
       a.textContent = a.classList.contains('navbuy') ? '✦ Carnet offert' : '✦ Recevoir le carnet offert';
     }
   });
-  var ordre = document.querySelector('.order');
-  if(ordre){
-    var cd = document.createElement('p'); cd.className='lock-cd';
-    cd.innerHTML = 'Le livre arrive très bientôt<small>Inscris-toi ci-dessous : tu seras prévenu dès l’ouverture des commandes.</small>';
-    ordre.insertBefore(cd, ordre.querySelector('.note') || null);
-  }
 })();
 </script>
 <style>
-.prevenir{margin:22px auto 0;max-width:460px;text-align:left}
-.prevenir .pv-t{display:block;font-family:"Cinzel",serif;letter-spacing:.06em;color:var(--gold,#d4ae62);margin-bottom:8px}
-.prevenir .pv-row{display:flex;gap:8px}
-.prevenir input[type=email]{flex:1;min-width:0;padding:11px 12px;background:var(--night,#110d1b);border:1px solid var(--line,rgba(212,174,98,.28));color:var(--parch,#ece2c9);font:inherit}
-.prevenir button{padding:11px 16px;background:var(--gold,#d4ae62);color:var(--night,#110d1b);border:0;font-family:"Cinzel",serif;letter-spacing:.06em;cursor:pointer}
-.prevenir .pv-ok{display:block;margin-top:8px;font-size:.9rem;color:var(--parch-dim,#b7aa8e)}
-.prevenir .pv-gift{margin:0 0 10px;font-size:.95rem;color:var(--parch-dim,#b7aa8e)}
-.prevenir .pv-dl{display:inline-block;margin-top:10px;padding:10px 16px;background:var(--gold,#d4ae62);color:var(--night,#110d1b);text-decoration:none;font-family:"Cinzel",serif;letter-spacing:.05em}
-.prevenir .pv-msg{margin-top:8px;color:var(--gold,#d4ae62);min-height:1em}
+.prevenir{margin:24px 0 0;max-width:540px;text-align:left;padding-top:22px;border-top:1px solid var(--line,rgba(212,174,98,.28))}
+.prevenir .pv-t{display:block;font-family:var(--f-label,"Cinzel",serif);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold,#d4ae62);margin:0 0 10px}
+.prevenir .pv-gift{margin:0 0 18px;font-size:1.02rem;line-height:1.55;color:var(--parch-dim,#b7aa8e)}
+.prevenir .pv-dl{display:inline-block;font-family:var(--f-label,"Cinzel",serif);font-weight:600;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding:16px 26px;background:var(--gold,#d4ae62);color:var(--night,#110d1b);border:1px solid var(--gold,#d4ae62)}
+.prevenir .pv-dl:hover{background:var(--parch,#ece2c9);border-color:var(--parch,#ece2c9)}
+.order .note{margin-top:16px}
+.order .btn.lock-off{background:transparent!important;color:var(--gold,#d4ae62)!important;border:1px solid rgba(212,174,98,.5)!important;box-shadow:none!important;opacity:.85}
+@media(max-width:860px){.prevenir{margin-inline:auto;text-align:center}}
 </style>
 
 <style>
