@@ -1137,6 +1137,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 window.LAERIA_COMMANDES_OUVERTES = false;
 (function(){
   if(window.LAERIA_COMMANDES_OUVERTES) return;
+  document.querySelectorAll('.order .note').forEach(function(n){ n.remove(); });
   var liens = [].slice.call(document.querySelectorAll('a[href*="buy.stripe.com"]'));
   var st = document.createElement('style');
   st.textContent = '.lock-off{opacity:.55;cursor:not-allowed!important;pointer-events:none}.lock-cd{margin:14px 0 0;font-family:"Cinzel",serif;letter-spacing:.08em;color:var(--gold,#d4ae62);font-size:1.05rem}.lock-cd small{display:block;margin-top:4px;font-family:"EB Garamond",serif;letter-spacing:0;color:var(--parch-dim,#b7aa8e);font-size:.95rem}';
