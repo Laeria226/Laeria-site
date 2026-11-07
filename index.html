@@ -461,6 +461,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   .ihero{position:relative;min-height:100vh}.ihero .nav,.ihero .hero-in>*{opacity:1;transform:none}
 }
 </style>
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 </head>
 <body>
 
@@ -803,15 +804,11 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       <div class="order">
         <a class="btn solid buy" href="https://buy.stripe.com/9B614p2oP0z61L1eBWabK01" target="_blank" rel="noopener">Commander le livre · 19,90&nbsp;€</a>
         <p class="note">Paiement sécurisé par Stripe · Livraison 5,40&nbsp;€ (Belgique et France)</p>
-        <form class="prevenir" name="preinscription" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="preinscription">
-          <p class="pv-hp" hidden><label>Ne pas remplir <input name="bot-field"></label></p>
-          <label class="pv-t" for="pv-mail">Préviens-moi à l’ouverture des commandes</label>
-          <p class="pv-gift">En cadeau, reçois tout de suite <em>Le Carnet du Voile</em> : 13 pages illustrées pour découvrir les mondes du livre, sans rien dévoiler de la fin.</p>
-          <div class="pv-row"><input id="pv-mail" type="email" name="email" required placeholder="ton adresse e-mail" autocomplete="email"><button type="submit">Me prévenir</button></div>
-          <label class="pv-ok"><input type="checkbox" name="consentement" value="oui" required> J’accepte de recevoir des nouvelles du livre (désinscription en un clic).</label>
-          <p class="pv-msg" aria-live="polite"></p>
-        </form>
+        <div class="prevenir">
+          <p class="pv-t">Préviens-moi à l’ouverture des commandes</p>
+          <p class="pv-gift">En cadeau, reçois <em>Le Carnet du Voile</em> : 13 pages illustrées pour découvrir les mondes du livre, sans rien dévoiler de la fin.</p>
+          <div class="pv-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="e645c2f0-be10-460c-aa6d-cf1352cb07ac"></script></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1173,20 +1170,7 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 .prevenir .pv-dl{display:inline-block;margin-top:10px;padding:10px 16px;background:var(--gold,#d4ae62);color:var(--night,#110d1b);text-decoration:none;font-family:"Cinzel",serif;letter-spacing:.05em}
 .prevenir .pv-msg{margin-top:8px;color:var(--gold,#d4ae62);min-height:1em}
 </style>
-<script>
-(function(){
-  var f=document.querySelector('form.prevenir'); if(!f) return;
-  if(window.LAERIA_COMMANDES_OUVERTES){ f.remove(); return; }
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var m=f.querySelector('.pv-msg'), b=f.querySelector('button');
-    b.disabled=true; m.textContent='Envoi…';
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-      .then(function(r){ if(!r.ok) throw 0; f.querySelector('.pv-row').remove(); f.querySelector('.pv-ok').remove(); m.innerHTML='Merci ! Tu seras prévenu par e-mail dès l’ouverture des commandes.<br><a class="pv-dl" href="carnet-du-voile.pdf" download>Télécharger Le Carnet du Voile (PDF)</a>'; })
-      .catch(function(){ b.disabled=false; m.textContent='Oups, l’envoi a échoué. Réessaie dans un instant.'; });
-  });
-})();
-</script>
+
 <style>
 .cv-back{position:fixed;inset:0;z-index:10000;background:rgba(8,6,14,.78);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .35s}
 .cv-back.on{opacity:1;pointer-events:auto}
@@ -1203,30 +1187,27 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 .cv-row input{flex:1;min-width:0;padding:12px;background:#110d1b;border:1px solid rgba(212,174,98,.35);color:var(--parch,#ece2c9);font:inherit}
 .cv-row button{padding:12px 16px;border:0;background:linear-gradient(180deg,#f0cf86,#d4ae62);color:#110d1b;font-family:"Cinzel",serif;font-weight:600;letter-spacing:.05em;cursor:pointer}
 .cv-ok{display:block;margin-top:8px;font-size:.85rem;color:var(--parch-dim,#b7aa8e)}
+.cv-embed{margin-top:14px;min-height:120px}
+.pv-embed{min-height:120px}
 .cv-msg{margin-top:10px;color:var(--gold,#d4ae62);min-height:1em}
 .cv-dl{display:inline-block;margin-top:8px;padding:11px 16px;background:linear-gradient(180deg,#f0cf86,#d4ae62);color:#110d1b;text-decoration:none;font-family:"Cinzel",serif;font-weight:600}
 .gift-trigger{animation:giftglow 2.6s ease-in-out infinite}
 @keyframes giftglow{0%,100%{box-shadow:0 10px 34px rgba(0,0,0,.6),0 0 18px rgba(212,174,98,.35)}50%{box-shadow:0 10px 34px rgba(0,0,0,.6),0 0 38px rgba(212,174,98,.85)}}
 @media(max-width:600px){.cv-box{grid-template-columns:1fr;gap:14px;padding:22px 18px;max-height:92vh;overflow:auto}.cv-box img{width:120px;margin:0 auto}.cv-h{font-size:1.3rem}.cv-row{flex-direction:column}}
 </style>
+<div class="cv-back" id="cv-back" role="dialog" aria-modal="true" aria-label="Le Carnet du Voile offert"><div class="cv-box"><button class="cv-x" aria-label="Fermer">×</button>
+<img src="img/carnet-cover.jpg" alt="Couverture du Carnet du Voile" width="505" height="756">
+<div><p class="cv-eb">Cadeau de bienvenue</p><p class="cv-h">Le Carnet du Voile, offert</p>
+<p class="cv-p">13 pages illustrées pour découvrir les mondes de <em>Laëria</em>, sans rien dévoiler de la fin. Inscris-toi : tu le reçois <b>tout de suite</b>, et tu seras prévenu dès l’ouverture des commandes.</p>
+<div class="cv-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="e645c2f0-be10-460c-aa6d-cf1352cb07ac"></script></div></div></div></div>
 <script>
 /* Pop-up « Le Carnet du Voile offert » : s'ouvre une fois par visite (après 15 s ou à mi-page),
    et à chaque clic sur « Carnet offert ». Inscription envoyée au formulaire Netlify « preinscription ». */
 (function(){
-  if(window.LAERIA_COMMANDES_OUVERTES) return;
+  if(window.LAERIA_COMMANDES_OUVERTES){ ['cv-back'].forEach(function(id){ var x=document.getElementById(id); if(x) x.remove(); }); var pv=document.querySelector('.prevenir'); if(pv) pv.remove(); return; }
   function get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-  var back=document.createElement('div'); back.className='cv-back'; back.setAttribute('role','dialog'); back.setAttribute('aria-modal','true'); back.setAttribute('aria-label','Le Carnet du Voile offert');
-  back.innerHTML='<div class="cv-box"><button class="cv-x" aria-label="Fermer">×</button>'+
-    '<img src="img/carnet-cover.jpg" alt="Couverture du Carnet du Voile" width="505" height="756">'+
-    '<div><p class="cv-eb">Cadeau de bienvenue</p><p class="cv-h">Le Carnet du Voile, offert</p>'+
-    '<p class="cv-p">13 pages illustrées pour découvrir les mondes de <em>Laëria</em>, sans rien dévoiler de la fin. Inscris-toi : tu le reçois <b>tout de suite</b>, et tu seras prévenu dès l’ouverture des commandes.</p>'+
-    '<form class="cv-f" name="preinscription" method="POST" data-netlify="true" netlify-honeypot="bot-field">'+
-    '<input type="hidden" name="form-name" value="preinscription"><p hidden><label>Ne pas remplir <input name="bot-field"></label></p>'+
-    '<div class="cv-row"><input type="email" name="email" required placeholder="ton adresse e-mail" autocomplete="email" aria-label="Adresse e-mail"><button type="submit">Recevoir le carnet</button></div>'+
-    '<label class="cv-ok"><input type="checkbox" name="consentement" value="oui" required> J’accepte de recevoir des nouvelles du livre (désinscription en un clic).</label>'+
-    '<p class="cv-msg" aria-live="polite"></p></form></div></div>';
-  document.body.appendChild(back);
+  var back=document.getElementById('cv-back'); if(!back) return;
   var opened=false, closedAt=0;
   function open(){ back.classList.add('on'); opened=true; var i=back.querySelector('input[type=email]'); if(i) setTimeout(function(){ i.focus({preventScroll:true}); },350); }
   function close(){ back.classList.remove('on'); closedAt=Date.now(); }
@@ -1234,15 +1215,6 @@ window.LAERIA_COMMANDES_OUVERTES = false;
   back.addEventListener('click',function(e){ if(e.target===back) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
   document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('.gift-trigger,a[href="#carnet-offert"]'); if(t){ e.preventDefault(); open(); } });
-  var f=back.querySelector('form');
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var m=f.querySelector('.cv-msg'), b=f.querySelector('button'); b.disabled=true; m.textContent='Envoi…';
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-      .then(function(r){ if(!r.ok) throw 0; set('cv_inscrit','1'); f.querySelector('.cv-row').remove(); f.querySelector('.cv-ok').remove();
-        m.innerHTML='Merci, bienvenue de l’autre côté du Voile !<br><a class="cv-dl" href="carnet-du-voile.pdf" download>Télécharger Le Carnet du Voile (PDF)</a>'; })
-      .catch(function(){ b.disabled=false; m.textContent='Oups, l’envoi a échoué. Réessaie dans un instant.'; });
-  });
   /* Ouverture automatique : 5 s après le passage du Voile, puis une 2e fois (si pas inscrit)
      en arrivant à la section du livre, au moins 40 s après la fermeture. Au plus 2 fois par visite. */
   function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
