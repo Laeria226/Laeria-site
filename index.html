@@ -1219,12 +1219,7 @@ window.LAERIA_COMMANDES_OUVERTES = false;
      en arrivant à la section du livre, au moins 40 s après la fermeture. Au plus 2 fois par visite. */
   function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
   function sset(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
-  function fallback(){ var em=back.querySelector('.cv-embed'); if(!em||em.querySelector('iframe')||em.querySelector('.cv-fb')) return;
-    var a=document.createElement('a'); a.className='cv-dl cv-fb'; a.href='https://charles-newsletter-b0dd00.beehiiv.com/subscribe'; a.target='_blank'; a.rel='noopener';
-    a.textContent='Je m’inscris pour recevoir le carnet'; em.appendChild(a);
-    var n=document.createElement('p'); n.className='cv-ok'; n.textContent='Le formulaire ne s’affiche pas dans ce navigateur : ce bouton ouvre l’inscription dans une nouvelle page.'; em.appendChild(n); }
-  function whenReady(cb){ var t0=Date.now(); (function chk(){ if(back.querySelector('.cv-embed iframe')) cb(); else if(Date.now()-t0>6000){ fallback(); cb(); } else setTimeout(chk,250); })(); }
-  setTimeout(fallback,9000);
+  function whenReady(cb){ var t0=Date.now(); (function chk(){ if(back.querySelector('.cv-embed iframe')||Date.now()-t0>8000) cb(); else setTimeout(chk,250); })(); }
   if((window.LAERIA_HASH||location.hash)==='#carnet-offert'){ whenReady(open); }
   if(get('cv_inscrit')) return;
   var shows=parseInt(sget('cv_shows')||'0',10), firstTimer=null;
