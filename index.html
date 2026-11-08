@@ -805,8 +805,8 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
           <img class="of-mp" src="img/marque-page.jpg" alt="Marque-page Laëria offert aux 10 premiers acheteurs" width="120" height="476" loading="lazy">
           <div class="of-txt">
             <p class="of-t">Offre de lancement</p>
-            <p class="of-l"><b>Dédicace offerte</b> aux 50 premiers acheteurs<br><span class="of-c" id="of-ded">50 restantes sur 50</span></p>
-            <p class="of-l"><b>Marque-page offert</b> aux 10 premiers acheteurs<br><span class="of-c" id="of-mp">10 restants sur 10</span></p>
+            <p class="of-l"><b>Dédicace offerte</b> aux 50 premiers acheteurs<br><span class="of-c" id="of-ded">Bientôt disponible</span></p>
+            <p class="of-l"><b>Marque-page offert</b> aux 10 premiers acheteurs<br><span class="of-c" id="of-mp">Bientôt disponible</span></p>
             <label class="of-chk" id="of-chk"><input type="checkbox" id="of-box"> <span>Je souhaite recevoir le marque-page offert</span></label>
             <p class="of-n">Pour la dédicace, un champ facultatif apparaît au moment du paiement : indique un prénom ou un petit mot.</p>
           </div>
@@ -1169,7 +1169,7 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 .offre .of-mp{width:96px;height:auto;display:block;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .offre .of-t{margin:0 0 10px;font-family:var(--f-label,"Cinzel",serif);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold,#d4ae62)}
 .offre .of-l{margin:0 0 10px;font-size:1.02rem;line-height:1.45;color:var(--parch,#ece2c9)}
-.offre .of-c{font-family:var(--f-label,"Cinzel",serif);font-size:.82rem;letter-spacing:.08em;color:var(--gold,#d4ae62)}
+.offre .of-c{font-family:var(--f-body,"EB Garamond",serif);font-style:italic;font-size:1.02rem;color:var(--gold,#d4ae62)}
 .offre .of-chk{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;font-size:1.02rem;color:var(--parch,#ece2c9);cursor:pointer}
 .offre .of-chk input{margin-top:5px;accent-color:#d4ae62;width:18px;height:18px;flex:none}
 .offre .of-chk.off{display:none}
@@ -1184,6 +1184,7 @@ window.LAERIA_COMMANDES_OUVERTES = false;
   var ded=document.getElementById('of-ded'), mp=document.getElementById('of-mp'), chk=document.getElementById('of-chk'), box=document.getElementById('of-box');
   if(!ded) return;
   function maj(d,m){
+    if(!window.LAERIA_COMMANDES_OUVERTES) return;
     var rd=Math.max(0,MAXD-d), rm=Math.max(0,MAXM-m);
     ded.textContent = rd>0 ? rd+(rd>1?' restantes':' restante')+' sur '+MAXD : 'Toutes offertes';
     mp.textContent = rm>0 ? rm+(rm>1?' restants':' restant')+' sur '+MAXM : 'Tous offerts';
