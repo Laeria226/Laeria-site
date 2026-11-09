@@ -14,15 +14,37 @@ img{width:200px;transform:rotate(-3deg);border:1px solid rgba(212,174,98,.4);box
 h1{font-family:"Cinzel Decorative",serif;font-weight:400;color:#d4ae62;font-size:2rem;margin:10px 0 14px}
 p{font-size:1.12rem;line-height:1.55}
 .dl{display:inline-block;margin-top:24px;padding:15px 26px;background:linear-gradient(180deg,#f0cf86,#d4ae62);color:#110d1b;text-decoration:none;font-family:Cinzel,serif;font-weight:600;letter-spacing:.06em;box-shadow:0 0 34px rgba(212,174,98,.45)}
+.status{margin-top:26px;padding:14px 18px;border:1px solid rgba(212,174,98,.45);background:rgba(212,174,98,.07);font-size:1.08rem;line-height:1.5}
+.status b{display:block;font-family:Cinzel,serif;font-weight:600;letter-spacing:.14em;font-size:.82rem;text-transform:uppercase;color:#d4ae62;margin-bottom:4px}
+.status small{display:block;margin-top:6px;font-size:.95rem;color:#b7aa8e}
+.dl.alt{background:transparent;color:#d4ae62;border:1px solid rgba(212,174,98,.55);box-shadow:none;margin-top:18px;padding:12px 22px;font-size:.9rem}
 .back{display:block;margin-top:22px;color:#b7aa8e}
 </style></head><body>
 <div class="box">
   <img src="/img/carnet-cover.jpg" alt="Le Carnet du Voile">
   <p class="eb">Inscription confirmée</p>
   <h1>Bienvenue de l’autre côté du Voile</h1>
-  <p>Merci ! Ton carnet t’attend. Tu seras aussi parmi les premiers prévenus, par e-mail, dès l’ouverture des commandes de <em>Laëria, Le Nouveau Monde</em>.</p>
-  <a class="dl" href="/carnet-du-voile.pdf" download>Télécharger Le Carnet du Voile (PDF)</a>
+  <p>Merci ! Tu seras aussi parmi les premiers prévenus, par e-mail, dès l’ouverture des commandes de <em>Laëria, Le Nouveau Monde</em>.</p>
+  <div class="status" id="st" role="status" aria-live="polite">
+    <b id="st-t">Ton carnet se télécharge…</b>
+    <span id="st-d">Il arrive dans tes téléchargements, sans rien faire de plus.</span>
+    <small>iPhone : touche l’icône de téléchargement dans la barre de Safari, ou ouvre l’app Fichiers, dossier Téléchargements.</small>
+  </div>
+  <a class="dl alt" id="dl" href="/carnet-du-voile.pdf" download="Le-Carnet-du-Voile.pdf">Le télécharger de nouveau</a>
   <a class="back" href="/">Revenir au site</a>
 </div>
-<script>try{localStorage.setItem('cv_inscrit','1');}catch(e){}</script>
+<script>
+try{localStorage.setItem('cv_inscrit','1');}catch(e){}
+(function(){
+  var deja=false; try{ deja=sessionStorage.getItem('cv_dl')==='1'; }catch(e){}
+  var t=document.getElementById('st-t'), d=document.getElementById('st-d');
+  if(deja){ t.textContent='Ton carnet a déjà été envoyé'; d.textContent='Il est dans tes téléchargements. Si tu ne le retrouves pas, utilise le bouton ci-dessous.'; return; }
+  setTimeout(function(){
+    var a=document.createElement('a'); a.href='/carnet-du-voile.pdf'; a.download='Le-Carnet-du-Voile.pdf'; a.style.display='none';
+    document.body.appendChild(a); a.click(); a.remove();
+    try{ sessionStorage.setItem('cv_dl','1'); }catch(e){}
+    t.textContent='✦ Ton carnet a été envoyé'; d.textContent='Il est dans tes téléchargements. Si rien ne s’est produit, utilise le bouton ci-dessous.';
+  },900);
+})();
+</script>
 </body></html>
