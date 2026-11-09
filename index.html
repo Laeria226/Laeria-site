@@ -802,7 +802,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       </dl>
       <div class="order">
         <div class="offre" id="offre-lancement">
-          <img class="of-mp" src="img/marque-page.jpg" alt="Marque-page Laëria offert aux 10 premiers acheteurs" width="120" height="476" loading="lazy">
+          <img class="of-mp" id="of-mp-img" src="img/marque-page.jpg" alt="Marque-page Laëria offert aux 10 premiers acheteurs" width="120" height="476" loading="lazy">
           <div class="of-txt">
             <p class="of-t">Offre de lancement</p>
             <p class="of-l"><b>Dédicace offerte</b> aux 50 premiers acheteurs<br><span class="of-c" id="of-ded">Bientôt disponible</span></p>
@@ -849,7 +849,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 <footer>
   <div class="wrap">
     <div class="ornament" style="width:min(360px,80%);margin-inline:auto" aria-hidden="true"><svg><use href="#star"/></svg></div>
-    <div class="t"><span class="lt-mot">Laëria</span>, Le Nouveau Monde</div>
+    <div class="t"><span class="lt-mot">Laëria</span><span class="lt-sub">Le Nouveau Monde</span></div>
     <p>Récit d’un passage entre les mondes · Tome I · Charles Vanni</p>
   </div>
 </footer>
@@ -1170,12 +1170,17 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 .hero-in h1,.laeria h2.laeria-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;letter-spacing:.04em}
 .laeria h2.laeria-mot{font-size:clamp(2.6rem,6vw,4.4rem);text-transform:none}
 .syl b{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:clamp(2.8rem,4.6vw,3.8rem);letter-spacing:.04em}
+footer .t{display:grid;justify-items:center;gap:.7rem;text-transform:none;letter-spacing:0}
+footer .t .lt-mot,footer .t .lt-sub{display:block}
+footer .t .lt-sub{font-family:var(--f-label,"Cinzel",serif);font-weight:600;font-size:clamp(.85rem,2.4vw,1.1rem);letter-spacing:.34em;text-transform:uppercase;color:var(--parch,#ece2c9);margin-top:.9rem}
+footer .t .lt-mot{font-size:clamp(2.4rem,7vw,3.6rem);color:var(--gold,#d4ae62);font-size:clamp(2.6rem,7vw,3.8rem);line-height:1;color:var(--gold);}
+footer .t .lt-sub{font-family:var(--f-label);font-weight:500;font-size:clamp(.82rem,2.4vw,1.05rem);letter-spacing:.32em;text-transform:uppercase;color:var(--parch)}
 footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;letter-spacing:.04em}
 .brand{font-family:"Laeria Titre Fin","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:1.25rem;letter-spacing:.08em}
 </style>
 <style>
-.offre{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:start;max-width:540px;margin:0 0 22px;padding:18px;border:1px solid var(--line,rgba(212,174,98,.28));background:rgba(236,226,201,.04)}
-.offre .of-mp{width:96px;height:auto;display:block;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.offre{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;align-items:start;max-width:540px;margin:0 0 22px;padding:18px;border:1px solid var(--line,rgba(212,174,98,.28));background:rgba(236,226,201,.04)}
+.offre .of-mp{width:112px;height:auto;display:block;cursor:zoom-in;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .offre .of-t{margin:0 0 10px;font-family:var(--f-label,"Cinzel",serif);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold,#d4ae62)}
 .offre .of-l{margin:0 0 10px;font-size:1.02rem;line-height:1.45;color:var(--parch,#ece2c9)}
 .offre .of-c{font-family:var(--f-body,"EB Garamond",serif);font-style:italic;font-size:1.02rem;color:var(--gold,#d4ae62)}
@@ -1212,6 +1217,21 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
   try{
     fetch('/stock.json?'+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){ maj(+j.dedicaces_prises||0,+j.marquepages_pris||0); }).catch(function(){});
   }catch(e){}
+})();
+</script>
+<style>
+.mp-zoom{position:fixed;inset:0;z-index:10001;background:rgba(8,6,14,.9);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;cursor:zoom-out}
+.mp-zoom.on{opacity:1;pointer-events:auto}
+.mp-zoom img{max-height:92vh;max-width:90vw;width:auto;height:auto;border:1px solid rgba(212,174,98,.6);box-shadow:0 20px 70px rgba(0,0,0,.7)}
+</style>
+<script>
+(function(){
+  var im=document.getElementById('of-mp-img'); if(!im) return;
+  var z=document.createElement('div'); z.className='mp-zoom'; z.innerHTML='<img alt="Marque-page Laëria">';
+  z.querySelector('img').src='img/marque-page.jpg'; document.body.appendChild(z);
+  im.addEventListener('click',function(){ z.classList.add('on'); });
+  z.addEventListener('click',function(){ z.classList.remove('on'); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') z.classList.remove('on'); });
 })();
 </script>
 <style>
