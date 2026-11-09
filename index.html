@@ -525,7 +525,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     <div class="medal"><img src="img/symbole.webp" width="760" height="761" alt="L'emblème de Laëria : une étoile à huit branches au centre d'un disque, entourée des trois syllabes La, Ë et Ria." loading="lazy" data-zoom></div>
     <div>
       <p class="eyebrow">La force du Nouveau Monde</p>
-      <h2 style="margin-top:.8rem">Laëria</h2>
+      <h2 class="laeria-mot" style="margin-top:.8rem">Laëria</h2>
       <p class="lead" style="margin-top:1.2rem">Ni magie, ni pouvoir. Un souffle originel qui revient quand le bruit du monde s’éteint, et qui réharmonise tout ce qu’il traverse. Son nom se lit en trois temps, comme les rayons de son emblème.</p>
       <div class="syl">
         <div><b>La</b><span><em>Lumière originelle</em>L’éclat premier, qui dissout les voiles d’opacité et rend sa vérité à ce qui était caché.</span></div>
@@ -1164,6 +1164,13 @@ window.LAERIA_COMMANDES_OUVERTES = false;
   });
 })();
 </script>
+<style>
+@font-face{font-family:"Laeria Titre";src:url("fonts/LaeriaTitre-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Laeria Titre Fin";src:url("fonts/LaeriaTitre-Fin.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+.hero-in h1,.laeria h2.laeria-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;letter-spacing:.04em}
+.laeria h2.laeria-mot{font-size:clamp(2.6rem,6vw,4.4rem);text-transform:none}
+.brand{font-family:"Laeria Titre Fin","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:1.25rem;letter-spacing:.08em}
+</style>
 <style>
 .offre{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:start;max-width:540px;margin:0 0 22px;padding:18px;border:1px solid var(--line,rgba(212,174,98,.28));background:rgba(236,226,201,.04)}
 .offre .of-mp{width:96px;height:auto;display:block;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
