@@ -1179,14 +1179,16 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
 .brand{font-family:"Laeria Titre Fin","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:1.25rem;letter-spacing:.08em}
 </style>
 <style>
-/* Effet gravé bronze : titres Laëria */
+/* Titre Laëria : lettrage cuivre gravé (image), texte conservé pour l'accessibilité */
 .hero-in h1,.laeria h2.laeria-mot,footer .t .lt-mot{
- background:repeating-linear-gradient(180deg,rgba(45,24,10,.24) 0 1px,transparent 1px 4px),linear-gradient(180deg,#f6d596 0%,#dcab62 46%,#a8713a 100%);
- -webkit-background-clip:text;background-clip:text;color:transparent;
- -webkit-text-stroke:.028em #3f2615;paint-order:stroke fill;
- filter:drop-shadow(0 -1px 0 rgba(255,236,190,.5)) drop-shadow(0 .05em .04em rgba(0,0,0,.7)) drop-shadow(0 0 .5em rgba(212,174,98,.22));
+ display:block;font-size:0;line-height:0;letter-spacing:0;color:transparent;-webkit-text-stroke:0;
+ background:url(img/titre-laeria.webp) center/contain no-repeat;
+ aspect-ratio:1600/478;height:auto;margin-inline:auto;overflow:hidden;
+ filter:drop-shadow(0 0 30px rgba(255,214,150,.28));
 }
-.hero-in h1{letter-spacing:.05em}
+.hero-in h1{width:clamp(270px,64vw,660px);margin-top:1rem}
+.laeria h2.laeria-mot{width:clamp(200px,36vw,340px)}
+footer .t .lt-mot{width:clamp(200px,42vw,300px)}
 </style>
 <style>
 .offre{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;align-items:start;max-width:540px;margin:0 0 22px;padding:18px;border:1px solid var(--line,rgba(212,174,98,.28));background:rgba(236,226,201,.04)}
