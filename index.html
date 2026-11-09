@@ -1293,8 +1293,9 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
   function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
   var back=document.getElementById('cv-back'); if(!back) return;
   var opened=false, closedAt=0;
-  function freshEmbed(){ var box=back.querySelector('.cv-embed'); if(!box) return; var s0=box.querySelector('script[data-beehiiv-form]'); var id=s0?s0.getAttribute('data-beehiiv-form'):'e645c2f0-be10-460c-aa6d-cf1352cb07ac'; box.innerHTML=''; var s=document.createElement('script'); s.async=true; s.src='https://subscribe-forms.beehiiv.com/v3/loader.js?r='+Date.now(); s.setAttribute('data-beehiiv-form',id); box.appendChild(s); }
-  function open(){ if(get('cv_inscrit') && !back.dataset.fresh){ back.dataset.fresh='1'; freshEmbed(); } back.classList.add('on'); opened=true; var i=back.querySelector('input[type=email]'); if(i) setTimeout(function(){ i.focus({preventScroll:true}); },350); }
+  function purge(){ try{ [localStorage,sessionStorage].forEach(function(st){ Object.keys(st).forEach(function(k){ if(!/^cv_/.test(k) && /beehiiv|^bh|subscri|e645c2f0/i.test(k)) st.removeItem(k); }); }); document.cookie.split(';').forEach(function(c){ var n=c.split('=')[0].trim(); if(/beehiiv|^bh|subscri|e645c2f0/i.test(n)) document.cookie=n+'=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'; }); }catch(e){} }
+  function freshEmbed(){ purge(); var box=back.querySelector('.cv-embed'); if(!box) return; var s0=box.querySelector('script[data-beehiiv-form]'); var id=s0?s0.getAttribute('data-beehiiv-form'):'e645c2f0-be10-460c-aa6d-cf1352cb07ac'; box.innerHTML=''; var s=document.createElement('script'); s.async=true; s.src='https://subscribe-forms.beehiiv.com/v3/loader.js?r='+Date.now(); s.setAttribute('data-beehiiv-form',id); box.appendChild(s); }
+  function open(){ if(!back.dataset.fresh){ back.dataset.fresh='1'; freshEmbed(); } back.classList.add('on'); opened=true; var i=back.querySelector('input[type=email]'); if(i) setTimeout(function(){ i.focus({preventScroll:true}); },350); }
   function close(){ back.classList.remove('on'); closedAt=Date.now(); }
   back.querySelector('.cv-x').addEventListener('click',close);
   back.addEventListener('click',function(e){ if(e.target===back) close(); });
