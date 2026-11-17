@@ -1322,7 +1322,7 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
   back.addEventListener('click',function(e){ if(e.target===back) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
   document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('.gift-trigger,a[href="#carnet-offert"]'); if(t){ e.preventDefault(); open(); } });
-  /* Ouverture automatique : 5 s après le passage du Voile, puis une 2e fois (si pas inscrit)
+  /* Ouverture automatique : 2 s après l'arrivée sur le site, puis une 2e fois (si pas inscrit)
      en arrivant à la section du livre, au moins 40 s après la fermeture. Au plus 2 fois par visite. */
   function sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
   function sset(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
@@ -1334,7 +1334,7 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
   var intro=document.querySelector('.intro');
   function passed(){ if(!intro) return true; var end=intro.offsetTop+intro.offsetHeight-innerHeight*1.05; return window.scrollY>=end; }
   function check(){
-    if(shows===0 && !firstTimer && passed()){ firstTimer=setTimeout(autoOpen,5000); }
+    if(shows===0 && !firstTimer){ firstTimer=setTimeout(autoOpen,2000); }
     if(shows===1 && closedAt && Date.now()-closedAt>40000){
       var livre=document.getElementById('livre');
       if(livre && livre.getBoundingClientRect().top<innerHeight*0.6) autoOpen();
