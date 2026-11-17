@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bienvenue de l’autre côté du Voile · Laëria</title>
+<title>Réservation confirmée · Laëria</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cinzel+Decorative&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -9,7 +9,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 18px;background:radial-gradient(ellipse at 50% 20%,#2a1f47,#110d1b 65%);color:#ece2c9;font-family:"EB Garamond",Georgia,serif;text-align:center}
 .box{max-width:560px}
-img{width:200px;transform:rotate(-3deg);border:1px solid rgba(212,174,98,.4);box-shadow:0 20px 50px rgba(0,0,0,.6)}
+img{width:200px;height:auto;transform:rotate(-3deg);border:1px solid rgba(212,174,98,.4);box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .eb{margin-top:28px;font-family:Cinzel,serif;letter-spacing:.3em;font-size:.75rem;color:#b39ae6;text-transform:uppercase}
 h1{font-family:"Cinzel Decorative",serif;font-weight:400;color:#d4ae62;font-size:2rem;margin:10px 0 14px}
 p{font-size:1.12rem;line-height:1.55}
@@ -21,31 +21,17 @@ p{font-size:1.12rem;line-height:1.55}
 .back{display:block;margin-top:22px;color:#b7aa8e}
 </style></head><body>
 <div class="box">
-  <img src="/img/carnet-cover.jpg" alt="Le Carnet du Voile">
-  <p class="eb">Inscription confirmée</p>
-  <h1>Bienvenue de l’autre côté du Voile</h1>
-  <p>Merci ! Tu seras aussi parmi les premiers prévenus, par e-mail, dès l’ouverture des commandes de <em>Laëria, Le Nouveau Monde</em>.</p>
-  <div class="status" id="st" role="status" aria-live="polite">
-    <b id="st-t">Ton carnet se télécharge…</b>
-    <span id="st-d">Il arrive dans tes téléchargements, sans rien faire de plus.</span>
-    <small>iPhone : touche l’icône de téléchargement dans la barre de Safari, ou ouvre l’app Fichiers, dossier Téléchargements.</small>
+  <img src="/img/pochette-v5.jpg" alt="Pochette de Laëria, Le Nouveau Monde">
+  <p class="eb">Réservation confirmée</p>
+  <h1>Merci d’avoir réservé</h1>
+  <p>Ta réservation est bien enregistrée. <b>Réservation gratuite, sans paiement.</b></p>
+  <div class="status" role="status">
+    <b>Je te préviens dès la sortie</b>
+    <span>Tu recevras un e-mail avec le lien pour commander <em>Laëria, Le Nouveau Monde</em>.</span>
   </div>
-  <a class="dl alt" id="dl" href="/carnet-du-voile.pdf" download="Le-Carnet-du-Voile.pdf">Le télécharger de nouveau</a>
-  <a class="back" href="/#carnet-offert">Une autre adresse, ou tu n’as rien reçu par e-mail ? Saisis-la de nouveau</a>
+  <p style="margin-top:26px">Merci de ton inscription. Voici un petit carnet, pour entrer dans les mondes de Laëria.</p>
+  <a class="dl" href="/carnet-du-voile.pdf" download>Ouvrir le petit carnet</a>
   <a class="back" href="/">Revenir au site</a>
 </div>
-<script>
-try{localStorage.setItem('cv_inscrit','1');}catch(e){}
-(function(){
-  var deja=false; try{ deja=sessionStorage.getItem('cv_dl')==='1'; }catch(e){}
-  var t=document.getElementById('st-t'), d=document.getElementById('st-d');
-  if(deja){ t.textContent='Ton carnet a déjà été envoyé'; d.textContent='Il est dans tes téléchargements. Si tu ne le retrouves pas, utilise le bouton ci-dessous.'; return; }
-  setTimeout(function(){
-    var a=document.createElement('a'); a.href='/carnet-du-voile.pdf'; a.download='Le-Carnet-du-Voile.pdf'; a.style.display='none';
-    document.body.appendChild(a); a.click(); a.remove();
-    try{ sessionStorage.setItem('cv_dl','1'); }catch(e){}
-    t.textContent='✦ Ton carnet a été envoyé'; d.textContent='Il est dans tes téléchargements. Si rien ne s’est produit, utilise le bouton ci-dessous.';
-  },900);
-})();
-</script>
+<script>try{localStorage.setItem('cv_inscrit','1');}catch(e){}</script>
 </body></html>
