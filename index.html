@@ -1600,7 +1600,7 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
 @media(max-width:700px){.cn-art{max-width:56vw!important}}
 /* Hero : textes bien lisibles */
 .hero-in{position:relative;isolation:isolate}
-.hero-in::before{content:"";position:absolute;inset:-14% -26%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(26,13,46,.66),rgba(26,13,46,.4) 58%,transparent)}
+.hero-in::before{content:"";position:absolute;inset:-14% -26%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s;background:radial-gradient(closest-side,rgba(26,13,46,.66),rgba(26,13,46,.4) 58%,transparent)}
 .hero-in .sub{color:#fff1c9!important;text-shadow:0 1px 3px rgba(20,8,36,.9),0 0 16px rgba(20,8,36,.85)}
 .hero-in .hook{color:#ffe8b4!important;text-shadow:0 1px 3px rgba(20,8,36,.9),0 0 18px rgba(20,8,36,.85)}
 .hero-in .eyebrow{color:#f6e6bd!important;text-shadow:0 1px 3px rgba(20,8,36,.9),0 0 14px rgba(20,8,36,.85)}
@@ -1724,6 +1724,7 @@ main{overflow-x:clip}
 /* ouverture : image plus lumineuse */
 
 @media(max-width:700px){.vault{padding-top:430px!important}}
+.ihero.show .hero-in::before{opacity:1}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
