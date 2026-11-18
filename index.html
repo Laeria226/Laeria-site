@@ -954,7 +954,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   /* ---------- Ouverture : la serrure du chêne ---------- */
   var intro=document.getElementById('haut'),introEnd=0;
   if(intro){
-    var cam=intro.querySelector('.icam'),glow=intro.querySelector('.iglow'),stage=intro.querySelector('.istage'),vig=intro.querySelector('.ivig'),light=intro.querySelector('.ilight'),
+    var cam=intro.querySelector('.icam'),iglowEl=intro.querySelector('.iglow'),stage=intro.querySelector('.istage'),vig=intro.querySelector('.ivig'),light=intro.querySelector('.ilight'),
         flood=intro.querySelector('.iflood'),rays=intro.querySelector('.irays'),world=intro.querySelector('.iworld'),
         cue=intro.querySelector('.icue'),skip=intro.querySelector('.iskip'),ihero=intro.querySelector('.ihero');
     /* lettres de l'invite : chacune scintille a son rythme */
@@ -988,8 +988,8 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       cam.style.opacity=fade.toFixed(3);
       /* la lueur de la serrure grandit et deborde du trou : meme or que l'image */
       var gz=z*(1+1.9*sm((p-.04)/.5));
-      glow.style.transform='translate3d('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px,0) scale('+gz.toFixed(4)+')';
-      glow.style.opacity=((.62+.38*sm(p/.3))*(1-sm((p-.56)/.08))).toFixed(3);
+      iglowEl.style.transform='translate3d('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px,0) scale('+gz.toFixed(4)+')';
+      iglowEl.style.opacity=((.62+.38*sm(p/.3))*(1-sm((p-.56)/.08))).toFixed(3);
       vig.style.opacity=(sm((p-.1)/.3)*(1-sm((p-.6)/.1))*.8).toFixed(3);
       var lo=sm((p-.18)/.42);light.style.transform='scale('+(p>.66?(1.2+(1-sm((p-.66)/.2))*4.6):(.3+lo*lo*5.6)).toFixed(3)+')';
       rays.style.opacity=Math.max(sm((p-.24)/.3)*(1-sm((p-.62)/.1))*.85,sm((p-.7)/.2)*.14).toFixed(3);rays.style.transform='rotate('+(p*38).toFixed(2)+'deg) scale('+(.8+p*.6).toFixed(3)+')';
