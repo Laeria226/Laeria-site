@@ -1437,7 +1437,6 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
 <style id="refonte">/* ===================== Refonte « ciel du Voile » v2 =====================
    Un seul ciel diffus pour toute la page (violet → rosé → orange → or), des étoiles, des racines en ombre,
    et aucun bloc : les textes se fondent dans le décor par de simples voiles diffus. */
-.iworld::after{background:linear-gradient(180deg,transparent 80%,#3a2b66 100%),radial-gradient(70% 55% at 51% 40%,rgba(255,226,150,.42),rgba(255,226,150,0) 70%),radial-gradient(90% 70% at 50% 100%,rgba(240,140,90,.38),rgba(240,140,90,0) 70%),linear-gradient(180deg,rgba(74,44,104,.62) 0%,rgba(150,80,130,.38) 34%,rgba(12,9,20,.12) 62%,rgba(12,9,20,.45) 100%)!important}
 html{background:#3a2b66}
 body{background:#3a2b66}
 :root{--parch:#f7eed8;--parch-dim:#eadfc6;--amethyst:#efe0ff;--vc:22,11,40;--va:.74}
@@ -1547,9 +1546,6 @@ footer{background:#0c0914;position:relative;z-index:1}
 
 /* ---------- Mobile : haut de l'image fondu dans le ciel ---------- */
 @media(max-width:700px){
-.istage{background:#2b2542}
-.istage::before{height:36vh!important;background:linear-gradient(180deg,#2b2542 0%,rgba(43,37,66,.92) 10%,rgba(43,37,66,.7) 24%,rgba(43,37,66,.4) 46%,rgba(43,37,66,.16) 72%,rgba(43,37,66,0) 100%)!important}
-.icam{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%)}
 .panel .body::before{inset:-12% -8%}
 .page::before{inset:-40px -24px}
 .cast::before{inset:-30px -16px}
@@ -1653,10 +1649,8 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
 .cn-in::before{inset:-8% -26%!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%)}
 
 .ciel{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 280px);mask-image:linear-gradient(180deg,transparent 0,#000 280px)}
-main{background:#3a2b66}
+main{background:#0c0914}
 
-.iworld::after{background:linear-gradient(180deg,transparent 45%,rgba(58,43,102,.6) 78%,#3a2b66 100%)!important}
-.istage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;z-index:5;pointer-events:none;background:linear-gradient(180deg,transparent,#3a2b66)}
 
 /* chapitre II : sol de basalte et fumée */
 .ciel .fum{position:absolute;right:-2vw;width:min(56vw,780px);height:auto;opacity:.62;mix-blend-mode:normal;-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent 100%);mask-image:radial-gradient(closest-side,#000 40%,transparent 100%)}
