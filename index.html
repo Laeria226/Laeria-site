@@ -155,7 +155,7 @@ footer{padding-bottom:110px}
 .itit{position:absolute;left:0;top:0;z-index:4;margin:0;white-space:nowrap;pointer-events:none;transform:translate(-50%,-50%);font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:clamp(3rem,8.4vw,8rem);line-height:1;letter-spacing:.16em;text-align:center;will-change:opacity}
 .itit .l{display:inline-block;color:#fff3c4;opacity:.8;animation:itt 3.4s ease-in-out infinite;animation-delay:var(--d)}
 @keyframes itt{0%,100%{opacity:.78;color:#f1d58a;text-shadow:0 0 5px rgba(253,226,140,.7),0 0 14px rgba(240,180,80,.5)}42%{opacity:1;color:#fffbe6;text-shadow:0 0 7px #fff7d6,0 0 20px #ffd978,0 0 42px rgba(240,170,70,.85)}58%{opacity:.85;color:#fff0b8;text-shadow:0 0 6px rgba(255,240,190,.9),0 0 16px rgba(253,200,100,.7)}}
-@media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.12em}}
+@media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.26em}.istage::before{content:"";position:absolute;left:0;right:0;top:0;height:30vh;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(12,9,20,.86) 0%,rgba(12,9,20,.5) 45%,rgba(12,9,20,0) 100%);opacity:var(--topShade,1)}}
 .iskip{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:6;font-family:var(--f-label);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--parch-dim);background:none;border:0;padding:8px 6px;cursor:pointer;transition:opacity .4s,color .2s}
 .iskip:hover{color:var(--gold)}
 .iskip.off{opacity:0;pointer-events:none}
@@ -491,7 +491,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   .ihero{position:relative;min-height:100vh}.ihero .nav,.ihero .hero-in>*{opacity:1;transform:none}
 }
 </style>
-<link rel="preload" as="image" href="img/ouverture.webp" media="(min-width:701px)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/ouverture-paysage.webp" media="(min-width:701px)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp" media="(max-width:700px)" fetchpriority="high">
 </head>
 <body>
 
@@ -504,8 +504,8 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 <section class="intro" id="haut" aria-label="Ouverture : passer le Voile">
   <div class="istage">
     <div class="iworld" aria-hidden="true"></div>
-    <div class="icam"><picture><source media="(max-width:700px)" srcset="img/ouverture-m.webp"><img class="ipic" src="img/ouverture.webp" width="2352" height="3150" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
-    <div class="iglow" aria-hidden="true"><img src="img/ouverture-lueur.webp" alt="" width="784" height="1050" draggable="false"></div>
+    <div class="icam"><picture><source media="(max-width:700px)" srcset="img/ouverture-m.webp"><img class="ipic" src="img/ouverture-paysage.webp" width="2576" height="1923" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
+    <div class="iglow" aria-hidden="true"><picture><source media="(max-width:700px)" srcset="img/ouverture-lueur.webp"><img src="img/ouverture-lueur-paysage.webp" alt="" width="784" height="585" draggable="false"></picture></div>
     <div class="ivig" aria-hidden="true"></div>
     <div class="irays" aria-hidden="true"></div>
     <div class="ilight" aria-hidden="true"></div>
@@ -961,11 +961,14 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       txt.split(' ').forEach(function(word,wi){var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');
         word.split('').forEach(function(ch){var l=document.createElement('span');l.className='l';l.textContent=ch;l.style.setProperty('--d',(((n*0.37)%3.1)).toFixed(2)+'s');n++;w.appendChild(l);});
         cueT.appendChild(w);cueT.appendChild(document.createTextNode(' '));});}
-    var IW=1568,IH=2100,FX=.516,FY=.445,KH=.31,G={};
-    function geom(){var W=stage.clientWidth,H=stage.clientHeight,s=Math.max(W/IW,H/IH);
+    var G={},IW,IH,FX,FY,KH,TT;
+    var portraitQ=window.matchMedia('(max-width:700px)');
+    function geom(){var W=stage.clientWidth,H=stage.clientHeight;
+      if(portraitQ.matches){IW=1568;IH=2100;FX=.516;FY=.445;KH=.31;TT=.255;}else{IW=2576;IH=1923;FX=.51;FY=.46;KH=.31;TT=.285;}
+      var s=Math.max(W/IW,H/IH);
       var ox=(W-IW*s)*.516,oy=(H-IH*s)*.45;G.W=W;G.H=H;G.kx=ox+FX*IW*s;G.ky=oy+FY*IH*s;
       G.zmax=Math.min(5.5,Math.max(2.3,H*1.2/(KH*IH*s)));
-      var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+.315*IH*s).toFixed(1)+'px';}
+      var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+TT*IH*s).toFixed(1)+'px';}
       stage.style.setProperty('--kx',G.kx.toFixed(1)+'px');stage.style.setProperty('--ky',G.ky.toFixed(1)+'px');}
     geom();window.addEventListener('resize',geom);
     var irange=function(){return intro.offsetHeight-innerHeight;};
@@ -991,7 +994,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       flood.style.opacity=(sm((p-.46)/.12)*(1-sm((p-.64)/.12))*.97).toFixed(3);
       world.style.opacity=sm((p-.58)/.08).toFixed(3);
       light.style.opacity=(lo*(1-sm((p-.6)/.1))+sm((p-.7)/.2)*.2).toFixed(3);
-      var tt=intro.querySelector('.itit');if(tt)tt.style.opacity=(1-sm((p-.02)/.12)).toFixed(3);
+      var tt=intro.querySelector('.itit'),tsh=(1-sm((p-.02)/.12)).toFixed(3);if(tt)tt.style.opacity=tsh;stage.style.setProperty('--topShade',tsh);
       cue.classList.toggle('off',p>.03);skip.classList.toggle('off',p>.5);
       ihero.classList.toggle('show',p>.72);stage.style.setProperty('--cueShade',p>.3?0:1);
     }
