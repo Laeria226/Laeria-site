@@ -152,6 +152,10 @@ footer{padding-bottom:110px}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .icue.off{opacity:0;transform:translate(-50%,12px);pointer-events:none}
 
+.itit{position:absolute;left:0;top:0;z-index:4;margin:0;white-space:nowrap;pointer-events:none;transform:translate(-50%,-50%);font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:clamp(3rem,8.4vw,8rem);line-height:1;letter-spacing:.16em;text-align:center;will-change:opacity}
+.itit .l{display:inline-block;color:#fff3c4;opacity:.8;animation:itt 3.4s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes itt{0%,100%{opacity:.78;color:#f1d58a;text-shadow:0 0 5px rgba(253,226,140,.7),0 0 14px rgba(240,180,80,.5)}42%{opacity:1;color:#fffbe6;text-shadow:0 0 7px #fff7d6,0 0 20px #ffd978,0 0 42px rgba(240,170,70,.85)}58%{opacity:.85;color:#fff0b8;text-shadow:0 0 6px rgba(255,240,190,.9),0 0 16px rgba(253,200,100,.7)}}
+@media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.12em}}
 .iskip{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:6;font-family:var(--f-label);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--parch-dim);background:none;border:0;padding:8px 6px;cursor:pointer;transition:opacity .4s,color .2s}
 .iskip:hover{color:var(--gold)}
 .iskip.off{opacity:0;pointer-events:none}
@@ -506,6 +510,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     <div class="irays" aria-hidden="true"></div>
     <div class="ilight" aria-hidden="true"></div>
     <div class="iflood" aria-hidden="true"></div>
+    <p class="itit" aria-label="Laëria"><span class="l" aria-hidden="true" style="--d:0.00s">L</span><span class="l" aria-hidden="true" style="--d:0.42s">a</span><span class="l" aria-hidden="true" style="--d:0.84s">ë</span><span class="l" aria-hidden="true" style="--d:1.26s">r</span><span class="l" aria-hidden="true" style="--d:1.68s">i</span><span class="l" aria-hidden="true" style="--d:2.10s">a</span></p>
     <canvas id="motes" aria-hidden="true"></canvas>
     <button type="button" class="iskip">Passer l’ouverture</button>
     <div class="icue"><i class="spk" style="left:-14px;top:-10px;animation-delay:0s"></i><i class="spk" style="right:-12px;top:-16px;animation-delay:.9s"></i><i class="spk" style="left:48%;bottom:-18px;animation-delay:1.7s"></i><span class="icue-t" aria-label="Faites défiler pour entrer dans le Voile">Faites défiler pour entrer dans le Voile</span></div>
@@ -960,6 +965,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     function geom(){var W=stage.clientWidth,H=stage.clientHeight,s=Math.max(W/IW,H/IH);
       var ox=(W-IW*s)*.516,oy=(H-IH*s)*.45;G.W=W;G.H=H;G.kx=ox+FX*IW*s;G.ky=oy+FY*IH*s;
       G.zmax=Math.min(5.5,Math.max(2.3,H*1.2/(KH*IH*s)));
+      var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+.315*IH*s).toFixed(1)+'px';}
       stage.style.setProperty('--kx',G.kx.toFixed(1)+'px');stage.style.setProperty('--ky',G.ky.toFixed(1)+'px');}
     geom();window.addEventListener('resize',geom);
     var irange=function(){return intro.offsetHeight-innerHeight;};
@@ -985,6 +991,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       flood.style.opacity=(sm((p-.46)/.12)*(1-sm((p-.64)/.12))*.97).toFixed(3);
       world.style.opacity=sm((p-.58)/.08).toFixed(3);
       light.style.opacity=(lo*(1-sm((p-.6)/.1))+sm((p-.7)/.2)*.2).toFixed(3);
+      var tt=intro.querySelector('.itit');if(tt)tt.style.opacity=(1-sm((p-.02)/.12)).toFixed(3);
       cue.classList.toggle('off',p>.03);skip.classList.toggle('off',p>.5);
       ihero.classList.toggle('show',p>.72);stage.style.setProperty('--cueShade',p>.3?0:1);
     }
