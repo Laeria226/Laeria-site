@@ -1720,7 +1720,7 @@ main{overflow-x:clip}
  13%,33%{opacity:.92;color:#fbebb6;text-shadow:0 0 5px rgba(255,240,190,.75),0 0 16px rgba(255,205,105,.6),0 0 34px rgba(240,170,70,.45)}
  23%{opacity:1;color:#fffbe6;text-shadow:0 0 7px rgba(255,247,214,.95),0 0 20px rgba(255,217,120,.8),0 0 42px rgba(240,170,70,.7)}}
 /* un seul passage lumineux : la lumière glisse d'une lettre à l'autre sans à-coup, puis repos */
-.itit .l,.laeria-mot .l,.syl b .l,.brand .l,footer .t .l{animation:itt 7s ease-in-out infinite;animation-delay:calc(var(--d)*.6);will-change:opacity,text-shadow;backface-visibility:hidden}
+.itit .l,.laeria-mot .l,.syl b .l,.brand .l,footer .t .l{animation:itt 7s ease-in-out infinite;animation-delay:calc(var(--d)*.6 - 1.4s);will-change:opacity,text-shadow;backface-visibility:hidden}
 @media(prefers-reduced-motion:reduce){.itit .l,.laeria-mot .l,.syl b .l,.brand .l,footer .t .l{animation:none;opacity:1}}
 
 /* ouverture : image plus lumineuse */
