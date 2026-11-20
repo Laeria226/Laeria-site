@@ -98,3 +98,13 @@ footer .t .lt-sub{margin-top:.5rem}
 p,li,.eyebrow,.role,.epi,.tag,dd,dt,.lead,figcaption,summary,footer p{text-shadow:0 1px 2px rgba(16,7,30,.9),0 0 6px rgba(16,7,30,.55)}
 h1,h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16,7,30,.5)) drop-shadow(0 0 5px rgba(255,214,130,.22))}
 .sweep{filter:drop-shadow(0 0 2px rgba(255,214,130,.7)) drop-shadow(0 0 8px rgba(240,170,70,.3))}
+
+/* ===== Fiches personnages dépliantes ===== */
+.mc-p{overflow:hidden;transition:max-height .55s cubic-bezier(.3,.7,.2,1);-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+.mc-open .mc-p,.mc-short .mc-p{-webkit-mask-image:none;mask-image:none}
+.mc-btn{justify-self:start;margin-top:.25rem;background:none;border:0;border-bottom:1px solid rgba(243,216,144,.6);padding:4px 0 3px;font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#f6d98a;cursor:pointer;text-shadow:0 1px 2px rgba(16,7,30,.9)}
+.mc-btn:hover,.mc-btn:focus-visible{color:#fff3c4;border-bottom-color:#fff3c4}
+.mc-btn span::after{content:"";display:inline-block;width:.45em;height:.45em;margin-left:.7em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s}
+.mc-open .mc-btn span::after{transform:translateY(1px) rotate(225deg)}
+@media(prefers-reduced-motion:reduce){.mc-p{transition:none}}
+.mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,serif!important;font-size:1.2em;-webkit-text-stroke:0!important;letter-spacing:.06em}

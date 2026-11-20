@@ -577,6 +577,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   </div>
 </section>
 
+<div class="ornament sep-carnet" aria-hidden="true"><svg><use href="#star"/></svg></div>
 <section class="carnet" id="carnet-sec" aria-label="Le carnet">
   <div class="cn-art">
     <i class="cn-glow" aria-hidden="true"></i>
@@ -1762,6 +1763,30 @@ main .back-hook,.flipbtn,.hero-in .sub,.hero-in .hook,.hero-in .eyebrow,.hero-in
 h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16,7,30,.5)) drop-shadow(0 0 5px rgba(255,214,130,.22))}
 .sweep{filter:drop-shadow(0 0 2px rgba(255,214,130,.7)) drop-shadow(0 0 8px rgba(240,170,70,.3))}
 .itit.sweep .l,.hl.sweep .l,.hero-in h1.htit .sweep .l,.hero-in h1.htit.sweep .l{-webkit-text-stroke:.016em #d9962c}
+/* ===== Fiches personnages dépliantes ===== */
+.mc-p{overflow:hidden;transition:max-height .55s cubic-bezier(.3,.7,.2,1);-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+.mc-open .mc-p,.mc-short .mc-p{-webkit-mask-image:none;mask-image:none}
+.mc-btn{justify-self:start;margin-top:.25rem;background:none;border:0;border-bottom:1px solid rgba(243,216,144,.6);padding:4px 0 3px;font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#f6d98a;cursor:pointer;text-shadow:0 1px 2px rgba(16,7,30,.9)}
+.mc-btn:hover,.mc-btn:focus-visible{color:#fff3c4;border-bottom-color:#fff3c4}
+.mc-btn span::after{content:"";display:inline-block;width:.45em;height:.45em;margin-left:.7em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s}
+.mc-open .mc-btn span::after{transform:translateY(1px) rotate(225deg)}
+@media(prefers-reduced-motion:reduce){.mc-p{transition:none}}
+
+/* séparation après Laëria + respiration autour du carnet */
+.sep-carnet{margin:clamp(30px,5vw,70px) auto clamp(6px,2vw,24px)!important;position:relative;z-index:1;color:#f3d890}
+.sep-carnet svg{width:34px;height:34px;filter:drop-shadow(0 0 8px rgba(255,214,130,.85))}
+.sep-carnet::before,.sep-carnet::after{height:1px!important;background:linear-gradient(90deg,transparent,rgba(243,216,144,.85))!important}
+.sep-carnet::after{background:linear-gradient(270deg,transparent,rgba(243,216,144,.85))!important}
+.carnet .cn-in{margin-top:clamp(26px,4vw,56px)!important}
+@media(max-width:700px){.carnet .cn-in{margin-top:34px!important}}
+/* le mot Laëria du résumé en titre fin */
+.mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,serif!important;font-size:1.2em;-webkit-text-stroke:0!important;letter-spacing:.06em}
+/* « Bientôt disponible » bien lisible */
+.lock-off.btn,a.lock-off{opacity:1!important;background:linear-gradient(180deg,rgba(60,36,92,.92),rgba(30,16,52,.92))!important;color:#ffe9a8!important;border:1px solid rgba(243,216,144,.85)!important;box-shadow:0 0 0 1px rgba(16,7,30,.6),0 0 22px rgba(255,214,130,.35)!important;text-shadow:0 1px 2px rgba(16,7,30,.9);animation:none!important;font-weight:700;letter-spacing:.2em}
+.lock-off.btn::after,a.lock-off::after{display:none!important}
+.offre .of-c{display:inline-block;margin-top:5px;padding:3px 12px;border:1px solid rgba(243,216,144,.8);border-radius:999px;background:rgba(20,10,38,.7);font-family:"Cinzel",Georgia,serif;font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#ffe9a8;text-shadow:0 1px 2px rgba(16,7,30,.9);box-shadow:0 0 14px rgba(255,214,130,.28)}
+.offre .of-c.out{color:#d9cfe6;border-color:rgba(217,207,230,.5);box-shadow:none}
+.book .order .btn.lock-off,.order .btn.solid.buy.lock-off{background:linear-gradient(180deg,rgba(64,38,98,.95),rgba(30,16,52,.95))!important;color:#ffe9a8!important;border:1px solid rgba(243,216,144,.9)!important;box-shadow:0 0 0 1px rgba(16,7,30,.6),0 0 24px rgba(255,214,130,.4)!important;opacity:1!important;font-weight:700;letter-spacing:.2em;text-shadow:0 1px 2px rgba(16,7,30,.9)}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1834,5 +1859,6 @@ h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16
 })();
 </script>
 <script src="/js/laeria-sweep.js" defer></script>
+<script src="/js/cards-more.js" defer></script>
 </body>
 </html>
