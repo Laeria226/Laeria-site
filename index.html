@@ -1781,12 +1781,16 @@ h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16
 @media(max-width:700px){.carnet .cn-in{margin-top:34px!important}}
 /* le mot Laëria du résumé en titre fin */
 .mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,serif!important;font-size:1.2em;-webkit-text-stroke:0!important;letter-spacing:.06em}
-/* « Bientôt disponible » bien lisible */
-.lock-off.btn,a.lock-off{opacity:1!important;background:linear-gradient(180deg,rgba(60,36,92,.92),rgba(30,16,52,.92))!important;color:#ffe9a8!important;border:1px solid rgba(243,216,144,.85)!important;box-shadow:0 0 0 1px rgba(16,7,30,.6),0 0 22px rgba(255,214,130,.35)!important;text-shadow:0 1px 2px rgba(16,7,30,.9);animation:none!important;font-weight:700;letter-spacing:.2em}
+/* « Bientôt disponible » : style d'origine, simplement plus lisible */
+.order .btn.lock-off,.book .order .btn.lock-off{background:rgba(40,18,40,.58)!important;color:#f0cf86!important;border:1px solid rgba(240,207,134,.85)!important;box-shadow:none!important;opacity:1!important;font-weight:700;text-shadow:0 1px 2px rgba(16,7,30,.85)}
 .lock-off.btn::after,a.lock-off::after{display:none!important}
-.offre .of-c{display:inline-block;margin-top:5px;padding:3px 12px;border:1px solid rgba(243,216,144,.8);border-radius:999px;background:rgba(20,10,38,.7);font-family:"Cinzel",Georgia,serif;font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#ffe9a8;text-shadow:0 1px 2px rgba(16,7,30,.9);box-shadow:0 0 14px rgba(255,214,130,.28)}
-.offre .of-c.out{color:#d9cfe6;border-color:rgba(217,207,230,.5);box-shadow:none}
-.book .order .btn.lock-off,.order .btn.solid.buy.lock-off{background:linear-gradient(180deg,rgba(64,38,98,.95),rgba(30,16,52,.95))!important;color:#ffe9a8!important;border:1px solid rgba(243,216,144,.9)!important;box-shadow:0 0 0 1px rgba(16,7,30,.6),0 0 24px rgba(255,214,130,.4)!important;opacity:1!important;font-weight:700;letter-spacing:.2em;text-shadow:0 1px 2px rgba(16,7,30,.9)}
+.offre .of-c{color:#f0cf86;font-weight:600;text-shadow:0 1px 2px rgba(16,7,30,.85)}
+.offre .of-c.out{color:var(--parch-dim,#b7aa8e)}
+/* espacement : moins de vide entre le bouton du livre et la réservation */
+.book{padding-bottom:clamp(40px,5vw,80px)!important}
+@media(max-width:700px){.vault{padding-top:300px!important}}
+.book-body::before{inset:-8% -26% 0 -26%!important}
+.order .btn.lock-off{color:#f6d98f!important;border-color:rgba(246,217,143,.95)!important;background:rgba(40,18,40,.58)!important}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
