@@ -1814,6 +1814,7 @@ main{overflow-x:clip}
   addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
   addEventListener('scroll',function(){
     var y=scrollY,sy=stopY(),now=Date.now();
+    if(lock&&sy>0&&y>sy+2){scrollTo(0,sy);prevY=sy;return}
     if(sy>0&&!lock&&prevY<sy&&y>sy+2&&now-last>4000){
       last=now;lock=true;
       document.documentElement.style.scrollBehavior='auto';
