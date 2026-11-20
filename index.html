@@ -846,9 +846,9 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       <h2>Le livre</h2>
       <div class="back">
         <p class="back-hook">Et si le monde que l’on croit connaître n’était que l’écho d’un autre&nbsp;?</p>
-        <p>Un matin, plus rien ne répond. Plus de réseau, plus de repères, seulement un silence si vaste qu’il donne le vertige. Dans ce monde qui vacille, un homme découvre que quelque chose d’ancien s’éveille sous la surface : Laëria, une force que l’on ne voit pas, mais que l’on ressent jusque dans le souffle.</p>
+        <p>Un matin, plus rien ne répond. Plus de réseau, plus de repères, seulement un silence si vaste qu’il donne le vertige. Dans ce monde qui vacille, un homme découvre que quelque chose d’ancien s’éveille sous la surface : <span class="mot-laeria">Laëria</span>, une force que l’on ne voit pas, mais que l’on ressent jusque dans le souffle.</p>
         <p>Guidé par des rencontres qui n’ont rien du hasard, il franchit le Voile et parcourt des terres que personne n’a cartographiées…</p>
-        <p><em>Laëria, Le Nouveau Monde</em> est un récit initiatique, mystique et envoûtant.</p>
+        <p><em><span class="mot-laeria">Laëria</span>, Le Nouveau Monde</em> est un récit initiatique, mystique et envoûtant.</p>
       </div>
       <dl class="specs">
         <div><dt>Auteur</dt><dd>Charles Vanni</dd></div>
@@ -1386,7 +1386,7 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
 <div class="cv-back" id="cv-back" role="dialog" aria-modal="true" aria-label="Réserver mon exemplaire"><div class="cv-box"><button class="cv-x" aria-label="Fermer">×</button>
 <img src="img/cover.webp" alt="Pochette de Laëria, Le Nouveau Monde" width="1200" height="1800">
 <div><p class="cv-eb">Réservation gratuite</p><p class="cv-h">Réserver mon exemplaire</p>
-<p class="cv-p"><b>Réservation gratuite.</b> Sans paiement. Je te préviens dès la sortie de <em>Laëria, Le Nouveau Monde</em>, avec le lien pour le commander.</p>
+<p class="cv-p"><b>Réservation gratuite.</b> Sans paiement. Je te préviens dès la sortie de <em><span class="mot-laeria">Laëria</span>, Le Nouveau Monde</em>, avec le lien pour le commander.</p>
 <div class="cv-embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="65da639e-579d-4ff7-8069-fe66a7358c4b"></script></div><p class="cv-ok">Déjà réservé, ou une autre adresse ? Tu peux la saisir de nouveau ici, à tout moment.</p></div></div></div>
 <script>
 /* Pop-up « Réserver mon exemplaire » : s'ouvre une fois par visite (après 15 s ou à mi-page),
@@ -1740,6 +1740,21 @@ main{overflow-x:clip}
 .brand .l{-webkit-text-stroke:.012em #dfa63c;paint-order:stroke fill}
 /* le fond d'ouverture garde l'aspect d'un dessin : léger grain de papier */
 .igrain{opacity:.27}
+/* ===== Laëria : passage de lumière continu + léger métal doré, contour doré, halo resserré (net, lisible) ===== */
+.sweep{--sx:-300px;--ox:0px;filter:drop-shadow(0 0 3px rgba(255,214,130,.75)) drop-shadow(0 0 12px rgba(240,170,70,.38))}
+.sweep>.l,.sweep .l{display:inline-block;opacity:1!important;animation:none!important;text-shadow:none!important;
+  color:transparent!important;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-stroke:.04em #d9962c;paint-order:stroke fill;
+  background-image:
+    linear-gradient(100deg,rgba(255,253,238,0) 0,rgba(255,250,225,.55) 28%,rgba(255,255,244,1) 50%,rgba(255,250,225,.55) 72%,rgba(255,253,238,0) 100%),
+    linear-gradient(180deg,#fff2c6 0%,#f6d98a 30%,#dcae55 50%,#f4d78c 68%,#d4a04a 100%);
+  background-size:var(--bw,200px) 100%,100% 100%;background-repeat:no-repeat,no-repeat;
+  background-position:calc(var(--sx) - var(--ox)) 0,0 0}
+.brand.sweep>.l,.brand .sweep>.l,.brand .l{-webkit-text-stroke:.02em #d9962c}
+@media(prefers-reduced-motion:reduce){.sweep{--sx:50px}}
+
+/* le mot Laëria dans les textes : toujours en police titre Laëria */
+.mot-laeria{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-style:normal;font-size:1.14em;letter-spacing:.05em;color:#f6d98a!important;-webkit-text-stroke:.012em rgba(217,150,44,.7);text-shadow:0 0 8px rgba(255,214,130,.35),0 1px 2px rgba(16,7,30,.85)!important}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1788,5 +1803,28 @@ main{overflow-x:clip}
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
 })();
 </script>
+<script>
+/* Passage du voile : la présentation du site s'arrête un instant, l'élan du défilement ne l'emporte plus */
+(function(){
+  var intro=document.getElementById('haut');if(!intro)return;
+  var lock=false,last=0,armed=0,prevY=scrollY;
+  function stopY(){var r=intro.offsetHeight-innerHeight;return r>innerHeight*.5?intro.getBoundingClientRect().top+scrollY+r*.9:-1}
+  function block(e){if(lock){e.preventDefault();return false}}
+  ['wheel','touchmove'].forEach(function(t){addEventListener(t,block,{passive:false})});
+  addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
+  addEventListener('scroll',function(){
+    var y=scrollY,sy=stopY(),now=Date.now();
+    if(sy>0&&!lock&&prevY<sy&&y>sy+2&&now-last>4000){
+      last=now;lock=true;
+      document.documentElement.style.scrollBehavior='auto';
+      scrollTo(0,sy);
+      document.documentElement.style.overflow='hidden';
+      setTimeout(function(){lock=false;document.documentElement.style.overflow='';document.documentElement.style.scrollBehavior='';},1100);
+    }
+    prevY=scrollY;
+  },{passive:true});
+})();
+</script>
+<script src="/js/laeria-sweep.js" defer></script>
 </body>
 </html>
