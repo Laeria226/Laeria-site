@@ -1791,6 +1791,12 @@ h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16
 @media(max-width:700px){.vault{padding-top:300px!important}}
 .book-body::before{inset:-8% -26% 0 -26%!important}
 .order .btn.lock-off{color:#f6d98f!important;border-color:rgba(246,217,143,.95)!important;background:rgba(40,18,40,.58)!important}
+.istars{position:absolute;inset:0;pointer-events:none;z-index:1}
+.istars i{position:absolute;display:block;transform:translate(-50%,-50%);opacity:0;mix-blend-mode:screen;
+background:radial-gradient(circle,rgba(255,255,255,.9) 0,rgba(255,240,215,.35) 14%,transparent 38%),linear-gradient(90deg,transparent 8%,rgba(255,248,230,.85) 50%,transparent 92%) center/100% 7% no-repeat,linear-gradient(0deg,transparent 8%,rgba(255,248,230,.85) 50%,transparent 92%) center/7% 100% no-repeat;
+animation:istw 4.6s ease-in-out infinite}
+@keyframes istw{0%,100%{opacity:0;transform:translate(-50%,-50%) scale(.85)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1.12)}}
+@media(prefers-reduced-motion:reduce){.istars i{animation:none;opacity:.2}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1863,5 +1869,6 @@ h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16
 })();
 </script>
 <script src="/js/laeria-sweep.js" defer></script>
+<script src="/js/intro-stars.js" defer></script>
 </body>
 </html>
