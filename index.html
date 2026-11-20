@@ -1800,13 +1800,13 @@ animation:istw 4.6s ease-in-out infinite}
 .book .order .btn.lock-off{color:#fff1c9!important}
 .offre .of-c:not(.out){color:#fff1c9}
 .laeria h2.laeria-mot .l,.laeria h2.laeria-mot.sweep .l,.laeria-mot.sweep .l{-webkit-text-stroke:.012em #d9962c!important}
-/* début de page : l'image d'ouverture en transparence, comme les racines en bas */
-main{position:relative}
-main>.ciel::before{content:"";position:absolute;left:0;right:0;top:0;height:clamp(780px,112vh,1200px);pointer-events:none;
-background:linear-gradient(180deg,rgba(14,8,32,.3),rgba(14,8,32,.5)),url(img/ouverture-paysage.webp?v=3) center 30%/cover no-repeat;
--webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 140px,rgba(0,0,0,.8) 38%,rgba(0,0,0,.45) 72%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 140px,rgba(0,0,0,.8) 38%,rgba(0,0,0,.45) 72%,transparent 100%)}
-@media(max-width:700px) and (orientation:portrait){main>.ciel::before{height:clamp(640px,92vh,900px);background-image:linear-gradient(180deg,rgba(14,8,32,.3),rgba(14,8,32,.5)),url(img/ouverture-m.webp?v=3);background-position:center 20%}}
-main>.alert,main>section,main>.ornament{position:relative;z-index:1}
+/* écran du titre (après le voile) : l'image d'ouverture en transparence */
+.ihero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.6s ease;
+background:linear-gradient(180deg,rgba(14,8,32,.25),rgba(14,8,32,.5)),url(img/ouverture-paysage.webp?v=3) 51.6% 45%/cover no-repeat;
+-webkit-mask-image:radial-gradient(120% 95% at 50% 42%,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 70%,transparent 100%);-webkit-mask-composite:source-in;
+mask-image:radial-gradient(120% 95% at 50% 42%,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 70%,transparent 100%);mask-composite:intersect}
+.ihero.show::before{opacity:.55}
+@media(max-width:700px) and (orientation:portrait){.ihero::before{background-image:linear-gradient(180deg,rgba(14,8,32,.25),rgba(14,8,32,.5)),url(img/ouverture-m.webp?v=3)}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
