@@ -10,7 +10,7 @@
     var W=cam.clientWidth,H=cam.clientHeight,sc=Math.max(W/nw,H/nh),rw=nw*sc,rh=nh*sc;
     var op=(getComputedStyle(img).objectPosition||'50% 50%').split(' ').map(function(v){return parseFloat(v)/100});
     var ox=(W-rw)*op[0],oy=(H-rh)*(isNaN(op[1])?.5:op[1]);
-    var P=matchMedia('(max-width:700px)').matches?M:D,sz=Math.max(22,rw*.017);
+    var P=matchMedia('(max-width:700px) and (orientation:portrait)').matches?M:D,sz=Math.max(22,rw*.017);
     els.forEach(function(e,k){var p=P[k];
       e.style.left=(ox+p[0]*rw)+'px';e.style.top=(oy+p[1]*rh)+'px';
       e.style.width=e.style.height=sz+'px';e.style.animationDelay=(-p[2])+'s';
