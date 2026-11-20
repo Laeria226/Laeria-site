@@ -1829,6 +1829,10 @@ footer .t .lt-mot .l,.lt-mot .l,.titre-livre .lt-mot .l{-webkit-text-stroke:.02e
 /* titre après le voile : lettres moins espacées */
 .hero-in h1.htit{letter-spacing:.06em!important}
 @media(max-width:680px){.hero-in h1.htit{letter-spacing:.08em!important}}
+/* fondu doux entre l'écran du titre et la suite (plus de démarcation nette) */
+.istage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34vh;z-index:6;pointer-events:none;opacity:0;transition:opacity .9s ease;
+background:linear-gradient(180deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11,8,21,.5) 55%,rgba(11,8,21,.82) 80%,#0b0815 100%)}
+.istage:has(.ihero.show)::after{opacity:1}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
