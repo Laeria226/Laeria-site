@@ -16,5 +16,14 @@
       e.style.width=e.style.height=sz+'px';e.style.animationDelay=(-p[2])+'s';
       e.style.opacity=(ox+p[0]*rw<0||ox+p[0]*rw>W||oy+p[1]*rh<0||oy+p[1]*rh>H)?0:''});
   }
+  var hero=document.querySelector('.ihero');
+  function glow(){ /* place la lumière de la serrure sur l'image de fond de l'écran du titre */
+    var nw=img.naturalWidth,nh=img.naturalHeight;if(!nw||!hero)return;
+    var port=matchMedia('(max-width:700px) and (orientation:portrait)').matches,W=hero.clientWidth,H=hero.clientHeight;
+    var iw=port?1568:2576,ih=port?2100:1923,sc=Math.max(W/iw,H/ih),rw=iw*sc,rh=ih*sc;
+    var kx=port?.53:.505,ky=port?.45:.43,ox=(W-rw)*.516,oy=(H-rh)*.45;
+    hero.style.setProperty('--gx',(ox+kx*rw)+'px');hero.style.setProperty('--gy',(oy+ky*rh)+'px');hero.style.setProperty('--gr',(rw*.24)+'px');
+  }
+  glow();addEventListener('resize',glow);addEventListener('load',glow);
   if(img.complete)place();img.addEventListener('load',place);addEventListener('resize',place);addEventListener('load',place);
 })();

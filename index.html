@@ -1806,6 +1806,11 @@ background:linear-gradient(180deg,rgba(255,206,130,.34),rgba(244,178,96,.26) 55%
 -webkit-mask-image:radial-gradient(120% 95% at 50% 42%,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 70%,transparent 100%);-webkit-mask-composite:source-in;
 mask-image:radial-gradient(120% 95% at 50% 42%,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 70%,transparent 100%);mask-composite:intersect}
 .ihero.show::before{opacity:.3}
+.ihero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 2s ease .3s;mix-blend-mode:screen;
+background:radial-gradient(circle at var(--gx,50%) var(--gy,43%),rgba(255,232,160,1) 0,rgba(255,206,110,.85) calc(var(--gr,160px)*.4),rgba(255,176,80,.4) calc(var(--gr,160px)*.95),transparent calc(var(--gr,160px)*2.1));filter:blur(6px)}
+.ihero.show::after{opacity:.9;animation:ihglow 6s ease-in-out 2.4s infinite}
+@keyframes ihglow{0%,100%{opacity:.85}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.ihero.show::after{animation:none}}
 @media(max-width:700px) and (orientation:portrait){.ihero::before{background-image:linear-gradient(180deg,rgba(255,206,130,.34),rgba(244,178,96,.26) 55%,rgba(120,60,50,.3)),url(img/ouverture-m.webp?v=3)}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
