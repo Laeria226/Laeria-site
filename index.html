@@ -189,7 +189,7 @@ footer{padding-bottom:110px}
 /* ---------- Planches ---------- */
 .plate{margin:0;position:relative;isolation:isolate;width:100%;max-width:460px;justify-self:center}
 .plate::before{content:"";position:absolute;inset:-8%;z-index:-1;background:radial-gradient(closest-side,var(--tint,rgba(179,154,230,.5)),transparent);opacity:.7}
-.plate img{display:block;width:100%;height:auto;cursor:zoom-in;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.plate img{display:block;width:100%;height:auto;cursor:default;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .plate:hover img{transform:translateY(-6px) scale(1.012)}
 .plate figcaption{font-style:italic;font-size:1rem;color:var(--parch-dim);margin-top:1rem;text-align:center}
 
@@ -201,7 +201,7 @@ footer{padding-bottom:110px}
 .medal{justify-self:center;width:100%;max-width:260px;position:relative}
 .medal::before{content:"";position:absolute;inset:-12%;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(212,174,98,.35),transparent 30%,rgba(179,154,230,.35),transparent 60%,rgba(212,174,98,.35),transparent);filter:blur(22px);animation:spin 40s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.medal img{display:block;width:100%;height:auto;border-radius:50%;position:relative;box-shadow:0 26px 60px rgba(0,0,0,.6);cursor:zoom-in}
+.medal img{display:block;width:100%;height:auto;border-radius:50%;position:relative;box-shadow:0 26px 60px rgba(0,0,0,.6);cursor:default}
 .syl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,40px);margin-top:2.6rem}
 .syl div{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:1.3rem;border-top:1px solid var(--line)}
 .syl b{font-family:var(--f-title);font-weight:700;font-size:clamp(2.4rem,4vw,3.2rem);color:var(--gold);line-height:1.1}
@@ -229,7 +229,7 @@ footer{padding-bottom:110px}
 .sealed img{filter:blur(22px) brightness(.86) saturate(.62);transform:scale(1.06);cursor:default;transition:none}
 .sealed:hover img{transform:scale(1.06)}
 
-.sealed.open img{filter:blur(0) brightness(1) saturate(1);transform:none;cursor:zoom-in;animation:sealReveal 1.9s cubic-bezier(.25,.6,.2,1)}
+.sealed.open img{filter:blur(0) brightness(1) saturate(1);transform:none;cursor:default;animation:sealReveal 1.9s cubic-bezier(.25,.6,.2,1)}
 @keyframes sealReveal{0%{filter:blur(12px) brightness(2.6) saturate(.25);transform:scale(1.035)}45%{filter:blur(3px) brightness(1.5) saturate(.7)}100%{filter:blur(0) brightness(1) saturate(1);transform:none}}
 .sealed.open{}
 .seal-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px;text-align:center;background:radial-gradient(closest-side,rgba(17,13,27,.62),rgba(17,13,27,.1));box-shadow:inset 0 0 0 2px rgba(196,156,86,.8),inset 0 0 0 5px rgba(28,20,14,.55);cursor:pointer}
@@ -319,7 +319,7 @@ footer{padding-bottom:110px}
 .place[data-noimg]{grid-template-columns:minmax(0,1fr)}
 @keyframes pop{from{opacity:0;filter:blur(6px);margin-top:8px}}
 .place-img{width:84px}
-.place-img img{display:block;width:100%;height:auto;box-shadow:0 8px 20px rgba(0,0,0,.55);cursor:zoom-in}
+.place-img img{display:block;width:100%;height:auto;box-shadow:0 8px 20px rgba(0,0,0,.55);cursor:default}
 .place-body{display:grid;gap:.35rem;min-width:0;padding-right:14px}
 .place-body .eyebrow{font-size:.62rem;letter-spacing:.26em}
 .place-body h3{font-size:1.14rem;color:var(--gold);letter-spacing:.06em}
@@ -1082,7 +1082,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     lb.hidden=false;document.body.style.overflow='hidden';sc.scrollTop=0;lbx.focus();
   }
   function closeLb(){lb.hidden=true;document.body.style.overflow='';lbimg.removeAttribute('src');if(lastFocus&&lastFocus.focus)lastFocus.focus();}
-  document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'&&!t.closest('.mapframe')&&(t.hasAttribute('data-zoom')||t.closest('.plate')))openLb(t);});
+  /* agrandissement des images au clic : désactivé */
   lbx.addEventListener('click',closeLb);
   sc.addEventListener('click',function(e){if(e.target===sc)closeLb();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)closeLb();});
@@ -1295,7 +1295,7 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
 </style>
 <style>
 .offre{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;align-items:start;max-width:540px;margin:0 0 22px;padding:18px;border:1px solid var(--line,rgba(212,174,98,.28));background:rgba(236,226,201,.04)}
-.offre .of-mp{width:112px;height:auto;display:block;cursor:zoom-in;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.offre .of-mp{width:112px;height:auto;display:block;cursor:default;border:1px solid rgba(212,174,98,.55);box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .offre .of-t{margin:0 0 10px;font-family:var(--f-label,"Cinzel",serif);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold,#d4ae62)}
 .offre .of-l{margin:0 0 10px;font-size:1.02rem;line-height:1.45;color:var(--parch,#ece2c9)}
 .offre .of-c{font-family:var(--f-body,"EB Garamond",serif);font-style:italic;font-size:1.02rem;color:var(--gold,#d4ae62)}
@@ -1344,7 +1344,7 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
   var im=document.getElementById('of-mp-img'); if(!im) return;
   var z=document.createElement('div'); z.className='mp-zoom'; z.innerHTML='<img alt="Marque-page Laëria">';
   z.querySelector('img').src='img/marque-page-v3.jpg'; document.body.appendChild(z);
-  im.addEventListener('click',function(){ z.classList.add('on'); });
+  
   z.addEventListener('click',function(){ z.classList.remove('on'); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') z.classList.remove('on'); });
 })();
