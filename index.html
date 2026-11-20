@@ -1914,13 +1914,14 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 /* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
 (function(){
   var intro=document.querySelector('.intro'),meta=document.querySelector('meta[name=theme-color]'),de=document.documentElement,cur='';
+  var tint=document.createElement('div');tint.setAttribute('aria-hidden','true');tint.style.cssText='position:fixed;top:0;left:0;right:0;height:6px;z-index:2147483000;pointer-events:none;background:#0b0815';document.body.appendChild(tint);
   function upd(){
     var edge=intro?intro.offsetTop+intro.offsetHeight-window.innerHeight+280:0;
     var dark=(window.scrollY||0)<edge;
     var c=dark?'#0b0815':'#3a2b66';
     if(c===cur)return;cur=c;
     de.style.setProperty('background',c,'important');document.body.style.setProperty('background',c,'important');
-    if(meta)meta.setAttribute('content',c);
+    if(meta)meta.setAttribute('content',c);if(tint)tint.style.background=c;
   }
   upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);addEventListener('load',upd);
 })();
