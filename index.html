@@ -1755,6 +1755,13 @@ main{overflow-x:clip}
 
 /* le mot Laëria dans les textes : toujours en police titre Laëria */
 .mot-laeria{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-style:normal;font-size:1.14em;letter-spacing:.05em;color:#f6d98a!important;-webkit-text-stroke:.012em rgba(217,150,44,.7);text-shadow:0 0 8px rgba(255,214,130,.35),0 1px 2px rgba(16,7,30,.85)!important}
+
+/* lisibilité : halos resserrés (plus de flou autour des textes), titres Laëria à contour fin */
+main p,main li,main .eyebrow,main .place-tag,main .epi,main .role,main figcaption,main .legend button,main .syl span,main dd,main dt,main .lead{text-shadow:0 1px 2px rgba(16,7,30,.9),0 0 6px rgba(16,7,30,.55)}
+main .back-hook,.flipbtn,.hero-in .sub,.hero-in .hook,.hero-in .eyebrow,.hero-in .tag,.hero-in .author,.hero-in .down,.cv-eb,.cv-p{text-shadow:0 1px 2px rgba(20,8,36,.9),0 0 6px rgba(20,8,36,.55)}
+h2,h3{filter:drop-shadow(0 1px 2px rgba(16,7,30,.9)) drop-shadow(0 0 6px rgba(16,7,30,.5)) drop-shadow(0 0 5px rgba(255,214,130,.22))}
+.sweep{filter:drop-shadow(0 0 2px rgba(255,214,130,.7)) drop-shadow(0 0 8px rgba(240,170,70,.3))}
+.itit.sweep .l,.hl.sweep .l,.hero-in h1.htit .sweep .l,.hero-in h1.htit.sweep .l{-webkit-text-stroke:.016em #d9962c}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1814,8 +1821,8 @@ main{overflow-x:clip}
   addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
   addEventListener('scroll',function(){
     var y=scrollY,sy=stopY(),now=Date.now();
-    if(lock&&sy>0&&y>sy+2){scrollTo(0,sy);prevY=sy;return}
-    if(sy>0&&!lock&&prevY<sy&&y>sy+2&&now-last>4000){
+    if(lock&&sy>0&&Math.abs(y-sy)>2){scrollTo(0,sy);prevY=sy;return}
+    if(sy>0&&!lock&&((prevY<sy&&y>sy+2)||(prevY>sy&&y<sy-2&&prevY>sy+40))&&now-last>4000){
       last=now;lock=true;
       document.documentElement.style.scrollBehavior='auto';
       scrollTo(0,sy);
