@@ -6,7 +6,7 @@
   function scan(){
     words=[];
     document.querySelectorAll(sel).forEach(function(w){
-      var ls=[].slice.call(w.children).filter(function(c){return c.classList&&c.classList.contains('l')});
+      var ls=[].slice.call(w.querySelectorAll('.l'));
       if(!ls.length)return;
       if(getComputedStyle(w).position==='static')w.style.position='relative';
       var ww=w.offsetWidth||1;
