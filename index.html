@@ -8,7 +8,7 @@
 <meta name="author" content="Charles Vanni">
 <link rel="alternate" hreflang="fr" href="https://laeria.com/">
 <link rel="alternate" hreflang="x-default" href="https://laeria.com/">
-<meta name="theme-color" content="#110d1b">
+<meta name="theme-color" content="#0b0815">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta property="og:type" content="book">
@@ -1910,5 +1910,20 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 </script>
 <script src="/js/laeria-sweep.js" defer></script>
 <script src="/js/intro-stars.js" defer></script>
+<script>
+/* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
+(function(){
+  var intro=document.querySelector('.intro'),meta=document.querySelector('meta[name=theme-color]'),de=document.documentElement,cur='';
+  function upd(){
+    var edge=intro?intro.offsetTop+intro.offsetHeight-window.innerHeight+280:0;
+    var dark=(window.scrollY||0)<edge;
+    var c=dark?'#0b0815':'#3a2b66';
+    if(c===cur)return;cur=c;
+    de.style.setProperty('background',c,'important');document.body.style.setProperty('background',c,'important');
+    if(meta)meta.setAttribute('content',c);
+  }
+  upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);addEventListener('load',upd);
+})();
+</script>
 </body>
 </html>
