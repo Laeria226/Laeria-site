@@ -142,7 +142,7 @@ footer{padding-bottom:110px}
 .ilight{position:absolute;left:var(--cx,52%);top:var(--cy,45%);width:70vmin;height:70vmin;margin:-35vmin 0 0 -35vmin;border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(circle,#fff7d6 0,#fde9a3 15%,rgba(253,226,140,.72) 34%,rgba(202,150,83,.22) 54%,rgba(202,150,83,0) 72%)}
 .iflood{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--cx,52%) var(--cy,45%),#fff7d6 0,#fde9a3 38%,#f0c27a 100%)}
 .iworld{position:absolute;inset:0;opacity:0;pointer-events:none}
-.iworld::before{content:"";position:absolute;inset:-12%;background:url(img/ouverture-paysage.webp) 51.6% 45%/cover no-repeat;filter:blur(34px) saturate(1.45) brightness(.74)}
+.iworld::before{content:"";position:absolute;inset:-12%;background:url(img/ouverture-paysage.webp?v=2) 51.6% 45%/cover no-repeat;filter:blur(34px) saturate(1.45) brightness(.74)}
 .iworld::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 55% at 51% 40%,rgba(255,226,150,.42),rgba(255,226,150,0) 70%),radial-gradient(90% 70% at 50% 100%,rgba(240,140,90,.38),rgba(240,140,90,0) 70%),linear-gradient(180deg,rgba(74,44,104,.62) 0%,rgba(150,80,130,.38) 34%,rgba(12,9,20,.12) 62%,rgba(12,9,20,.45) 100%)}
 #motes{position:absolute;inset:0;z-index:4;width:100%;height:100%;pointer-events:none}
 .icue{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:6;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font-family:var(--f-label);font-weight:600;font-size:clamp(.86rem,2vw,1.4rem);letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:18px 26px;width:max-content;max-width:94vw;transition:opacity .5s,transform .5s}
@@ -496,7 +496,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   .ihero{position:relative;min-height:100vh}.ihero .nav,.ihero .hero-in>*{opacity:1;transform:none}
 }
 </style>
-<link rel="preload" as="image" href="img/ouverture-paysage.webp" media="(min-width:701px)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/ouverture-paysage.webp?v=2" media="(min-width:701px)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=2" media="(max-width:700px)" fetchpriority="high">
 </head>
 <body>
 
@@ -510,7 +510,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   <div class="istage">
     <div class="iworld" aria-hidden="true"></div>
     <div class="igrain" aria-hidden="true"></div>
-    <div class="icam"><picture><source media="(max-width:700px)" srcset="img/ouverture-m.webp"><img class="ipic" src="img/ouverture-paysage.webp" width="2576" height="1923" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
+    <div class="icam"><picture><source media="(max-width:700px)" srcset="img/ouverture-m.webp?v=2"><img class="ipic" src="img/ouverture-paysage.webp?v=2" width="2576" height="1923" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
     <div class="iglow" aria-hidden="true"><picture><source media="(max-width:700px)" srcset="img/ouverture-lueur.webp"><img src="img/ouverture-lueur-paysage.webp" alt="" width="784" height="585" draggable="false"></picture></div>
     <div class="ivig" aria-hidden="true"></div>
     <div class="irays" aria-hidden="true"></div>
