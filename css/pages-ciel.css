@@ -30,12 +30,12 @@ body>*:not(.ciel):not(#etoiles){position:relative;z-index:1}
 .nav li a{color:var(--parch)!important;text-shadow:0 1px 6px rgba(16,7,30,.9)}
 .nav li a:hover,.nav li a[aria-current]{color:var(--gold)!important}
 .brand{font-family:"Laeria Titre Fin","Cinzel Decorative",Georgia,serif!important;font-weight:400!important;font-size:1.5rem!important;letter-spacing:.08em!important;color:var(--gold)!important;filter:drop-shadow(0 0 6px rgba(241,213,138,.45))}
-.brand .l{display:inline-block;color:#fff3c4;animation:itt 7s ease-in-out infinite;animation-delay:calc(var(--d)*.6 - 1.4s);will-change:opacity,text-shadow}
+.brand .l,.lt-mot .l{display:inline-block;color:#fff3c4;animation:itt 7s ease-in-out infinite;animation-delay:calc(var(--d)*.6 - 1.4s);will-change:opacity,text-shadow}
 @keyframes itt{
  0%,46%,100%{opacity:.82;color:#f3d890;text-shadow:0 0 4px rgba(253,226,140,.55),0 0 12px rgba(240,180,80,.4),0 0 26px rgba(240,170,70,.2)}
  13%,33%{opacity:.92;color:#fbebb6;text-shadow:0 0 5px rgba(255,240,190,.75),0 0 16px rgba(255,205,105,.6),0 0 34px rgba(240,170,70,.45)}
  23%{opacity:1;color:#fffbe6;text-shadow:0 0 7px rgba(255,247,214,.95),0 0 20px rgba(255,217,120,.8),0 0 42px rgba(240,170,70,.7)}}
-@media(prefers-reduced-motion:reduce){.brand .l{animation:none}}
+@media(prefers-reduced-motion:reduce){.brand .l,.lt-mot .l{animation:none}}
 
 /* textes lisibles sur le ciel */
 p,li,.eyebrow,.role,.epi,.tag,dd,dt,.lead,figcaption,summary,footer p{color:var(--parch)!important;text-shadow:0 1px 2px rgba(16,7,30,.85),0 0 14px rgba(16,7,30,.85),0 0 30px rgba(16,7,30,.55)}
@@ -65,3 +65,16 @@ footer,footer *{color:var(--parch)!important}
 .cta .grid::before{display:none}
 footer::before{background:radial-gradient(closest-side at 50% 60%,rgba(var(--vc),.82),rgba(var(--vc),.5) 60%,transparent 100%)!important}
 @media(max-width:700px){.hero .wrap::before,.prose::before,.cta::before{inset:-8% -4%}.page::before{inset:-4% -2%}.ciel,.ciel .orn{max-width:100vw}}
+
+/* « Laëria, Le Nouveau Monde » : mot Laëria en police Laëria (contour doré + lueur), sous-titre en Cinzel espacé, comme sur l'accueil */
+.lt-mot{display:block;font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif!important;font-weight:400!important;letter-spacing:.12em;line-height:1;text-transform:none;font-size:clamp(2.6rem,7vw,3.8rem)}
+.lt-mot .l,.brand .l{-webkit-text-stroke:.04em #d9962c;paint-order:stroke fill}
+.brand .l{-webkit-text-stroke:.02em #d9962c}
+.lt-sub{display:block;font-family:"Cinzel",Georgia,serif!important;font-weight:500;font-size:clamp(.82rem,2.4vw,1.05rem);letter-spacing:.32em;text-transform:uppercase;font-style:normal!important}
+h1.titre-livre{background:none!important;animation:none;filter:none;display:grid;justify-items:center;gap:.9rem;letter-spacing:0;text-transform:none;-webkit-text-fill-color:initial}
+h1.titre-livre .lt-mot{font-size:clamp(3.6rem,11vw,7rem)}
+h1.titre-livre .lt-sub{font-size:clamp(.95rem,2.8vw,1.35rem);color:var(--parch)!important;text-shadow:0 1px 2px rgba(16,7,30,.85),0 0 14px rgba(16,7,30,.85)}
+footer .t{display:grid;justify-items:center;gap:.7rem;margin-bottom:.4rem}
+footer .t .lt-mot{font-size:clamp(2.6rem,7vw,3.8rem)}
+footer .t .lt-sub{margin-top:.5rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

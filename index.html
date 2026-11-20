@@ -1735,6 +1735,11 @@ main{overflow-x:clip}
 .carnet{overflow:visible!important}
 .cn-glow{opacity:.5!important;background:radial-gradient(closest-side,rgba(255,222,140,.55),rgba(255,196,110,.22) 40%,rgba(255,196,110,.06) 68%,transparent 100%)!important}
 .cn-in::before{inset:-40% -34%!important;background:radial-gradient(closest-side,rgba(var(--vc),.5),rgba(var(--vc),.28) 45%,rgba(var(--vc),.1) 75%,transparent 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
+/* contour doré sur toutes les lettres lumineuses de « Laëria » */
+.itit .l,.hero-in h1.htit .l,.laeria-mot .l,.syl b .l,footer .t .lt-mot .l{-webkit-text-stroke:.04em #d9962c;paint-order:stroke fill}
+.brand .l{-webkit-text-stroke:.012em #dfa63c;paint-order:stroke fill}
+/* le fond d'ouverture garde l'aspect d'un dessin : léger grain de papier */
+.igrain{opacity:.27}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){

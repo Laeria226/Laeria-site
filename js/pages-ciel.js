@@ -5,9 +5,11 @@
   c.innerHTML='<img class="orn g" src="/img/fleurs-g.webp" alt="" style="top:1%"><img class="orn d" src="/img/fleurs-d.webp" alt="" style="top:34%"><img class="orn g" src="/img/fleurs-g.webp" alt="" style="top:68%">';
   b.insertBefore(c,b.firstChild);
   var cv=document.createElement('canvas');cv.id='etoiles';cv.setAttribute('aria-hidden','true');b.insertBefore(cv,c.nextSibling);
-  document.querySelectorAll('.brand').forEach(function(el){
+  document.querySelectorAll('footer .wrap').forEach(function(w){var p=w.querySelector('p');if(!p||w.querySelector('.t'))return;
+    if(!/Laëria/i.test(p.textContent))return;var t=document.createElement('div');t.className='t';t.innerHTML='<span class="lt-mot">Laëria</span><span class="lt-sub">Le Nouveau Monde</span>';w.replaceChild(t,p)});
+  document.querySelectorAll('.brand,.lt-mot').forEach(function(el){
     var tn=[].slice.call(el.childNodes).filter(function(n){return n.nodeType==3&&n.textContent.trim()})[0];if(!tn)return;
-    var t=tn.textContent.trim(),f=document.createDocumentFragment(),a=document.createElement('span');a.setAttribute('aria-label',t);
+    var t=tn.textContent.trim(),f=document.createDocumentFragment(),a=document.createElement('span');a.setAttribute('aria-label',t);a.style.display='inline-block';
     t.split('').forEach(function(ch,i){var s=document.createElement('span');s.className='l';s.setAttribute('aria-hidden','true');s.style.setProperty('--d',(i*.42).toFixed(2)+'s');s.textContent=ch;a.appendChild(s)});
     tn.parentNode.replaceChild(a,tn);
   });
