@@ -1862,6 +1862,9 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 /* le carnet : source et héritage mystérieux */
 .cn-in .cn-note{max-width:34em;margin:.4rem 0 0;font-size:clamp(.98rem,1.3vw,1.08rem);line-height:1.7;color:#fbeed0;text-shadow:0 1px 14px rgba(20,8,36,.85),0 0 22px rgba(20,8,36,.7)}
 .cn-in .cn-note b{display:block;margin-bottom:.35rem;font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#f3d890}
+
+/* mobile : les branches fleuries s'installent dans les respirations entre les chapitres, bien visibles et à demi glissées derrière les planches */
+@media(max-width:700px){.ciel .orn.fl{width:62vw;opacity:.92}.ciel .orn.flip{width:62vw;opacity:.85}.ciel .orn.g{left:-6vw}.ciel .orn.d{right:-6vw}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1949,6 +1952,31 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
     if(meta)meta.setAttribute('content',c);if(tint)tint.style.background=c;
   }
   upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);addEventListener('load',upd);
+})();
+</script>
+<script>
+/* Mobile : branches fleuries ancrées aux respirations entre les chapitres (sur grand écran, positions d'origine) */
+(function(){
+  var c=document.querySelector('.ciel'),mq=matchMedia('(max-width:700px)'),P=[].slice.call(document.querySelectorAll('section.panel'));
+  var O=[].slice.call(c?c.querySelectorAll('.orn'):[]);
+  if(!c||O.length<5||P.length<7)return;
+  var orig=O.map(function(o){return o.style.top}),ratio=function(o){return o.classList.contains('flip')?1.253:1.04};
+  var clone=O[4].cloneNode();clone.setAttribute('loading','eager');clone.style.display='none';c.appendChild(clone);
+  var order=[O[2],O[4],O[3],O[0],O[1],clone];
+  function place(){
+    if(!mq.matches){O.forEach(function(o,i){o.style.top=orig[i]});clone.style.display='none';return}
+    var cr=c.getBoundingClientRect();clone.style.display='';
+    order.forEach(function(o,i){
+      var a=P[i].querySelector('.body'),b=P[i+1].querySelector('.plate');if(!a||!b)return;
+      var top=a.getBoundingClientRect().bottom,bot=b.getBoundingClientRect().top,w=o.getBoundingClientRect().width;
+      if(!w)return;var h=w*ratio(o),cy=top+(bot-top)*.55;
+      o.style.top=Math.round(cy-h/2-cr.top)+'px';
+    });
+  }
+  place();
+  addEventListener('load',place);addEventListener('resize',place);
+  if(mq.addEventListener)mq.addEventListener('change',place);
+  if(window.ResizeObserver){new ResizeObserver(place).observe(document.body)}
 })();
 </script>
 </body>
