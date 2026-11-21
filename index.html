@@ -1926,5 +1926,22 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
   upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);addEventListener('load',upd);
 })();
 </script>
+<script>
+/* Chapitre II : la fumée de basalte reste accrochée au chapitre de la Plaine de Basalte, quelle que soit la taille de l'écran */
+(function(){
+  var f=document.querySelector('.ciel .fum'),c=document.querySelector('.ciel'),sec=document.querySelector('section.panel[data-scene="basalte"]'),p=sec&&sec.querySelector('.plate');
+  if(!f||!c||!p)return;
+  var mob=matchMedia('(max-width:700px)');
+  function place(){
+    var cr=c.getBoundingClientRect(),pr=p.getBoundingClientRect(),sr=sec.getBoundingClientRect(),w=f.getBoundingClientRect().width||f.offsetWidth;
+    if(!w||!pr.height)return;
+    var h=w*476/644,cy=mob.matches?sr.bottom+10:pr.bottom+60;
+    f.style.top=Math.round(cy-h/2-cr.top)+'px';
+  }
+  place();
+  addEventListener('load',place);addEventListener('resize',place);
+  if(window.ResizeObserver){new ResizeObserver(place).observe(document.body)}
+})();
+</script>
 </body>
 </html>
