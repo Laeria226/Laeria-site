@@ -577,7 +577,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   </div>
 </section>
 
-<div class="ornament sep-carnet" aria-hidden="true"><svg><use href="#star"/></svg></div>
+<div class="seuil" aria-hidden="true"><i class="sl"></i><span class="sc"><svg><use href="#star"/></svg></span><i class="sd"></i></div>
 <section class="carnet" id="carnet-sec" aria-label="Le carnet">
   <div class="cn-art">
     <i class="cn-glow" aria-hidden="true"></i>
@@ -588,9 +588,11 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     <p class="eyebrow">L’objet du récit</p>
     <h2>Le carnet</h2>
     <p class="lead">« Si j’avais su que ce carnet serait tout ce qui me resterait du monde d’avant, j’aurais écrit plus lentement. »</p>
+    <p class="cn-note"><b>Une source et un héritage mystérieux.</b> Ses phrases reviennent tout au long du récit comme venues d’ailleurs, et chaque chapitre s’achève sur une question laissée « pour celui qui me lira ».</p>
   </div>
 </section>
 
+<div class="seuil sept" aria-hidden="true"><i class="sl"></i><span class="sc"><svg><use href="#star"/></svg></span><i class="sd"></i></div>
 <div id="chapitres">
 <section class="chapters-head">
   <div class="wrap">
@@ -1656,7 +1658,7 @@ main{background:#0c0914}
 
 
 /* chapitre II : sol de basalte et fumée */
-.ciel .fum{position:absolute;right:-2vw;width:min(56vw,780px);height:auto;opacity:.62;mix-blend-mode:normal;-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent 100%);mask-image:radial-gradient(closest-side,#000 40%,transparent 100%)}
+.ciel .fum{position:absolute;right:-2vw;width:min(40vw,560px);height:auto;opacity:.62;mix-blend-mode:normal;-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent 100%);mask-image:radial-gradient(closest-side,#000 40%,transparent 100%)}
 @media(max-width:700px){.ciel .fum{width:96vw;opacity:.4;right:-10vw}}
 /* légende de la carte : trois menus dépliants côte à côte */
 .legend{align-items:start}
@@ -1837,6 +1839,32 @@ background:linear-gradient(180deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(
 .ihero::before{content:"";position:absolute;left:0;right:0;top:0;height:30vh;z-index:-1;pointer-events:none;opacity:0;transition:opacity .9s ease;
 background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11,8,21,.5) 55%,rgba(11,8,21,.82) 80%,#0b0815 100%)}
 .ihero.show::before{opacity:1}
+
+/* Seuils : séparations ornementales entre « Laëria », « Le carnet » et « Sept traversées » */
+.seuil{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:clamp(14px,2.6vw,30px);width:min(860px,90%);margin:clamp(40px,5.5vw,80px) auto clamp(6px,1.4vw,18px);color:#f3d890}
+.seuil::before{content:"";position:absolute;left:-14%;right:-14%;top:50%;height:170px;transform:translateY(-50%);background:radial-gradient(closest-side,rgba(255,222,150,.22),rgba(255,222,150,.08) 55%,transparent);pointer-events:none;z-index:-1}
+.seuil .sl,.seuil .sd{position:relative;display:block;height:1px;background:linear-gradient(90deg,transparent,rgba(243,216,144,.92))}
+.seuil .sd{background:linear-gradient(270deg,transparent,rgba(243,216,144,.92))}
+.seuil .sl::before,.seuil .sd::before{content:"";position:absolute;top:7px;height:1px;width:58%;background:linear-gradient(90deg,transparent,rgba(243,216,144,.4))}
+.seuil .sl::before{right:0}
+.seuil .sd::before{left:0;background:linear-gradient(270deg,transparent,rgba(243,216,144,.4))}
+.seuil .sl::after,.seuil .sd::after{content:"";position:absolute;top:-3.5px;width:7px;height:7px;transform:rotate(45deg);border:1px solid rgba(243,216,144,.95);background:rgba(58,36,92,.85);box-shadow:0 0 8px rgba(255,214,130,.55)}
+.seuil .sl::after{right:0}
+.seuil .sd::after{left:0}
+.seuil .sc{position:relative;width:60px;height:60px;display:grid;place-items:center}
+.seuil .sc::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(243,216,144,.6);background:radial-gradient(closest-side,rgba(255,226,160,.18),transparent);box-shadow:0 0 22px rgba(255,214,130,.28),inset 0 0 14px rgba(255,214,130,.2)}
+.seuil .sc::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px dashed rgba(243,216,144,.3)}
+.seuil .sc svg{width:34px;height:34px;color:#f3d890;filter:drop-shadow(0 0 8px rgba(255,214,130,.9));animation:ornstar 3.2s ease-in-out infinite}
+/* « Sept traversées » : sept points de lumière sous l'étoile */
+.seuil.sept{margin-top:clamp(8px,2vw,28px);margin-bottom:clamp(30px,4vw,56px)}
+.seuil.sept .sc::before{box-shadow:0 0 22px rgba(255,214,130,.28),inset 0 0 14px rgba(255,214,130,.2),0 0 0 0 transparent}
+.seuil.sept .sc>svg+*{display:none}
+.seuil.sept .sc{margin-bottom:0}
+.seuil.sept::after{content:"";position:absolute;left:50%;top:calc(50% + 46px);width:98px;height:6px;transform:translateX(-50%);background:radial-gradient(circle,#ffe9b0 0 1.6px,rgba(243,216,144,.5) 2.2px,transparent 3.4px) 0 0/14px 6px repeat-x;filter:drop-shadow(0 0 4px rgba(255,214,130,.8))}
+@media(max-width:700px){.seuil{width:92%}.seuil .sc{width:48px;height:48px}.seuil .sc svg{width:28px;height:28px}.seuil .sl::before,.seuil .sd::before{top:6px}.seuil.sept::after{top:calc(50% + 40px)}}
+/* le carnet : source et héritage mystérieux */
+.cn-in .cn-note{max-width:34em;margin:.4rem 0 0;font-size:clamp(.98rem,1.3vw,1.08rem);line-height:1.7;color:#fbeed0;text-shadow:0 1px 14px rgba(20,8,36,.85),0 0 22px rgba(20,8,36,.7)}
+.cn-in .cn-note b{display:block;margin-bottom:.35rem;font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#f3d890}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1927,16 +1955,30 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 })();
 </script>
 <script>
-/* Chapitre II : la fumée de basalte reste accrochée au chapitre de la Plaine de Basalte, quelle que soit la taille de l'écran */
+/* Chapitre II : la fumée de basalte s'installe dans l'espace libre sous l'image de la Plaine de Basalte (côté gauche), à l'écart des branches fleuries de droite */
 (function(){
-  var f=document.querySelector('.ciel .fum'),c=document.querySelector('.ciel'),sec=document.querySelector('section.panel[data-scene="basalte"]'),p=sec&&sec.querySelector('.plate');
-  if(!f||!c||!p)return;
+  var f=document.querySelector('.ciel .fum'),c=document.querySelector('.ciel'),sec=document.querySelector('section.panel[data-scene="basalte"]'),nx=document.querySelector('section.panel[data-scene="lemura"]'),p=sec&&sec.querySelector('.plate'),np=nx&&nx.querySelector('.plate');
+  if(!f||!c||!p||!np)return;
   var mob=matchMedia('(max-width:700px)');
   function place(){
-    var cr=c.getBoundingClientRect(),pr=p.getBoundingClientRect(),sr=sec.getBoundingClientRect(),w=f.getBoundingClientRect().width||f.offsetWidth;
+    var cr=c.getBoundingClientRect(),pr=p.getBoundingClientRect(),nr=np.getBoundingClientRect(),sr=sec.getBoundingClientRect(),w=f.getBoundingClientRect().width||f.offsetWidth;
     if(!w||!pr.height)return;
-    var h=w*476/644,cy=mob.matches?sr.bottom+10:pr.bottom+60;
+    var h=w*476/644,cx,cy;
+    var stacked=mob.matches||Math.abs((pr.left+pr.width/2)-(nr.left+nr.width/2))<40;
+    if(stacked){cx=pr.left+pr.width/2;cy=sr.bottom+10}
+    else{cx=pr.left+pr.width/2;cy=pr.bottom+(nr.top-pr.bottom)*.5+10}
+    f.style.right='auto';
+    f.style.left=Math.round(cx-w/2-cr.left)+'px';
     f.style.top=Math.round(cy-h/2-cr.top)+'px';
+    /* garde-fou : la fumée s'écarte de toute branche fleurie qu'elle toucherait */
+    var fr=f.getBoundingClientRect();
+    [].forEach.call(c.querySelectorAll('.orn'),function(o){
+      var r=o.getBoundingClientRect();
+      if(r.bottom>fr.top+8&&r.top<fr.bottom-8&&r.right>fr.left&&r.left<fr.right){
+        var dx=r.left>=fr.left+fr.width/2?-(fr.right-r.left+4):(r.right-fr.left+4);
+        f.style.left=Math.round(parseFloat(f.style.left)+dx)+'px';fr=f.getBoundingClientRect();
+      }
+    });
   }
   place();
   addEventListener('load',place);addEventListener('resize',place);
