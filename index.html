@@ -1865,6 +1865,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 
 /* mobile : les branches fleuries s'installent dans les respirations entre les chapitres, bien visibles et à demi glissées derrière les planches */
 @media(max-width:700px){.ciel .orn.fl{width:62vw;opacity:.92}.ciel .orn.flip{width:62vw;opacity:.85}.ciel .orn.g{left:-6vw}.ciel .orn.d{right:-6vw}}
+@media(max-width:700px){.ciel .orn.emb{width:50vw;opacity:.95}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -1961,17 +1962,28 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
   var O=[].slice.call(c?c.querySelectorAll('.orn'):[]);
   if(!c||O.length<5||P.length<7)return;
   var orig=O.map(function(o){return o.style.top}),ratio=function(o){return o.classList.contains('flip')?1.253:1.04};
-  var clone=O[4].cloneNode();clone.setAttribute('loading','eager');clone.style.display='none';c.appendChild(clone);
+  function mk(src,cls){var n=src.cloneNode();n.setAttribute('loading','eager');n.style.display='none';c.appendChild(n);return n}
+  var clone=mk(O[4]),eg=mk(O[4]),ed=mk(O[1]),medal=document.querySelector('.laeria .medal');
+  [eg,ed].forEach(function(n){n.classList.add('emb')});
   var order=[O[2],O[4],O[3],O[0],O[1],clone];
   function place(){
-    if(!mq.matches){O.forEach(function(o,i){o.style.top=orig[i]});clone.style.display='none';return}
-    var cr=c.getBoundingClientRect();clone.style.display='';
+    if(!mq.matches){O.forEach(function(o,i){o.style.top=orig[i]});[clone,eg,ed].forEach(function(n){n.style.display='none'});return}
+    var cr=c.getBoundingClientRect();[clone,eg,ed].forEach(function(n){n.style.display=''});
     order.forEach(function(o,i){
       var a=P[i].querySelector('.body'),b=P[i+1].querySelector('.plate');if(!a||!b)return;
       var top=a.getBoundingClientRect().bottom,bot=b.getBoundingClientRect().top,w=o.getBoundingClientRect().width;
       if(!w)return;var h=w*ratio(o),cy=top+(bot-top)*.55;
       o.style.top=Math.round(cy-h/2-cr.top)+'px';
     });
+    /* autour de l'emblème Laëria : une branche à gauche en haut, une à droite en bas */
+    if(medal){
+      var mr=medal.getBoundingClientRect();
+      if(mr.height){
+        var w=eg.getBoundingClientRect().width,h=w*1.04;
+        eg.style.top=Math.round(mr.top+mr.height*.26-h/2-cr.top)+'px';
+        ed.style.top=Math.round(mr.top+mr.height*.78-h/2-cr.top)+'px';
+      }
+    }
   }
   place();
   addEventListener('load',place);addEventListener('resize',place);
