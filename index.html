@@ -550,7 +550,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 </section>
 
 <main>
-<div class="ciel" aria-hidden="true"><i class="w" style="top:4%;background:radial-gradient(closest-side,rgba(255,170,120,.5),transparent)"></i><i class="w" style="top:11%;background:radial-gradient(closest-side,rgba(150,110,240,.55),transparent)"></i><i class="w" style="top:21%;background:radial-gradient(closest-side,rgba(255,140,170,.45),transparent)"></i><i class="w" style="top:30%;background:radial-gradient(closest-side,rgba(255,190,120,.4),transparent)"></i><i class="w" style="top:40%;background:radial-gradient(closest-side,rgba(170,120,240,.5),transparent)"></i><i class="w" style="top:52%;background:radial-gradient(closest-side,rgba(255,160,130,.45),transparent)"></i><i class="w" style="top:61%;background:radial-gradient(closest-side,rgba(255,200,130,.4),transparent)"></i><i class="w" style="top:70%;background:radial-gradient(closest-side,rgba(255,170,130,.5),transparent)"></i><i class="w" style="top:79%;background:radial-gradient(closest-side,rgba(255,210,140,.55),transparent)"></i><i class="w" style="top:86%;background:radial-gradient(closest-side,rgba(255,220,150,.6),transparent)"></i><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="fum" src="img/fumee-sol.webp" alt="" loading="lazy" decoding="async" style="top:17.8%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:25%"><img class="orn d flip" src="img/arbre-g2.webp" alt="" loading="lazy" decoding="async" style="top:33%"><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:39%"><img class="soleil" src="img/soleil.webp" alt="" loading="lazy" decoding="async" style="top:88%"><img class="vallee" src="img/vallee.webp" alt="" loading="lazy" decoding="async" style="top:83%"></div>
+<div class="ciel" aria-hidden="true"><i class="w" style="top:4%;background:radial-gradient(closest-side,rgba(255,170,120,.5),transparent)"></i><i class="w" style="top:11%;background:radial-gradient(closest-side,rgba(150,110,240,.55),transparent)"></i><i class="w" style="top:21%;background:radial-gradient(closest-side,rgba(255,140,170,.45),transparent)"></i><i class="w" style="top:30%;background:radial-gradient(closest-side,rgba(255,190,120,.4),transparent)"></i><i class="w" style="top:40%;background:radial-gradient(closest-side,rgba(170,120,240,.5),transparent)"></i><i class="w" style="top:52%;background:radial-gradient(closest-side,rgba(255,160,130,.45),transparent)"></i><i class="w" style="top:61%;background:radial-gradient(closest-side,rgba(255,200,130,.4),transparent)"></i><i class="w" style="top:70%;background:radial-gradient(closest-side,rgba(255,170,130,.5),transparent)"></i><i class="w" style="top:79%;background:radial-gradient(closest-side,rgba(255,210,140,.55),transparent)"></i><i class="w" style="top:86%;background:radial-gradient(closest-side,rgba(255,220,150,.6),transparent)"></i><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:25%"><img class="orn d flip" src="img/arbre-g2.webp" alt="" loading="lazy" decoding="async" style="top:33%"><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:39%"><img class="soleil" src="img/soleil.webp" alt="" loading="lazy" decoding="async" style="top:88%"><img class="vallee" src="img/vallee.webp" alt="" loading="lazy" decoding="async" style="top:83%"></div>
 <canvas id="etoiles" aria-hidden="true"></canvas>
 
 
@@ -1657,9 +1657,6 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
 main{background:#0c0914}
 
 
-/* chapitre II : sol de basalte et fumée */
-.ciel .fum{position:absolute;right:-2vw;width:min(40vw,560px);height:auto;opacity:.62;mix-blend-mode:normal;-webkit-mask-image:radial-gradient(closest-side,#000 40%,transparent 100%);mask-image:radial-gradient(closest-side,#000 40%,transparent 100%)}
-@media(max-width:700px){.ciel .fum{width:96vw;opacity:.4;right:-10vw}}
 /* légende de la carte : trois menus dépliants côte à côte */
 .legend{align-items:start}
 .legend .lg{border:1px solid rgba(255,225,170,.28);border-radius:10px;background:rgba(32,16,44,.5);overflow:hidden;transition:background .3s}
@@ -1952,37 +1949,6 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
     if(meta)meta.setAttribute('content',c);if(tint)tint.style.background=c;
   }
   upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);addEventListener('load',upd);
-})();
-</script>
-<script>
-/* Chapitre II : la fumée de basalte s'installe dans l'espace libre sous l'image de la Plaine de Basalte (côté gauche), à l'écart des branches fleuries de droite */
-(function(){
-  var f=document.querySelector('.ciel .fum'),c=document.querySelector('.ciel'),sec=document.querySelector('section.panel[data-scene="basalte"]'),nx=document.querySelector('section.panel[data-scene="lemura"]'),p=sec&&sec.querySelector('.plate'),np=nx&&nx.querySelector('.plate');
-  if(!f||!c||!p||!np)return;
-  var mob=matchMedia('(max-width:700px)');
-  function place(){
-    var cr=c.getBoundingClientRect(),pr=p.getBoundingClientRect(),nr=np.getBoundingClientRect(),sr=sec.getBoundingClientRect(),w=f.getBoundingClientRect().width||f.offsetWidth;
-    if(!w||!pr.height)return;
-    var h=w*476/644,cx,cy;
-    var stacked=mob.matches||Math.abs((pr.left+pr.width/2)-(nr.left+nr.width/2))<40;
-    if(stacked){cx=pr.left+pr.width/2;cy=sr.bottom+10}
-    else{cx=pr.left+pr.width/2;cy=pr.bottom+(nr.top-pr.bottom)*.5+10}
-    f.style.right='auto';
-    f.style.left=Math.round(cx-w/2-cr.left)+'px';
-    f.style.top=Math.round(cy-h/2-cr.top)+'px';
-    /* garde-fou : la fumée s'écarte de toute branche fleurie qu'elle toucherait */
-    var fr=f.getBoundingClientRect();
-    [].forEach.call(c.querySelectorAll('.orn'),function(o){
-      var r=o.getBoundingClientRect();
-      if(r.bottom>fr.top+8&&r.top<fr.bottom-8&&r.right>fr.left&&r.left<fr.right){
-        var dx=r.left>=fr.left+fr.width/2?-(fr.right-r.left+4):(r.right-fr.left+4);
-        f.style.left=Math.round(parseFloat(f.style.left)+dx)+'px';fr=f.getBoundingClientRect();
-      }
-    });
-  }
-  place();
-  addEventListener('load',place);addEventListener('resize',place);
-  if(window.ResizeObserver){new ResizeObserver(place).observe(document.body)}
 })();
 </script>
 </body>
