@@ -1975,13 +1975,13 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
       if(!w)return;var h=w*ratio(o),cy=top+(bot-top)*.55;
       o.style.top=Math.round(cy-h/2-cr.top)+'px';
     });
-    /* autour de l'emblème Laëria : une branche à gauche en haut, une à droite en bas */
+    /* autour de l'emblème Laëria : une branche de chaque côté, en haut */
     if(medal){
       var mr=medal.getBoundingClientRect();
       if(mr.height){
         var w=eg.getBoundingClientRect().width,h=w*1.04;
         eg.style.top=Math.round(mr.top+mr.height*.26-h/2-cr.top)+'px';
-        ed.style.top=Math.round(mr.top+mr.height*.78-h/2-cr.top)+'px';
+        ed.style.top=Math.round(mr.top+mr.height*.26-h/2-cr.top)+'px';
       }
     }
   }
