@@ -497,7 +497,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 }
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="stylesheet" href="/css/laeria-bronze.css?v=22">
+<link rel="stylesheet" href="/css/laeria-bronze.css?v=23">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
 <body>
@@ -1063,6 +1063,13 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     function fin(){fig.classList.add('open');if(cap&&fig.dataset.cap)cap.textContent=fig.dataset.cap;}
     var wax=fig.querySelector('.wax'),cover=fig.querySelector('.seal-cover');
     if(reduce||!wax){fin();return;}
+    var LUM=window.SceauLumiere&&SceauLumiere.get(fig);
+    if(LUM){
+      /* lumière derrière le sceau : montée, fissure, éblouissement, extinction */
+      fig.classList.add('cracking');LUM.charge();
+      setTimeout(function(){fig.classList.add('breaking');LUM.burst();setTimeout(fin,300);},1050);
+      return;
+    }
     fig.classList.add('cracking');
     /* tout est rattaché au médaillon lui-même : le centre est exact */
     var gl=cover.querySelector('.seal-glow');if(gl){gl.removeAttribute('style');wax.appendChild(gl);}
@@ -1957,6 +1964,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 })();
 </script>
 <script src="/js/laeria-sweep.js?v=12" defer></script>
+<script src="/js/sceau-lumiere.js?v=1" defer></script>
 <script src="/js/intro-stars.js" defer></script>
 <script>
 /* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
