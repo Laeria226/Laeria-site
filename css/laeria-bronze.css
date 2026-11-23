@@ -95,9 +95,6 @@ html body .syl b{font-size:clamp(1.9rem,2.4vw,2.3rem)!important;line-height:1.1}
 @keyframes cadreOr{0%{--ang:0deg;opacity:0}5%{opacity:1}32%{--ang:360deg;opacity:1}38%{--ang:360deg;opacity:0}100%{--ang:360deg;opacity:0}}
 @media(prefers-reduced-motion:reduce){.floatbuy::before,.navbuy::before,.gift-trigger::before{animation:none}}
 
-/* accueil : pas de calque de lumière animé (évite les artefacts d'affichage), halo statique + respiration douce */
-html body .itit.sweep .l::before{display:none!important}
-html body .itit:not(.sweep){visibility:hidden}
 html body .itit.sweep .l[data-g]::after{opacity:1}
 /* ouverture : l'image n'apparaît qu'une fois entièrement chargée (plus de bandes noires qui se remplissent par saccades) */
 html.js-ipic .ipic{opacity:0;transition:opacity .8s ease}
