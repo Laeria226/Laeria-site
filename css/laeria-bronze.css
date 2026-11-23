@@ -103,3 +103,14 @@ html.js-ipic .ipic.ok{opacity:1}
 html body .itit.sweep{filter:drop-shadow(0 0 1px #ffe39a) drop-shadow(0 0 4px rgba(255,214,120,.8)) drop-shadow(0 0 9px rgba(255,180,70,.35)) drop-shadow(0 0 18px rgba(10,5,20,.9)) drop-shadow(0 0 40px rgba(10,5,20,.65)) brightness(1.12)}
 html body .itit.sweep .l.l.l.l{-webkit-text-stroke:.032em #1e0905!important}
 /* === FIN DU FICHIER — version du 23/11 à 11h06 === */
+
+/* v7 : lumière dorée portée par le fond de chaque lettre (technique compatible Safari / mobiles), sans masque */
+html .sweep .l[data-g]::before{display:none!important}
+html .sweep>.l,html .sweep .l{background-image:
+  radial-gradient(ellipse 50% 66% at 50% 46%,rgba(255,246,205,var(--lo,0)) 0,rgba(255,226,140,calc(var(--lo,0)*.8)) 36%,rgba(255,204,100,calc(var(--lo,0)*.35)) 66%,rgba(255,200,90,0) 100%),
+  url(../img/bronze-grain.webp),
+  linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)!important;
+  background-size:var(--bw,200px) 100%,1.7em auto,100% 100%!important;background-repeat:no-repeat,repeat,no-repeat!important;
+  background-position:calc(var(--sx) - var(--ox)) 0,0 0,0 0!important;background-blend-mode:normal,multiply,normal!important}
+html .sweep .l[data-g]::after{opacity:.6}
+html body .itit.sweep .l[data-g]::after{opacity:.6}

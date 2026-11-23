@@ -1,0 +1,15 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Diagnostic</title>
+<style>body{font:16px/1.5 system-ui;background:#120d20;color:#f3e6c4;padding:20px}code{color:#ffd978}</style></head><body>
+<h1>Diagnostic du site</h1><pre id="o">…</pre>
+<script>
+var o=[];function t(k,v){o.push(k+" : "+v)}
+t("Navigateur",navigator.userAgent);
+t("Mouvement réduit activé",matchMedia("(prefers-reduced-motion:reduce)").matches);
+t("background-clip:text",CSS.supports("-webkit-background-clip","text"));
+t("IntersectionObserver","IntersectionObserver" in window);
+t("@property",!!(window.CSS&&CSS.registerProperty));
+t("calc dans rgba",CSS.supports("color","rgba(255,0,0,calc(.5*1))"));
+t("var dans rgba",CSS.supports("color","rgba(255,0,0,var(--x,.5))"));
+fetch("/css/laeria-bronze.css?"+Date.now()).then(function(r){return r.text()}).then(function(x){t("CSS en ligne, version v7",/v7 :/.test(x));
+ return fetch("/js/laeria-sweep.js?"+Date.now())}).then(function(r){return r.text()}).then(function(x){t("JS en ligne, lumière douce (P=5800)",/P=5800/.test(x));document.getElementById("o").textContent=o.join("\n")}).catch(function(e){t("Erreur",e);document.getElementById("o").textContent=o.join("\n")});
+</script></body></html>
