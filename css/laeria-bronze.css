@@ -206,3 +206,22 @@ html body .seal-ring.r2{animation-delay:.18s;border-width:2px;box-shadow:0 0 14p
 html body .sealed.breaking .h.l{transform:scale(1.8);opacity:0;filter:brightness(5) saturate(.4);transition:opacity .45s ease,transform .5s cubic-bezier(.1,.8,.2,1),filter .3s}
 html body .sealed.breaking .seal-glow{transform:scale(1.8);transition:transform 1.4s cubic-bezier(.1,.8,.2,1),opacity .4s}
 html body .sealed.cracking .seal-glow{opacity:1;transform:scale(.38)}
+
+/* v14 : le médaillon se brise en éclats ; toute la lumière est centrée sur lui */
+html body .wax{overflow:visible}
+html body .wax .seal-glow{left:50%!important;top:50%!important;width:1100%;aspect-ratio:1;translate:-50% -50%;z-index:1}
+html body .wax .seal-flash,html body .wax .seal-ring{left:50%!important;top:50%!important}
+html body .wax .seal-flash{width:1500%}
+html body .wax .seal-ring{width:150%}
+html body .sealed.breaking .h.l{opacity:0!important;transform:none!important;filter:none!important;transition:none!important}
+html body .wax .shard{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:50%;
+  background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat;filter:brightness(1.5);
+  animation:eclat 1.25s cubic-bezier(.12,.7,.25,1) forwards}
+@keyframes eclat{0%{transform:translate(0,0) rotate(0);opacity:1;filter:brightness(2.4)}
+  18%{opacity:1;filter:brightness(1.6)}
+  100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.55);opacity:0;filter:brightness(1)}}
+html body .sealed.cracking:not(.breaking) .wax .h.l{animation:sceauTremble .09s linear infinite}
+@keyframes sceauTremble{0%{transform:translate(-1.5px,.5px)}25%{transform:translate(1px,-1.5px)}50%{transform:translate(1.5px,1px)}75%{transform:translate(-1px,-1px)}100%{transform:translate(-1.5px,.5px)}}
+html body .sealed.cracking .seal-glow{opacity:1;transform:scale(.16)}
+html body .sealed .wax::before{inset:-45%;background:radial-gradient(circle,rgba(255,220,130,.6) 0,rgba(255,196,90,.3) 38%,rgba(255,180,70,0) 68%)}
+html body .wax .seal-flash{animation-delay:.14s}

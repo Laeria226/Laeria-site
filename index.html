@@ -497,7 +497,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 }
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="stylesheet" href="/css/laeria-bronze.css?v=20">
+<link rel="stylesheet" href="/css/laeria-bronze.css?v=22">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
 <body>
@@ -1064,13 +1064,25 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     var wax=fig.querySelector('.wax'),cover=fig.querySelector('.seal-cover');
     if(reduce||!wax){fin();return;}
     fig.classList.add('cracking');
-    /* centre de la lumière = centre exact du médaillon */
-    var cr=cover.getBoundingClientRect(),wr=wax.getBoundingClientRect(),gx=(wr.left+wr.width/2-cr.left)+'px',gy=(wr.top+wr.height/2-cr.top)+'px';
-    cover.style.setProperty('--gx',gx);cover.style.setProperty('--gy',gy);
-    var gl=cover.querySelector('.seal-glow');if(gl){gl.style.left=gx;gl.style.top=gy;}
+    /* tout est rattaché au médaillon lui-même : le centre est exact */
+    var gl=cover.querySelector('.seal-glow');if(gl){gl.removeAttribute('style');wax.appendChild(gl);}
+    var gx=(wax.getBoundingClientRect().left+wax.offsetWidth/2-cover.getBoundingClientRect().left)+'px',gy=(wax.getBoundingClientRect().top+wax.offsetHeight/2-cover.getBoundingClientRect().top)+'px';
     setTimeout(function(){
       fig.classList.add('breaking');
-      ['seal-flash','seal-ring','seal-ring r2'].forEach(function(c){var e=document.createElement('i');e.className=c;e.setAttribute('aria-hidden','true');cover.appendChild(e);});
+      /* le médaillon se brise en éclats */
+      var N=11,ang=[],i;for(i=0;i<N;i++)ang.push(i/N*6.2832+(Math.random()-.5)*.25);
+      for(i=0;i<N;i++){
+        var a1=ang[i],a2=ang[(i+1)%N]+(i===N-1?6.2832:0),am=(a1+a2)/2,r=80,rm=34+Math.random()*26;
+        function P(a,rr){return (50+Math.cos(a)*rr).toFixed(1)+'% '+(50+Math.sin(a)*rr).toFixed(1)+'%';}
+        var sh=document.createElement('i');sh.className='shard';sh.setAttribute('aria-hidden','true');
+        sh.style.clipPath='polygon(50% 50%,'+P(a1,r)+','+P(am,rm+30)+','+P(a2,r)+')';
+        var d=(150+Math.random()*190),dx=Math.cos(am)*d,dy=Math.sin(am)*d;
+        sh.style.setProperty('--dx',dx.toFixed(0)+'px');sh.style.setProperty('--dy',dy.toFixed(0)+'px');
+        sh.style.setProperty('--rot',((Math.random()-.5)*260).toFixed(0)+'deg');
+        sh.style.animationDelay=(Math.random()*.06)+'s';
+        wax.appendChild(sh);
+      }
+      ['seal-flash','seal-ring','seal-ring r2'].forEach(function(c){var e=document.createElement('i');e.className=c;e.setAttribute('aria-hidden','true');wax.appendChild(e);});
       var W=fig.offsetWidth,H=fig.offsetHeight;
       for(var k=0;k<26;k++){var m=document.createElement('i');m.className='mote';
         m.style.left=(parseFloat(gx)+(Math.random()-.5)*W*.5)+'px';m.style.top=(parseFloat(gy)+(Math.random()-.5)*H*.3)+'px';
