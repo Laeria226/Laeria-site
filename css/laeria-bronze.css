@@ -148,3 +148,36 @@ html body .itit.sweep::after{filter:blur(18px);color:rgba(8,4,18,1)}
 html body .sweep>.l,html body .sweep .l{animation:none!important}
 /* chapitre IV : plus de bandes lumineuses */
 html body .fx-gaermore i,html body .fx-gaermore .l1,html body .fx-gaermore .l2,html body .fx-gaermore .l3{display:none!important;animation:none!important}
+/* Sceau anti-spoil : cuivre gravé façon lettrage Laëria (mêmes couleurs, grain, biseau, contour bordeaux) */
+html body .wax .h{
+  color:#2b0f08;
+  background:url(../img/bronze-grain.webp) 0 0/110px auto repeat,
+    radial-gradient(circle at 36% 28%,#f0c895 0,#d99d66 24%,#c78350 46%,#a45f34 70%,#74401f 100%);
+  background-blend-mode:multiply,normal;
+  box-shadow:inset 0 0 0 3px #2b0f08,inset 0 0 0 5.5px rgba(255,226,150,.7),inset 0 0 0 8px rgba(46,16,8,.65),
+    inset 0 5px 8px rgba(255,238,186,.45),inset 0 -8px 12px rgba(60,24,10,.6)}
+html body .wax .h svg{filter:drop-shadow(0 1px 0 rgba(255,226,160,.7)) drop-shadow(0 -1px 0 rgba(30,10,5,.6))}
+html body .sealed .wax{filter:drop-shadow(0 0 7px rgba(255,200,100,.6)) drop-shadow(0 4px 8px rgba(10,5,20,.7))}
+html body .seal-tag{color:#e9b97c;text-shadow:0 0 8px rgba(255,200,100,.55),0 1px 2px rgba(20,8,4,.9)}
+html body .seal-btn{color:#2b0f08;border:1px solid #2b0f08;font-weight:700;
+  background:url(../img/bronze-grain.webp) 0 0/110px auto repeat,linear-gradient(180deg,#ebbd8c 0%,#d99d66 30%,#c78350 55%,#a45f34 80%,#8a4c28 100%);background-blend-mode:multiply,normal;
+  box-shadow:inset 0 1px 0 rgba(255,236,186,.7),inset 0 -2px 4px rgba(60,24,10,.5),0 0 0 1px rgba(255,214,130,.5),0 0 14px rgba(255,190,90,.35)}
+html body .seal-btn:hover{color:#1a0905;background:linear-gradient(180deg,#f6d9a2,#e2ab68);box-shadow:inset 0 1px 0 #fff3cf,0 0 20px rgba(255,205,110,.7)}
+/* v11 : sceau anti-spoil = médaillon de bronze gravé (même matière que le lettrage Laëria), halo doré qui respire */
+html body .wax .h{background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat!important;box-shadow:none!important;border-radius:50%}
+html body .wax .h svg{display:none}
+html body .wax{background:none!important;box-shadow:none!important}
+html body .alert .wax{background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat!important;border-radius:50%}
+html body .sealed .wax{filter:none;box-shadow:none}
+html body .sealed .wax::before{content:"";position:absolute;inset:-26%;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,214,120,.55) 0,rgba(255,190,80,.28) 42%,rgba(255,180,70,0) 70%);animation:sceauLueur 4.6s ease-in-out infinite}
+@keyframes sceauLueur{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.06)}}
+html body .sealed .wax::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:3;
+  background:radial-gradient(ellipse 34% 26% at 32% 26%,rgba(255,244,205,.55),rgba(255,230,160,0) 100%);animation:sceauReflet 4.6s ease-in-out infinite}
+@keyframes sceauReflet{0%,100%{opacity:.35}50%{opacity:.9}}
+/* texte du sceau : lettres de bronze comme le titre */
+html body .seal-tag{background:linear-gradient(180deg,#fdeccb 0%,#efc88c 48%,#d39555 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:0;text-shadow:none;font-weight:700;font-size:.86rem;letter-spacing:.3em;
+  filter:drop-shadow(0 0 4px rgba(255,200,100,.5)) drop-shadow(0 1px 1.5px rgba(20,8,4,.95))}
+html body .seal-msg{color:#f6e3bd;text-shadow:0 1px 2px rgba(16,7,30,.9),0 0 10px rgba(255,205,120,.25)}
+html body .seal-btn{border:1px solid #2b0f08;box-shadow:inset 0 1px 0 rgba(255,236,186,.8),inset 0 -2px 4px rgba(60,24,10,.55),inset 0 0 0 2px rgba(255,214,130,.25),0 0 0 1px rgba(255,214,130,.5),0 0 16px rgba(255,190,90,.4)}
+@media(prefers-reduced-motion:reduce){html body .sealed .wax::before,html body .sealed .wax::after{animation:none}}
