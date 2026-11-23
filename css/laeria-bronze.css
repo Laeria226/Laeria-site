@@ -75,8 +75,8 @@ html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,18
 
 /* lumière divine : halo large et doux qui glisse lentement et respire (plus de faisceau de projecteur) */
 html .sweep .l[data-g]::before{
-  background-image:radial-gradient(ellipse 50% 62% at 50% 46%,rgba(255,238,178,.85) 0,rgba(255,214,120,.42) 38%,rgba(255,196,90,.14) 66%,rgba(255,190,80,0) 100%)!important;
-  background-size:var(--bw,200px) 100%!important;opacity:var(--lo,0);filter:blur(.6px)}
+  background-image:radial-gradient(ellipse 50% 62% at 50% 46%,rgba(255,244,196,1) 0,rgba(255,222,130,.7) 34%,rgba(255,200,95,.28) 64%,rgba(255,190,80,0) 100%)!important;
+  background-size:var(--bw,200px) 100%!important;opacity:var(--lo,0);filter:blur(.6px);mix-blend-mode:normal}
 html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.5))}
 /* chapitres : plus aucun reflet animé sur les illustrations */
 html body .panel .plate::after,html body .js .panel.in .plate::after{animation:none!important;background:none!important;display:none!important}

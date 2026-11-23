@@ -2,7 +2,7 @@
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var sel='.itit,.hl,.laeria-mot,.syl b,.brand>span,.brand,.lt-mot';
-  var words=[],P=9000;
+  var words=[],P=5800;
   function scan(){
     words=[];
     document.querySelectorAll(sel).forEach(function(w){
@@ -24,7 +24,7 @@
     var t=(now%P)/P;
     /* lumière douce : elle glisse lentement (départ et arrivée adoucis), naît et s'éteint en fondu, comme un souffle */
     var e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
-    var lo=Math.pow(Math.sin(Math.PI*t),1.4).toFixed(3);
+    var lo=Math.pow(Math.sin(Math.PI*t),.9).toFixed(3);
     for(var i=0;i<words.length;i++){var o=words[i];if(io&&!vis.has(o.el))continue;
       o.el.style.setProperty('--sx',(-o.bw*.5+e*(o.ww)).toFixed(1)+'px');o.el.style.setProperty('--lo',lo);}
   }
