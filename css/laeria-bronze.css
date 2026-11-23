@@ -84,3 +84,14 @@ html body .panel .plate::after,html body .js .panel.in .plate::after{animation:n
 html body .syl b .l{font-size:1em!important;line-height:1}
 html body .syl b{font-size:clamp(2.8rem,4.4vw,4.2rem)!important;line-height:1}
 @media(max-width:700px){html body .syl b{font-size:clamp(3.6rem,20vw,5.4rem)!important;line-height:1}}
+/* « Réserver mon exemplaire » : de temps en temps, un trait doré fait le tour du cadre */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.floatbuy,.navbuy,.gift-trigger{position:relative}
+.floatbuy{position:fixed}
+.floatbuy,.navbuy,.gift-trigger{overflow:visible!important}
+.floatbuy::before,.navbuy::before,.gift-trigger::before{content:"";position:absolute;inset:-6px;border-radius:6px;padding:2px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--ang),rgba(255,214,110,0) 0deg,rgba(255,214,110,0) 250deg,rgba(255,226,140,.55) 310deg,#fff6cf 345deg,rgba(255,226,140,.55) 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;animation:cadreOr 7.5s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,214,110,.9))}
+@keyframes cadreOr{0%{--ang:0deg;opacity:0}5%{opacity:1}32%{--ang:360deg;opacity:1}38%{--ang:360deg;opacity:0}100%{--ang:360deg;opacity:0}}
+@media(prefers-reduced-motion:reduce){.floatbuy::before,.navbuy::before,.gift-trigger::before{animation:none}}
