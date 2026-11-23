@@ -69,21 +69,20 @@ html body .mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,seri
   -webkit-text-stroke:0!important;filter:none!important;text-shadow:0 0 6px rgba(255,214,130,.35),0 1px 2px rgba(16,7,30,.85)!important}
 
 /* performances : calque dédié, halos plus économes */
-html .sweep{will-change:filter}
 html body .itit.sweep{filter:drop-shadow(0 0 1px #ffe39a) drop-shadow(0 0 8px rgba(255,205,100,.9)) drop-shadow(0 0 26px rgba(255,180,70,.6))}
 html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.6))}
 
 /* lumière divine : halo large et doux qui glisse lentement et respire (plus de faisceau de projecteur) */
 html .sweep .l[data-g]::before{
   background-image:radial-gradient(ellipse 50% 62% at 50% 46%,rgba(255,244,196,1) 0,rgba(255,222,130,.7) 34%,rgba(255,200,95,.28) 64%,rgba(255,190,80,0) 100%)!important;
-  background-size:var(--bw,200px) 100%!important;opacity:var(--lo,0);filter:blur(.6px);mix-blend-mode:normal}
+  background-size:var(--bw,200px) 100%!important;opacity:var(--lo,0);mix-blend-mode:normal}
 html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.5))}
 /* chapitres : plus aucun reflet animé sur les illustrations */
 html body .panel .plate::after,html body .js .panel.in .plate::after{animation:none!important;background:none!important;display:none!important}
 /* mobile : syllabes La / Ë / RIA plus grandes */
 html body .syl b .l{font-size:1em!important;line-height:1}
-html body .syl b{font-size:clamp(2.8rem,4.4vw,4.2rem)!important;line-height:1}
-@media(max-width:700px){html body .syl b{font-size:clamp(3.6rem,20vw,5.4rem)!important;line-height:1}}
+html body .syl b{font-size:clamp(1.9rem,2.4vw,2.3rem)!important;line-height:1.1}
+@media(max-width:700px){html body .syl b{font-size:clamp(1.9rem,8.5vw,2.4rem)!important;line-height:1.1}}
 /* « Réserver mon exemplaire » : de temps en temps, un trait doré fait le tour du cadre */
 @property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
 .floatbuy,.navbuy,.gift-trigger{position:relative}
@@ -95,3 +94,11 @@ html body .syl b{font-size:clamp(2.8rem,4.4vw,4.2rem)!important;line-height:1}
   opacity:0;animation:cadreOr 7.5s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,214,110,.9))}
 @keyframes cadreOr{0%{--ang:0deg;opacity:0}5%{opacity:1}32%{--ang:360deg;opacity:1}38%{--ang:360deg;opacity:0}100%{--ang:360deg;opacity:0}}
 @media(prefers-reduced-motion:reduce){.floatbuy::before,.navbuy::before,.gift-trigger::before{animation:none}}
+
+/* accueil : pas de calque de lumière animé (évite les artefacts d'affichage), halo statique + respiration douce */
+html body .itit.sweep .l::before{display:none!important}
+html body .itit:not(.sweep){visibility:hidden}
+html body .itit.sweep .l[data-g]::after{opacity:1}
+/* ouverture : l'image n'apparaît qu'une fois entièrement chargée (plus de bandes noires qui se remplissent par saccades) */
+html.js-ipic .ipic{opacity:0;transition:opacity .8s ease}
+html.js-ipic .ipic.ok{opacity:1}

@@ -33,3 +33,13 @@
   addEventListener('load',scan);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scan);
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(scan,150)});
 })();
+/* ouverture : fondu une fois l'image décodée, pas de chargement ligne par ligne visible */
+(function(){
+  var im=document.querySelector('.ipic');if(!im)return;
+  var d=document.documentElement;d.classList.add('js-ipic');
+  var done=false;function ok(){if(done)return;done=true;im.classList.add('ok')}
+  function go(){var s=im.currentSrc||im.src;
+    if(im.complete&&im.naturalWidth){(im.decode?im.decode().then(ok,ok):ok())}
+    else{im.addEventListener('load',function(){(im.decode?im.decode().then(ok,ok):ok())});im.addEventListener('error',ok)}}
+  go();setTimeout(ok,5000);
+})();
