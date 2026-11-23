@@ -132,3 +132,5 @@ html body .sweep>.l,html body .sweep .l{
   background-size:0% 0%,1.7em auto,100% 100%;
   animation:lueurLettre 5.8s ease-in-out infinite!important;animation-delay:calc(var(--i,0)*.55s)!important}
 @media(prefers-reduced-motion:reduce){html body .sweep>.l,html body .sweep .l{animation:none!important;background-size:90% 90%,1.7em auto,100% 100%!important}}
+/* v9 : le halo suit exactement le mot (centrage et largeur du conteneur) */
+html body .sweep::before,html body .sweep::after{left:0;right:0;top:0;bottom:0;text-align:inherit;white-space:nowrap;display:block;font:inherit;letter-spacing:inherit;line-height:inherit;text-transform:inherit}
