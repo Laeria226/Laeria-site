@@ -72,3 +72,11 @@ html body .mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,seri
 html .sweep{will-change:filter}
 html body .itit.sweep{filter:drop-shadow(0 0 1px #ffe39a) drop-shadow(0 0 8px rgba(255,205,100,.9)) drop-shadow(0 0 26px rgba(255,180,70,.6))}
 html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.6))}
+
+/* lumière divine : halo large et doux qui glisse lentement et respire (plus de faisceau de projecteur) */
+html .sweep .l[data-g]::before{
+  background-image:radial-gradient(ellipse 50% 62% at 50% 46%,rgba(255,238,178,.85) 0,rgba(255,214,120,.42) 38%,rgba(255,196,90,.14) 66%,rgba(255,190,80,0) 100%)!important;
+  background-size:var(--bw,200px) 100%!important;opacity:var(--lo,0);filter:blur(.6px)}
+html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.5))}
+/* chapitres : plus aucun reflet animé sur les illustrations */
+html body .panel .plate::after,html body .js .panel.in .plate::after{animation:none!important;background:none!important;display:none!important}
