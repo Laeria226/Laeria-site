@@ -134,3 +134,15 @@ html body .sweep>.l,html body .sweep .l{
 @media(prefers-reduced-motion:reduce){html body .sweep>.l,html body .sweep .l{animation:none!important;background-size:90% 90%,1.7em auto,100% 100%!important}}
 /* v9 : le halo suit exactement le mot (centrage et largeur du conteneur) */
 html body .sweep::before,html body .sweep::after{left:0;right:0;top:0;bottom:0;text-align:inherit;white-space:nowrap;display:block;font:inherit;letter-spacing:inherit;line-height:inherit;text-transform:inherit}
+
+/* v10 : la lumière qui passe = copie lumineuse de chaque lettre dont l'opacité pulse (technique sûre sur Safari iPhone) */
+html body .sweep .l[data-c]::before{content:attr(data-c)!important;display:block!important;position:absolute;left:0;top:0;right:0;bottom:0;margin:0;width:auto;height:auto;z-index:3;
+  color:#ffe39a;-webkit-text-fill-color:#ffe39a;-webkit-text-stroke:0!important;background:none!important;-webkit-mask:none;mask:none;font:inherit;line-height:inherit;letter-spacing:inherit;
+  opacity:0;pointer-events:none;animation:lueurTexte 5.8s ease-in-out infinite;animation-delay:calc(var(--i,0)*.5s)}
+@keyframes lueurTexte{0%,52%,100%{opacity:0}20%,30%{opacity:.4}}
+@media(prefers-reduced-motion:reduce){html body .sweep .l[data-c]::before{animation:none;opacity:.25}}
+/* titre avant le voile : halo un peu plus marqué et plus net */
+html body .itit.sweep::before{color:rgba(255,206,96,1);filter:blur(3.5px);opacity:1}
+html body .itit.sweep::after{filter:blur(18px);color:rgba(8,4,18,1)}
+
+html body .sweep>.l,html body .sweep .l{animation:none!important}
