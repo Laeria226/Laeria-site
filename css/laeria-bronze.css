@@ -192,3 +192,17 @@ html body .sealed.breaking .seal-glow{opacity:1;transform:scale(1.35);transition
 html body .sealed.breaking .h.l{transform:scale(1.22);opacity:0;filter:brightness(2.8) saturate(.7);transition:opacity .9s ease .1s,transform 1.2s ease,filter .5s}
 html body .sealed.open .seal-glow{opacity:0;transform:scale(1.6);transition:opacity 2s ease .1s,transform 2s ease}
 html body .sealed.cracking .wax::before,html body .sealed.cracking .wax::after{animation:none;opacity:0;transition:opacity .4s}
+
+/* v13 : explosion de lumière centrée sur le médaillon */
+html body .seal-glow{left:var(--gx,50%);top:var(--gy,50%)}
+html body .seal-flash{position:absolute;left:var(--gx,50%);top:var(--gy,50%);width:300%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;pointer-events:none;z-index:6;opacity:0;
+  background:radial-gradient(circle,#fff 0,#fffefa 10%,rgba(255,246,214,.95) 24%,rgba(255,226,150,.6) 42%,rgba(255,206,120,.22) 58%,rgba(255,200,110,0) 72%);
+  animation:flashBang 1.7s cubic-bezier(.1,.7,.2,1) forwards}
+@keyframes flashBang{0%{opacity:0;transform:scale(.04)}9%{opacity:1;transform:scale(.5)}30%{opacity:1;transform:scale(1.05)}100%{opacity:0;transform:scale(1.5)}}
+html body .seal-ring{position:absolute;left:var(--gx,50%);top:var(--gy,50%);width:40%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;pointer-events:none;z-index:5;opacity:0;
+  border:3px solid rgba(255,244,210,.95);box-shadow:0 0 18px 6px rgba(255,226,150,.8),inset 0 0 18px 4px rgba(255,226,150,.6);animation:ringBang 1.3s cubic-bezier(.15,.7,.25,1) forwards}
+html body .seal-ring.r2{animation-delay:.18s;border-width:2px;box-shadow:0 0 14px 4px rgba(255,214,130,.6)}
+@keyframes ringBang{0%{opacity:0;transform:scale(.1)}12%{opacity:.95}100%{opacity:0;transform:scale(5.5)}}
+html body .sealed.breaking .h.l{transform:scale(1.8);opacity:0;filter:brightness(5) saturate(.4);transition:opacity .45s ease,transform .5s cubic-bezier(.1,.8,.2,1),filter .3s}
+html body .sealed.breaking .seal-glow{transform:scale(1.8);transition:transform 1.4s cubic-bezier(.1,.8,.2,1),opacity .4s}
+html body .sealed.cracking .seal-glow{opacity:1;transform:scale(.38)}

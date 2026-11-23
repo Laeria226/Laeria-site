@@ -497,7 +497,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 }
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="stylesheet" href="/css/laeria-bronze.css?v=19">
+<link rel="stylesheet" href="/css/laeria-bronze.css?v=20">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
 <body>
@@ -1064,11 +1064,16 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     var wax=fig.querySelector('.wax'),cover=fig.querySelector('.seal-cover');
     if(reduce||!wax){fin();return;}
     fig.classList.add('cracking');
+    /* centre de la lumière = centre exact du médaillon */
+    var cr=cover.getBoundingClientRect(),wr=wax.getBoundingClientRect(),gx=(wr.left+wr.width/2-cr.left)+'px',gy=(wr.top+wr.height/2-cr.top)+'px';
+    cover.style.setProperty('--gx',gx);cover.style.setProperty('--gy',gy);
+    var gl=cover.querySelector('.seal-glow');if(gl){gl.style.left=gx;gl.style.top=gy;}
     setTimeout(function(){
       fig.classList.add('breaking');
+      ['seal-flash','seal-ring','seal-ring r2'].forEach(function(c){var e=document.createElement('i');e.className=c;e.setAttribute('aria-hidden','true');cover.appendChild(e);});
       var W=fig.offsetWidth,H=fig.offsetHeight;
       for(var k=0;k<26;k++){var m=document.createElement('i');m.className='mote';
-        m.style.left=(W/2+(Math.random()-.5)*W*.5)+'px';m.style.top=(H/2+(Math.random()-.5)*H*.3)+'px';
+        m.style.left=(parseFloat(gx)+(Math.random()-.5)*W*.5)+'px';m.style.top=(parseFloat(gy)+(Math.random()-.5)*H*.3)+'px';
         m.style.setProperty('--dx',((Math.random()-.5)*W*.5)+'px');m.style.setProperty('--dy',(-H*(.2+Math.random()*.45))+'px');
         m.style.setProperty('--t',(1.6+Math.random()*1.4)+'s');m.style.animationDelay=(Math.random()*.5)+'s';cover.appendChild(m);}
       setTimeout(fin,520);
