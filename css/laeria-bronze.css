@@ -51,7 +51,7 @@ html .sweep>.l,html .sweep .l{background-image:
 
 /* passage de lumière DORÉE par-dessus la gravure (découpée dans la forme de chaque lettre) */
 html .sweep>.l,html .sweep .l{background-image:url(../img/bronze-grain.webp),linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)!important;
-  background-size:1.7em auto,100% 100%!important;background-repeat:repeat,no-repeat!important;background-position:0 0,0 0!important;background-blend-mode:multiply,normal!important}
+  background-size:1.7em auto,100% 100%;background-repeat:repeat,no-repeat!important;background-position:0 0,0 0!important;background-blend-mode:multiply,normal!important}
 html .sweep .l[data-g]::before{content:"";position:absolute;left:0;top:50%;margin-top:-.58em;height:1.16em;pointer-events:none;z-index:2;
   background-image:linear-gradient(100deg,rgba(255,200,80,0) 0,rgba(255,205,90,.55) 30%,rgba(255,226,140,.78) 50%,rgba(255,205,90,.55) 70%,rgba(255,200,80,0) 100%);
   background-repeat:no-repeat;background-size:calc(var(--bw,200px)*.7) 100%;background-position:calc(var(--sx) - var(--ox)) 0;
@@ -110,7 +110,25 @@ html .sweep>.l,html .sweep .l{background-image:
   radial-gradient(ellipse 50% 66% at 50% 46%,rgba(255,246,205,var(--lo,0)) 0,rgba(255,226,140,calc(var(--lo,0)*.8)) 36%,rgba(255,204,100,calc(var(--lo,0)*.35)) 66%,rgba(255,200,90,0) 100%),
   url(../img/bronze-grain.webp),
   linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)!important;
-  background-size:var(--bw,200px) 100%,1.7em auto,100% 100%!important;background-repeat:no-repeat,repeat,no-repeat!important;
+  background-size:var(--bw,200px) 100%,1.7em auto,100% 100%;background-repeat:no-repeat,repeat,no-repeat!important;
   background-position:calc(var(--sx) - var(--ox)) 0,0 0,0 0!important;background-blend-mode:normal,multiply,normal!important}
 html .sweep .l[data-g]::after{opacity:.6}
 html body .itit.sweep .l[data-g]::after{opacity:.6}
+
+/* v8 : sans filtre ni variables animées par JavaScript (Safari iPhone) — halo = texte flou derrière le mot ; lumière = animation CSS pure sur chaque lettre */
+html body .sweep,html body .itit.sweep{filter:none!important;will-change:auto;isolation:isolate}
+html body .sweep::before,html body .sweep::after{content:attr(data-t);position:absolute;left:0;top:0;white-space:pre;pointer-events:none;
+  -webkit-text-fill-color:currentColor;-webkit-text-stroke:0;text-shadow:none;background:none;letter-spacing:inherit}
+html body .sweep::before{color:rgba(255,196,86,.95);filter:blur(5px);z-index:-1}
+html body .sweep::after{color:rgba(10,5,20,.9);filter:blur(16px);z-index:-2}
+html body .brand.sweep::after,html body .syl .sweep::after,html body .syl b.sweep::after{display:none}
+html body .sweep::before{opacity:.8}
+html body .syl b.sweep::before,html body .brand.sweep::before{filter:blur(3px);opacity:.6}
+/* lumière : chaque lettre s'éclaire tour à tour, comme un souffle qui traverse le mot */
+@keyframes lueurLettre{0%,52%,100%{background-size:0% 0%,1.7em auto,100% 100%}20%,30%{background-size:135% 135%,1.7em auto,100% 100%}}
+html body .sweep>.l,html body .sweep .l{
+  background-image:radial-gradient(ellipse 50% 56% at 50% 46%,rgba(255,246,205,.98) 0,rgba(255,226,140,.7) 42%,rgba(255,204,100,.28) 72%,rgba(255,200,90,0) 100%),url(../img/bronze-grain.webp),linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)!important;
+  background-position:50% 46%,0 0,0 0!important;background-repeat:no-repeat,repeat,no-repeat!important;
+  background-size:0% 0%,1.7em auto,100% 100%;
+  animation:lueurLettre 5.8s ease-in-out infinite!important;animation-delay:calc(var(--i,0)*.55s)!important}
+@media(prefers-reduced-motion:reduce){html body .sweep>.l,html body .sweep .l{animation:none!important;background-size:90% 90%,1.7em auto,100% 100%!important}}
