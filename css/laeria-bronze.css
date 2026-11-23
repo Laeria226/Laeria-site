@@ -48,3 +48,22 @@ html .sweep>.l,html .sweep .l{background-image:
   linear-gradient(100deg,rgba(255,236,180,0) 0,rgba(255,236,170,.7) 28%,rgba(255,250,215,1) 50%,rgba(255,236,170,.7) 72%,rgba(255,236,180,0) 100%),
   url(../img/bronze-grain.webp),
   linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)}
+
+/* passage de lumière DORÉE par-dessus la gravure (découpée dans la forme de chaque lettre) */
+html .sweep>.l,html .sweep .l{background-image:url(../img/bronze-grain.webp),linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)!important;
+  background-size:1.7em auto,100% 100%!important;background-repeat:repeat,no-repeat!important;background-position:0 0,0 0!important;background-blend-mode:multiply,normal!important}
+html .sweep .l[data-g]::before{content:"";position:absolute;left:0;top:50%;margin-top:-.58em;height:1.16em;pointer-events:none;z-index:2;
+  background-image:linear-gradient(100deg,rgba(255,200,80,0) 0,rgba(255,205,90,.55) 30%,rgba(255,226,140,.78) 50%,rgba(255,205,90,.55) 70%,rgba(255,200,80,0) 100%);
+  background-repeat:no-repeat;background-size:calc(var(--bw,200px)*.7) 100%;background-position:calc(var(--sx) - var(--ox)) 0;
+  mix-blend-mode:normal;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-text-fill-color:initial}
+html .sweep .l[data-g]::after{z-index:1}
+html .sweep .l[data-g=L]::before{width:.658em;-webkit-mask-image:url(../img/k-L.webp);mask-image:url(../img/k-L.webp)}
+html .sweep .l[data-g=A]::before{width:.612em;-webkit-mask-image:url(../img/k-A.webp);mask-image:url(../img/k-A.webp)}
+html .sweep .l[data-g=E]::before{width:.531em;-webkit-mask-image:url(../img/k-E.webp);mask-image:url(../img/k-E.webp)}
+html .sweep .l[data-g=R]::before{width:.605em;-webkit-mask-image:url(../img/k-R.webp);mask-image:url(../img/k-R.webp)}
+html .sweep .l[data-g=I]::before{width:.319em;-webkit-mask-image:url(../img/k-I.webp);mask-image:url(../img/k-I.webp)}
+html body .syl .sweep .l::before,html body .syl b.sweep .l::before,html body .brand .l::before{display:none}
+/* mot dans les textes : simple, sans texture, police Regular fin, à la taille du texte, bien lisible */
+html body .mot-laeria{font-family:"Laeria Titre Fin","Laeria Titre",Georgia,serif!important;font-size:1em!important;letter-spacing:.04em!important;
+  color:#f6d98a!important;-webkit-text-fill-color:#f6d98a!important;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;
+  -webkit-text-stroke:0!important;filter:none!important;text-shadow:0 0 6px rgba(255,214,130,.35),0 1px 2px rgba(16,7,30,.85)!important}
