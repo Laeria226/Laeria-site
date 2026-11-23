@@ -146,3 +146,5 @@ html body .itit.sweep::before{color:rgba(255,206,96,1);filter:blur(3.5px);opacit
 html body .itit.sweep::after{filter:blur(18px);color:rgba(8,4,18,1)}
 
 html body .sweep>.l,html body .sweep .l{animation:none!important}
+/* chapitre IV : plus de bandes lumineuses */
+html body .fx-gaermore i,html body .fx-gaermore .l1,html body .fx-gaermore .l2,html body .fx-gaermore .l3{display:none!important;animation:none!important}
