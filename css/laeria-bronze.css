@@ -37,3 +37,14 @@ html body .syl .sweep .l::after,html body .syl b.sweep .l::after,html body .bran
 html body .mot-laeria{font-size:1.07em!important;letter-spacing:.035em!important;-webkit-text-stroke:.038em #2b0f08!important;
   background-size:1.1em auto,100% 100%!important;
   filter:drop-shadow(0 0 .5px rgba(248,210,106,.8)) drop-shadow(0 0 4px rgba(245,180,70,.28))!important}
+/* Accueil avant le voile : lettres plus grandes, plus serrées, halo lumineux fort */
+html body .itit{font-size:clamp(3.4rem,14vw,12.2rem);letter-spacing:.07em}
+@media(max-width:700px){html body .itit{font-size:clamp(3.2rem,19vw,5.6rem);letter-spacing:.06em}}
+html body .itit.sweep{filter:drop-shadow(0 0 1px #ffe39a) drop-shadow(0 0 6px rgba(255,214,120,.95)) drop-shadow(0 0 22px rgba(255,190,80,.75)) drop-shadow(0 0 48px rgba(255,170,60,.5))}
+/* le passage de lumière reste visible à travers la gravure */
+html .sweep .l[data-g]::after{opacity:.8}
+html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 3px rgba(255,214,120,.95)) drop-shadow(0 0 16px rgba(245,180,70,.6))}
+html .sweep>.l,html .sweep .l{background-image:
+  linear-gradient(100deg,rgba(255,236,180,0) 0,rgba(255,236,170,.7) 28%,rgba(255,250,215,1) 50%,rgba(255,236,170,.7) 72%,rgba(255,236,180,0) 100%),
+  url(../img/bronze-grain.webp),
+  linear-gradient(180deg,#ebbd8c 0%,#d99d66 24%,#c78350 48%,#b36c3c 66%,#9a552d 82%,#74401f 100%)}
