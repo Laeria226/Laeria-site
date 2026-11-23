@@ -10,7 +10,7 @@
       if(!ls.length)return;
       if(getComputedStyle(w).position==='static')w.style.position='relative';
       var ww=w.offsetWidth||1;
-      ls.forEach(function(l){l.style.setProperty('--ox',l.offsetLeft+'px')});
+      ls.forEach(function(l){l.style.setProperty('--ox',l.offsetLeft+'px');var c=(l.textContent||'').trim().toLowerCase();var m={l:'L',a:'A','ë':'E','e':'E',r:'R',i:'I'}[c];if(m)l.setAttribute('data-g',m)});
       w.style.setProperty('--ww',ww+'px');w.style.setProperty('--bw',Math.round(ww*.55)+'px');
       w.classList.add('sweep');words.push({el:w,ww:ww,bw:ww*.55});
     });
