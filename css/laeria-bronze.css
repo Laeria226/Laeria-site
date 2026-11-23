@@ -181,3 +181,14 @@ html body .seal-tag{background:linear-gradient(180deg,#fdeccb 0%,#efc88c 48%,#d3
 html body .seal-msg{color:#f6e3bd;text-shadow:0 1px 2px rgba(16,7,30,.9),0 0 10px rgba(255,205,120,.25)}
 html body .seal-btn{border:1px solid #2b0f08;box-shadow:inset 0 1px 0 rgba(255,236,186,.8),inset 0 -2px 4px rgba(60,24,10,.55),inset 0 0 0 2px rgba(255,214,130,.25),0 0 0 1px rgba(255,214,130,.5),0 0 16px rgba(255,190,90,.4)}
 @media(prefers-reduced-motion:reduce){html body .sealed .wax::before,html body .sealed .wax::after{animation:none}}
+/* v12 : ouverture du sceau — plus d'éclair dessiné : le médaillon s'embrase et se dissout dans une lumière dorée qui inonde l'illustration */
+html body .sealed .crack,html body .sealed .seal-slit{display:none!important}
+html body .wax .h.r{display:none}
+html body .wax .h.l{clip-path:none}
+html body .seal-glow{background:radial-gradient(circle,#fffdf5 0,rgba(255,244,214,.95) 10%,rgba(255,224,150,.6) 26%,rgba(255,204,120,.26) 46%,rgba(255,196,110,.08) 60%,rgba(255,190,100,0) 70%)}
+html body .sealed.cracking .wax .h{filter:brightness(1.4) saturate(1.1);transition:filter .9s ease}
+html body .sealed.cracking .seal-glow{opacity:.9;transform:scale(.3);transition:opacity 1s ease,transform 1s cubic-bezier(.3,.5,.3,1)}
+html body .sealed.breaking .seal-glow{opacity:1;transform:scale(1.35);transition:transform 1.5s cubic-bezier(.12,.75,.2,1),opacity .5s}
+html body .sealed.breaking .h.l{transform:scale(1.22);opacity:0;filter:brightness(2.8) saturate(.7);transition:opacity .9s ease .1s,transform 1.2s ease,filter .5s}
+html body .sealed.open .seal-glow{opacity:0;transform:scale(1.6);transition:opacity 2s ease .1s,transform 2s ease}
+html body .sealed.cracking .wax::before,html body .sealed.cracking .wax::after{animation:none;opacity:0;transition:opacity .4s}
