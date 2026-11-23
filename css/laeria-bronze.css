@@ -99,3 +99,6 @@ html body .itit.sweep .l[data-g]::after{opacity:1}
 /* ouverture : l'image n'apparaît qu'une fois entièrement chargée (plus de bandes noires qui se remplissent par saccades) */
 html.js-ipic .ipic{opacity:0;transition:opacity .8s ease}
 html.js-ipic .ipic.ok{opacity:1}
+/* accueil avant le voile : meilleure lisibilité du mot sur le feuillage (voile sombre doux derrière, contour plus net, or plus clair) */
+html body .itit.sweep{filter:drop-shadow(0 0 1px #ffe39a) drop-shadow(0 0 7px rgba(255,214,120,.9)) drop-shadow(0 0 16px rgba(255,180,70,.5)) drop-shadow(0 0 22px rgba(10,5,20,.9)) drop-shadow(0 0 48px rgba(10,5,20,.7)) brightness(1.12)}
+html body .itit.sweep .l.l.l.l{-webkit-text-stroke:.032em #1e0905!important}
