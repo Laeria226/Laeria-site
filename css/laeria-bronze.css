@@ -80,3 +80,7 @@ html .sweep .l[data-g]::before{
 html .sweep{filter:drop-shadow(0 0 .7px #f8d26a) drop-shadow(0 0 8px rgba(245,180,70,.5))}
 /* chapitres : plus aucun reflet animé sur les illustrations */
 html body .panel .plate::after,html body .js .panel.in .plate::after{animation:none!important;background:none!important;display:none!important}
+/* mobile : syllabes La / Ë / RIA plus grandes */
+html body .syl b .l{font-size:1em!important;line-height:1}
+html body .syl b{font-size:clamp(2.8rem,4.4vw,4.2rem)!important;line-height:1}
+@media(max-width:700px){html body .syl b{font-size:clamp(3.6rem,20vw,5.4rem)!important;line-height:1}}
