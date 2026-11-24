@@ -246,3 +246,8 @@ html body .syl b .l{text-shadow:none!important}
 html body .ciel .soleil{-webkit-mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important;mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important}
 /* v17 : Safari iOS zoome (et reste zoomé) quand un champ de saisie fait moins de 16 px */
 html body input,html body select,html body textarea{font-size:max(16px,1em)!important}
+/* v18 : carnet — l'objet et ses étoiles flottent ensemble, étoiles posées sur les ornements dorés */
+html body .cn-obj{position:relative;animation:cnfloat 8s ease-in-out infinite;will-change:transform}
+html body .cn-art .cn-obj img{animation:none!important}
+html body .cn-obj .cn-sp{z-index:2}
+@media(prefers-reduced-motion:reduce){html body .cn-obj{animation:none}}
