@@ -244,3 +244,5 @@ html body .syl b,html body .syl b.sweep,html body .syl .sweep{filter:none!import
 html body .syl b .l{text-shadow:none!important}
 /* v16 : fond du livre — on garde le soleil et la vallée fleurie, plus de mer */
 html body .ciel .soleil{-webkit-mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important;mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important}
+/* v17 : Safari iOS zoome (et reste zoomé) quand un champ de saisie fait moins de 16 px */
+html body input,html body select,html body textarea{font-size:max(16px,1em)!important}

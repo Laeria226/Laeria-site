@@ -497,7 +497,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 }
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="stylesheet" href="/css/laeria-bronze.css?v=24">
+<link rel="stylesheet" href="/css/laeria-bronze.css?v=25">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
 <body>
@@ -938,6 +938,15 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   window.addEventListener('DOMContentLoaded',top);
   window.addEventListener('load',function(){top();setTimeout(top,60);});
   window.addEventListener('pageshow',function(e){if(e.persisted)top();});
+  /* Safari iOS peut restaurer l'ancienne position APRÈS le chargement : on garde la page en haut
+     tant que le visiteur n'a pas touché l'écran (4 s max), puis on relance le rendu de l'intro. */
+  var touched=false,t0=Date.now();
+  ['touchstart','wheel','keydown','mousedown','pointerdown'].forEach(function(ev){window.addEventListener(ev,function(){touched=true;},{passive:true,once:true});});
+  (function guard(){
+    if(touched||Date.now()-t0>4000)return;
+    if((window.pageYOffset||document.documentElement.scrollTop)>1)top();
+    requestAnimationFrame(guard);
+  })();
 })();
 
 (function(){
