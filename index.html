@@ -1937,7 +1937,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
     if(f<.04) return;
     for(var i=0;i<S.length;i++){
       var s=S[i], tw=reduce?.8:(.6+.4*Math.sin(t/1000*s.sp+s.ph));
-      var px=s.x*W, py=(((s.y*H - (reduce?0:t/1000*s.par*14))%H)+H)%H, a=tw*s.o;
+      var px=s.x*W, py=(((s.y*H - y*s.par)%H)+H)%H, a=tw*s.o;
       if(s.t==2){sparkle(px,py,s.r*(.85+.25*tw),Math.min(1,a+.1),s.c);}
       else{
         if(s.t==1){var g=cx.createRadialGradient(px,py,0,px,py,s.r*3.4);g.addColorStop(0,'rgba('+s.c+','+(.38*a)+')');g.addColorStop(1,'rgba('+s.c+',0)');cx.fillStyle=g;cx.beginPath();cx.arc(px,py,s.r*3.4,0,6.283);cx.fill();}
@@ -1945,7 +1945,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
       }
     }
   }
-  var lastT=0;function loop(t){if(t-lastT>=33){lastT=t;frame(t)}requestAnimationFrame(loop)}
+  function loop(t){frame(t);requestAnimationFrame(loop)}
   build();
   if(reduce){frame(0);addEventListener('scroll',function(){frame(0)},{passive:true});}else requestAnimationFrame(loop);
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
