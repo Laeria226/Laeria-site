@@ -251,3 +251,10 @@ html body .cn-obj{position:relative;animation:cnfloat 8s ease-in-out infinite;wi
 html body .cn-art .cn-obj img{animation:none!important}
 html body .cn-obj .cn-sp{z-index:2}
 @media(prefers-reduced-motion:reduce){html body .cn-obj{animation:none}}
+/* v20 : logo « Laëria » de la barre du haut — net et lisible (plus de textures ni de halos qui bavent à petite taille) */
+html body .brand.sweep::before,html body .brand.sweep::after,html body .brand .l::before,html body .brand .l::after{display:none!important;content:none!important}
+html body .brand .l,html body .brand.sweep .l{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#f3cf86!important;-webkit-text-fill-color:#f3cf86!important;-webkit-text-stroke:0!important;text-shadow:0 0 10px rgba(255,205,110,.35),0 1px 1px rgba(20,8,30,.6)!important;filter:none!important;
+  animation:brandLueur 6s ease-in-out infinite!important;animation-delay:calc(var(--i,0)*.45s)!important}
+@keyframes brandLueur{0%,100%{opacity:.88}50%{opacity:1}}
+html body .brand{filter:none!important}
