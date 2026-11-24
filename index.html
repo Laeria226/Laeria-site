@@ -497,7 +497,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 }
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="stylesheet" href="/css/laeria-bronze.css?v=27">
+<link rel="stylesheet" href="/css/laeria-bronze.css?v=26">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
 <body>
@@ -553,7 +553,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <main>
 <div class="ciel" aria-hidden="true"><i class="w" style="top:4%;background:radial-gradient(closest-side,rgba(255,170,120,.5),transparent)"></i><i class="w" style="top:11%;background:radial-gradient(closest-side,rgba(150,110,240,.55),transparent)"></i><i class="w" style="top:21%;background:radial-gradient(closest-side,rgba(255,140,170,.45),transparent)"></i><i class="w" style="top:30%;background:radial-gradient(closest-side,rgba(255,190,120,.4),transparent)"></i><i class="w" style="top:40%;background:radial-gradient(closest-side,rgba(170,120,240,.5),transparent)"></i><i class="w" style="top:52%;background:radial-gradient(closest-side,rgba(255,160,130,.45),transparent)"></i><i class="w" style="top:61%;background:radial-gradient(closest-side,rgba(255,200,130,.4),transparent)"></i><i class="w" style="top:70%;background:radial-gradient(closest-side,rgba(255,170,130,.5),transparent)"></i><i class="w" style="top:79%;background:radial-gradient(closest-side,rgba(255,210,140,.55),transparent)"></i><i class="w" style="top:86%;background:radial-gradient(closest-side,rgba(255,220,150,.6),transparent)"></i><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d.webp" alt="" loading="lazy" decoding="async" style="top:25%"><img class="orn d flip" src="img/arbre-g2.webp" alt="" loading="lazy" decoding="async" style="top:33%"><img class="orn g fl" src="img/fleurs-g.webp" alt="" loading="lazy" decoding="async" style="top:39%"><img class="soleil" src="img/soleil.webp" alt="" loading="lazy" decoding="async" style="top:88%"><img class="vallee" src="img/vallee.webp" alt="" loading="lazy" decoding="async" style="top:83%"></div>
-
+<canvas id="etoiles" aria-hidden="true"></canvas>
 
 
 <aside class="alert" aria-label="Alerte spoil">
@@ -1904,28 +1904,51 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 @media(max-width:700px){.ciel .orn.fl{width:62vw;opacity:.92}.ciel .orn.flip{width:62vw;opacity:.85}.ciel .orn.g{left:-6vw}.ciel .orn.d{right:-6vw}}
 @media(max-width:700px){.ciel .orn.emb{width:50vw;opacity:.95}}
 </style>
-<script>/* Ciel : étoiles posées SUR le fond (elles défilent avec lui, rien n'est recalculé au défilement) */
+<script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
-  var ciel=document.querySelector('.ciel');if(!ciel)return;
-  var cv=document.getElementById('etoiles');if(cv)cv.remove();
-  var cols=['#ffffff','#fff4de','#ece4ff','#ffe8c8'];
-  function mk(seed){var x=seed;return function(){x=(x*16807)%2147483647;return(x-1)/2147483646}}
-  function tile(size,seed,nTiny,nMid,nBig){
-    var r=mk(seed),o='<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'"><defs><radialGradient id="g"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>',i,x,y,c,rad;
-    for(i=0;i<nTiny;i++){x=r()*size;y=r()*size;c=cols[(r()*4)|0];rad=.45+r()*.55;o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+rad.toFixed(2)+'" fill="'+c+'" fill-opacity="'+(.35+r()*.4).toFixed(2)+'"/>';}
-    for(i=0;i<nMid;i++){x=r()*size;y=r()*size;c=cols[(r()*4)|0];rad=1.1+r()*.6;o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(rad*3.2).toFixed(1)+'" fill="url(#g)"/><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+rad.toFixed(2)+'" fill="'+c+'" fill-opacity=".85"/>';}
-    for(i=0;i<nBig;i++){x=r()*size;y=r()*size;var L=5+r()*3,w=L*.16;
-      o+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(L*1.7).toFixed(1)+'" fill="url(#g)"/><path fill="#fffcf0" fill-opacity=".92" d="M'+x.toFixed(1)+' '+(y-L).toFixed(1)+'Q'+(x+w).toFixed(1)+' '+(y-w).toFixed(1)+' '+(x+L).toFixed(1)+' '+y.toFixed(1)+'Q'+(x+w).toFixed(1)+' '+(y+w).toFixed(1)+' '+x.toFixed(1)+' '+(y+L).toFixed(1)+'Q'+(x-w).toFixed(1)+' '+(y+w).toFixed(1)+' '+(x-L).toFixed(1)+' '+y.toFixed(1)+'Q'+(x-w).toFixed(1)+' '+(y-w).toFixed(1)+' '+x.toFixed(1)+' '+(y-L).toFixed(1)+'Z"/>';}
-    return 'url("data:image/svg+xml;utf8,'+encodeURIComponent(o+'</svg>')+'")';
+  var cv=document.getElementById('etoiles'); if(!cv) return;
+  var cx=cv.getContext('2d'), W=0,H=0,dpr=1, S=[], reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var mob=window.matchMedia('(max-width:700px)').matches, intro=document.getElementById('haut');
+  var cols=['255,255,255','255,244,222','236,228,255','255,232,200'];
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function build(){
+    dpr=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+    cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+    var nTiny=mob?26:58, nMid=mob?6:12, nBig=mob?2:4; S=[];
+    for(var i=0;i<nTiny+nMid+nBig;i++){
+      var t=i<nBig?2:i<nBig+nMid?1:0;
+      S.push({x:Math.random(),y:Math.random(),t:t,r:t==2?rnd(4.5,7):t==1?rnd(1.1,1.7):rnd(.45,.95),
+        ph:rnd(0,6.28),sp:rnd(.25,.7),c:cols[(Math.random()*cols.length)|0],par:t==2?.2:rnd(.04,.14),o:t==0?rnd(.35,.75):rnd(.6,.9)});
+    }
   }
-  var mob=matchMedia('(max-width:700px)').matches;
-  [[tile(mob?600:1000,7,mob?34:70,mob?4:9,0),mob?600:1000,'6.2s','0s'],
-   [tile(mob?760:1240,19,mob?30:62,mob?3:8,0),mob?760:1240,'4.6s','-2.1s'],
-   [tile(mob?900:1500,31,0,0,mob?2:4),mob?900:1500,'5.4s','-1.3s']].forEach(function(L,i){
-    var e=document.createElement('i');e.className='sk sk'+i;e.setAttribute('aria-hidden','true');
-    e.style.backgroundImage=L[0];e.style.backgroundSize=L[1]+'px '+L[1]+'px';e.style.animationDuration=L[2];e.style.animationDelay=L[3];
-    ciel.insertBefore(e,ciel.firstChild);
-  });
+  function sparkle(x,y,L,a,c){
+    var g=cx.createRadialGradient(x,y,0,x,y,L*1.7);g.addColorStop(0,'rgba('+c+','+(.5*a)+')');g.addColorStop(1,'rgba('+c+',0)');
+    cx.fillStyle=g;cx.beginPath();cx.arc(x,y,L*1.7,0,6.283);cx.fill();
+    var w=L*.16;
+    cx.fillStyle='rgba(255,252,240,'+(.92*a)+')';cx.beginPath();
+    cx.moveTo(x,y-L);cx.quadraticCurveTo(x+w,y-w,x+L,y);cx.quadraticCurveTo(x+w,y+w,x,y+L);cx.quadraticCurveTo(x-w,y+w,x-L,y);cx.quadraticCurveTo(x-w,y-w,x,y-L);cx.fill();
+  }
+  function frame(t){
+    var y=window.scrollY||0, max=Math.max(1,document.documentElement.scrollHeight-H), p=y/max;
+    var f=1-Math.min(1,Math.max(0,(p-.5)/.34))*.9;
+    if(intro){var ie=intro.offsetTop+intro.offsetHeight-H;f*=Math.min(1,Math.max(0,(y-(ie-H*.35))/(H*.35)));}
+    cv.style.opacity=f.toFixed(3);
+    cx.clearRect(0,0,W,H);
+    if(f<.04) return;
+    for(var i=0;i<S.length;i++){
+      var s=S[i], tw=reduce?.8:(.6+.4*Math.sin(t/1000*s.sp+s.ph));
+      var px=s.x*W, py=(((s.y*H - (reduce?0:t/1000*s.par*14))%H)+H)%H, a=tw*s.o;
+      if(s.t==2){sparkle(px,py,s.r*(.85+.25*tw),Math.min(1,a+.1),s.c);}
+      else{
+        if(s.t==1){var g=cx.createRadialGradient(px,py,0,px,py,s.r*3.4);g.addColorStop(0,'rgba('+s.c+','+(.38*a)+')');g.addColorStop(1,'rgba('+s.c+',0)');cx.fillStyle=g;cx.beginPath();cx.arc(px,py,s.r*3.4,0,6.283);cx.fill();}
+        cx.fillStyle='rgba('+s.c+','+a+')';cx.beginPath();cx.arc(px,py,s.r,0,6.283);cx.fill();
+      }
+    }
+  }
+  var lastT=0;function loop(t){if(t-lastT>=33){lastT=t;frame(t)}requestAnimationFrame(loop)}
+  build();
+  if(reduce){frame(0);addEventListener('scroll',function(){frame(0)},{passive:true});}else requestAnimationFrame(loop);
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
 })();
 </script>
 <script>
