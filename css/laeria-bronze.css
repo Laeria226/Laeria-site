@@ -238,3 +238,9 @@ html.seal-gl body .sealed.breaking .wax .h{animation:none!important;transform:no
   transition:translate .5s cubic-bezier(.1,.8,.2,1),scale .5s cubic-bezier(.1,.8,.2,1),opacity .32s ease,filter .25s!important}
 html.seal-gl body .sealed.breaking .wax .h.l{translate:-7px 0}
 html.seal-gl body .sealed.breaking .wax .h.r{translate:7px 0}
+/* v16 : syllabes La · Ë · Ria nettes (plus de halo flou) */
+html body .syl b.sweep::before,html body .syl b.sweep::after,html body .syl .sweep::before,html body .syl .sweep::after{display:none!important}
+html body .syl b,html body .syl b.sweep,html body .syl .sweep{filter:none!important}
+html body .syl b .l{text-shadow:none!important}
+/* v16 : fond du livre — on garde le soleil et la vallée fleurie, plus de mer */
+html body .ciel .soleil{-webkit-mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important;mask-image:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(180deg,transparent,#000 30%,#000 52%,transparent 60.5%)!important}
