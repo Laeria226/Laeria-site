@@ -61,7 +61,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
+html{scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-y:none}
 body{margin:0;background:var(--night);color:var(--parch);font-family:var(--f-body);font-size:1.22rem;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto}
 a{color:inherit}
@@ -157,11 +157,11 @@ footer{padding-bottom:110px}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .icue.off{opacity:0;transform:translate(-50%,12px);pointer-events:none}
 
-.itit{position:absolute;left:0;top:0;z-index:4;margin:0;white-space:nowrap;pointer-events:none;transform:translate(-50%,-50%);font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:clamp(3rem,8.4vw,8rem);line-height:1;letter-spacing:.16em;text-align:center;will-change:opacity}
+.itit{position:absolute;left:50%;top:30%;visibility:hidden;z-index:4;margin:0;white-space:nowrap;pointer-events:none;transform:translate(-50%,-50%);font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;font-weight:400;font-size:clamp(3rem,8.4vw,8rem);line-height:1;letter-spacing:.16em;text-align:center;will-change:opacity}
 .itit .l{display:inline-block;color:#fff3c4;opacity:.8;animation:itt 3.4s ease-in-out infinite;animation-delay:var(--d)}
 @keyframes itt{0%,100%{opacity:.78;color:#f1d58a;text-shadow:0 0 5px rgba(253,226,140,.7),0 0 14px rgba(240,180,80,.5)}42%{opacity:1;color:#fffbe6;text-shadow:0 0 7px #fff7d6,0 0 20px #ffd978,0 0 42px rgba(240,170,70,.85)}58%{opacity:.85;color:#fff0b8;text-shadow:0 0 6px rgba(255,240,190,.9),0 0 16px rgba(253,200,100,.7)}}
 @media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.26em}.istage::before{content:"";position:absolute;left:0;right:0;top:0;height:16vh;z-index:3;pointer-events:none;background:linear-gradient(180deg,#0b0815 0%,rgba(11,8,21,.82) 22%,rgba(11,8,21,.5) 50%,rgba(11,8,21,.18) 78%,rgba(11,8,21,0) 100%);opacity:var(--topShade,1)}}
-.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.9'/></svg>");background-size:240px}
+.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background-image:url(/img/grain-gris.png?v=1);background-size:240px}
 .iskip{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:6;font-family:var(--f-label);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--parch-dim);background:none;border:0;padding:8px 6px;cursor:pointer;transition:opacity .4s,color .2s}
 .iskip:hover{color:var(--gold)}
 .iskip.off{opacity:0;pointer-events:none}
@@ -1011,7 +1011,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       var s=Math.max(W/IW,H/IH);
       var ox=(W-IW*s)*.516,oy=(H-IH*s)*.33;G.W=W;G.H=H;G.kx=ox+FX*IW*s;G.ky=oy+FY*IH*s;
       G.zmax=Math.min(5.5,Math.max(2.3,H*1.2/(KH*IH*s)));
-      var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+TT*IH*s).toFixed(1)+'px';}
+      var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+TT*IH*s).toFixed(1)+'px';tt.style.visibility='visible';}
       stage.style.setProperty('--kx',G.kx.toFixed(1)+'px');stage.style.setProperty('--ky',G.ky.toFixed(1)+'px');}
     geom();window.addEventListener('resize',geom);
     var irange=function(){return intro.offsetHeight-innerHeight;};
@@ -1506,7 +1506,7 @@ main{position:relative}
    radial-gradient(46vw 30vw at 93% 38%,rgba(30,16,52,.2),transparent 70%),
    radial-gradient(46vw 30vw at 7% 55%,rgba(30,16,52,.18),transparent 70%),
    linear-gradient(180deg,#3a2b66 0,#47337a 6%,#5e3d85 14%,#7a4786 24%,#964f86 36%,#ae5a82 48%,#c2687a 60%,#d27a6e 72%,#df9066 82%,#ebaa66 90%,#f3c074 94%,#f3c074 100%);}
-.ciel::after{content:"";position:absolute;inset:0;opacity:.05;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .8  0 0 0 1.4 -.35'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.ciel::after{content:"";position:absolute;inset:0;opacity:.05;background:url(/img/grain-ciel.png?v=1)}
 /* voiles de brume : traînées lentes, comme les nuages de la pochette */
 .ciel .w{position:absolute;left:-20vw;width:90vw;height:11vw;border-radius:50%;opacity:.55;will-change:transform;animation:wderive 46s ease-in-out infinite alternate}
 .ciel .w:nth-of-type(even){left:auto;right:-24vw;animation-duration:58s;animation-direction:alternate-reverse}
