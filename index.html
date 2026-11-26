@@ -161,7 +161,7 @@ footer{padding-bottom:110px}
 .itit .l{display:inline-block;color:#fff3c4;opacity:.8;animation:itt 3.4s ease-in-out infinite;animation-delay:var(--d)}
 @keyframes itt{0%,100%{opacity:.78;color:#f1d58a;text-shadow:0 0 5px rgba(253,226,140,.7),0 0 14px rgba(240,180,80,.5)}42%{opacity:1;color:#fffbe6;text-shadow:0 0 7px #fff7d6,0 0 20px #ffd978,0 0 42px rgba(240,170,70,.85)}58%{opacity:.85;color:#fff0b8;text-shadow:0 0 6px rgba(255,240,190,.9),0 0 16px rgba(253,200,100,.7)}}
 @media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.26em}.istage::before{content:"";position:absolute;left:0;right:0;top:0;height:16vh;z-index:3;pointer-events:none;background:linear-gradient(180deg,#0b0815 0%,rgba(11,8,21,.82) 22%,rgba(11,8,21,.5) 50%,rgba(11,8,21,.18) 78%,rgba(11,8,21,0) 100%);opacity:var(--topShade,1)}}
-.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background-image:url(/img/grain-gris.png?v=1);background-size:240px}
+.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background-image:url(/img/grain-gris.png?v=3);background-size:240px}
 .iskip{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:6;font-family:var(--f-label);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--parch-dim);background:none;border:0;padding:8px 6px;cursor:pointer;transition:opacity .4s,color .2s}
 .iskip:hover{color:var(--gold)}
 .iskip.off{opacity:0;pointer-events:none}
@@ -190,8 +190,7 @@ footer{padding-bottom:110px}
 /* ---------- Planches ---------- */
 .plate{margin:0;position:relative;isolation:isolate;width:100%;max-width:460px;justify-self:center}
 .plate::before{content:"";position:absolute;inset:-8%;z-index:-1;background:radial-gradient(closest-side,var(--tint,rgba(179,154,230,.5)),transparent);opacity:.7}
-.plate img{display:block;width:100%;height:auto;cursor:default;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.plate:hover img{transform:translateY(-6px) scale(1.012)}
+.plate img{display:block;width:100%;height:auto;cursor:default}
 .plate figcaption{font-style:italic;font-size:1rem;color:var(--parch-dim);margin-top:1rem;text-align:center}
 
 /* ---------- Laëria ---------- */
@@ -980,12 +979,6 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
   /* ---------- Couverture en relief ---------- */
   var cover=document.getElementById('cover');
-  if(cover&&!reduce&&window.matchMedia('(hover:hover)').matches){
-    var st=cover.parentElement;
-    st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      cover.style.transform='rotateY('+(x*14)+'deg) rotateX('+(-y*10)+'deg)';cover.style.setProperty('--shine',(50-x*120)+'%');});
-    st.addEventListener('pointerleave',function(){cover.style.transform='';cover.style.setProperty('--shine','100%');});
-  }
 
 
   function clamp(x){return x<0?0:x>1?1:x;}
