@@ -29,3 +29,13 @@
   build();if(reduce){frame(0);addEventListener('scroll',function(){frame(0)},{passive:true})}else requestAnimationFrame(loop);
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
 })();
+
+/* titres dorés : un seul passage de lumière à l'apparition, puis fixes */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;io.unobserve(e.target);var h=e.target;
+    h.classList.add('shine-once');h.addEventListener('animationend',function(){h.classList.remove('shine-once');},{once:true});
+  });},{threshold:.6});
+  [].forEach.call(document.querySelectorAll('h1,h2,h3'),function(h){io.observe(h);});
+})();
