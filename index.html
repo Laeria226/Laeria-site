@@ -185,7 +185,7 @@ footer{padding-bottom:110px}
 @media(max-width:680px){.hero-in .eyebrow{letter-spacing:.2em;font-size:.68rem}.ihero{padding:70px 16px 40px}.hero-in .hook{margin-top:1.3rem}}
 @media(max-height:620px){.hero-in .hook{display:none}}
 
-.bg-art{position:absolute;inset:-14% -6%;z-index:-2;background-position:center;background-size:cover;filter:blur(46px) saturate(1.25);opacity:.42;will-change:transform}
+.bg-art{position:absolute;inset:-14% -6%;z-index:-2;background-position:center;background-size:cover;opacity:.42}
 .prologue::after,.panel::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(17,13,27,.55) 22%,rgba(17,13,27,.55) 78%,var(--night) 100%)}
 /* ---------- Planches ---------- */
 .plate{margin:0;position:relative;isolation:isolate;width:100%;max-width:460px;justify-self:center}
@@ -311,7 +311,7 @@ footer{padding-bottom:110px}
 .mapbox{position:relative;isolation:isolate;max-width:calc((100vh - 170px)*1.3436);max-width:calc((100svh - 170px)*1.3436);margin-inline:auto}
 .mapbox .mapframe{max-width:none}
 @media(orientation:landscape) and (max-height:760px){.mapbox{max-width:min(100%,1300px)}.mapwrap{padding-inline:clamp(8px,2vw,24px)}}
-.mapbox::before{content:"";position:absolute;inset:4% 2% -2%;z-index:-1;background:radial-gradient(closest-side,rgba(179,154,230,.16),transparent);filter:blur(40px)}
+.mapbox::before{content:"";position:absolute;inset:4% 2% -2%;z-index:-1;background:radial-gradient(closest-side,rgba(179,154,230,.16),transparent)}
 .mapzoom img{}
 .mlantern{-webkit-mask:url(img/carte.webp) center/100% 100% no-repeat;mask:url(img/carte.webp) center/100% 100% no-repeat}
 .place{position:absolute;z-index:6;left:var(--px,50%);top:var(--py,50%);transform:translate(var(--tx,-50%),var(--ty,calc(-100% - 22px)));width:min(380px,48%);display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;align-items:start;padding:18px 22px 18px 18px;background:rgba(17,13,27,.88);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(212,174,98,.35);box-shadow:0 26px 70px rgba(0,0,0,.6),inset 0 0 0 4px rgba(17,13,27,.4),inset 0 0 0 5px rgba(212,174,98,.12),0 0 60px rgba(255,214,150,.08);animation:pop .5s cubic-bezier(.2,.7,.2,1)}
@@ -610,7 +610,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="cite" style="--tint:rgba(222,140,96,.6);--tint-solid:#e3a07a">
   <div class="fx fx-cite" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/cite.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/cite-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/cite.webp" width="1000" height="1589" alt="Une rue pavée bordée de maisons de brique rouge à pignons, un feu de signalisation éteint envahi par le lierre, un marché de troc au loin et un couple qui avance vers la lumière du matin." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -626,7 +626,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="basalte" style="--tint:rgba(214,178,96,.5);--tint-solid:#d8bb7a">
   <div class="fx fx-basalte" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/basalte.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/basalte-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/basalte.webp" width="1000" height="1589" alt="Une plaine de basalte noir sous des nuages sales, une silhouette en capuche sur un rocher, une meute de chiens enflammés, des rochers runiques au premier plan et une étoile dorée qui projette un rayon de lumière sur un homme debout au centre." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -642,7 +642,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="lemura" style="--tint:rgba(214,92,62,.6);--tint-solid:#e88466">
   <div class="fx fx-lemura" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/lemura.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/lemura-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/lemura.webp" width="1000" height="1589" alt="Les ruines d'une cité colossale sous un ciel rouge et violet : un portique fendu portant le nom Lemura Pyrescha, des brasiers rouges et blancs, des escaliers de fer, un phare au loin et deux géants de fumée aux bras trop longs." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -658,7 +658,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="gaermore" style="--tint:rgba(120,92,214,.6);--tint-solid:#b39ae6">
   <div class="fx fx-gaermore" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/gaermore.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/gaermore-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/gaermore.webp" width="1000" height="1589" alt="Un lac noir au crépuscule bordé d'une jungle et de colonnes en ruine, une plage de sable pâle, une grotte au flanc d'une falaise, et un phénix d’acajou et de braise aux ailes déployées, une lumière au bout de chaque aile." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -674,7 +674,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="aeliora" style="--tint:rgba(232,150,200,.55);--tint-solid:#e7a9cf">
   <div class="fx fx-aeliora" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/racines.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/racines-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/racines.webp" width="1000" height="1589" alt="Un archipel d'îles suspendues dans un ciel d'aube rose, reliées par des ponts de lumière violette, avec prairies, collines de lavande et arbres, leurs racines pendant dans une mer de nuages." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -690,7 +690,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
 <section class="panel" data-scene="anarhini" style="--tint:rgba(240,166,70,.6);--tint-solid:#f0b56a">
   <div class="fx fx-anarhini" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
-  <div class="bg-art" data-parallax style="background-image:url(img/anarhini.webp)" aria-hidden="true"></div>
+  <div class="bg-art" data-parallax style="background-image:url(img/anarhini-flou.webp?v=1)" aria-hidden="true"></div>
   <div class="wrap">
     <figure class="plate"><img src="img/anarhini.webp" width="1000" height="1589" alt="Une maison de pierre blanche aux volets bleus et au toit d'herbe au bord d'une falaise dorée, face à une mer sauvage et à un soleil immense de miel et d'orange ; une silhouette attend sur le chemin." loading="lazy" data-zoom></figure>
     <div class="body">
@@ -1556,7 +1556,7 @@ main .place-tag{filter:brightness(1.15)}
 .laeria{overflow:visible;padding-top:clamp(40px,6vw,90px)}
 /*medal*/.medal{max-width:min(640px,88vw)!important;width:100%}
 
-.medal::before{inset:6%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,214,130,.55),rgba(255,190,110,.18) 62%,transparent 80%);filter:blur(30px);animation:embpulse 7s ease-in-out infinite}
+.medal::before{inset:6%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,214,130,.55),rgba(255,190,110,.18) 62%,transparent 80%);animation:embpulse 7s ease-in-out infinite}
 @keyframes embpulse{0%,100%{opacity:.5;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
 .medal img{border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 18px 40px rgba(12,6,28,.55)) drop-shadow(0 0 34px rgba(255,200,120,.28))}
 .laeria .wrap>div:last-child{max-width:1180px}
