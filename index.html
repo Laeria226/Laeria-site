@@ -226,7 +226,7 @@ footer{padding-bottom:110px}
 @media(max-width:800px){.panel .wrap{grid-template-columns:1fr}.panel:nth-of-type(even) .plate{order:0}.panel .plate{max-width:360px}}
 /* ---------- Sceaux : la cire se fend, la lumière passe ---------- */
 .sealed{overflow:hidden}
-.sealed img{filter:blur(22px) brightness(.86) saturate(.62);transform:scale(1.06);cursor:default;transition:none}
+.sealed img{transform:scale(1.06);cursor:default;transition:none}
 .sealed:hover img{transform:scale(1.06)}
 
 .sealed.open img{filter:blur(0) brightness(1) saturate(1);transform:none;cursor:default;animation:sealReveal 1.9s cubic-bezier(.25,.6,.2,1)}
@@ -495,6 +495,12 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   .intro{height:auto}.istage{position:relative;height:auto;min-height:100vh}.ivig,.ilight,.iflood,.irays,.icue,.iskip,.iglow{display:none}.icam{transform:none!important}.icam::after{content:"";position:absolute;inset:0;background:rgba(12,9,20,.64)}.iworld{opacity:1}
   .ihero{position:relative;min-height:100vh}.ihero .nav,.ihero .hero-in>*{opacity:1;transform:none}
 }
+
+/* survol des illustrations : léger soulèvement (transform seulement, très léger à calculer) */
+@media(hover:hover){.js .panel.in .plate,.js .excerpt .plate.rv.in,.js .vault .plate.rv.in{transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s}
+.js .panel.in .plate:hover,.js .excerpt .plate.rv.in:hover,.js .vault .plate.rv.in:hover{transform:translateY(-7px) scale(1.012)}}
+/* animations en pause hors de l'écran */
+.pz *,.pz *::before,.pz *::after{animation-play-state:paused!important}
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
 <link rel="stylesheet" href="/css/laeria-bronze.css?v=28">
@@ -707,7 +713,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   <div class="fx fx-chene" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
   <div class="wrap">
     <figure class="plate sealed" data-seal>
-      <img src="img/fissure.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Un immense chêne aux branches et au tronc tordus, parcouru de lueurs violettes, qui domine les toits d'un quartier de maisons à colombages et à pignons à gradins." loading="lazy">
+      <img src="img/fissure-flou.webp?v=1" data-full="img/fissure.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Un immense chêne aux branches et au tronc tordus, parcouru de lueurs violettes, qui domine les toits d'un quartier de maisons à colombages et à pignons à gradins." loading="lazy">
       <div class="seal-cover">
           <i class="seal-glow" aria-hidden="true"></i><i class="seal-slit" aria-hidden="true"></i>
           <span class="wax" aria-hidden="true"><i class="h l"><svg><use href="#star"/></svg></i><i class="h r"><svg><use href="#star"/></svg></i><svg class="crack" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline class="bloom" points="54,-2 46,18 56,38 45,58 55,78 48,102"/><polyline class="core" points="54,-2 46,18 56,38 45,58 55,78 48,102"/></svg></span>
@@ -894,7 +900,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       <p class="lead">Une dernière illustration appartient au secret du livre : l’image qui précède les mots « À suivre… ». Elle ne porte que son titre, mais elle en dit beaucoup. Si vous n’avez pas encore lu le livre, refermez cette porte.</p>
     </div>
     <figure class="plate sealed" data-seal data-cap="La dernière image du livre" style="--tint:rgba(240,235,214,.5)">
-      <img src="img/dame.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Une silhouette en cape blanche entourée d'un halo, de dos devant un grand chêne dont le tronc laisse filtrer une lumière dorée ; deux dobermans calmes à ses pieds et un carnet posé entre les racines." loading="lazy">
+      <img src="img/dame-flou.webp?v=1" data-full="img/dame.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Une silhouette en cape blanche entourée d'un halo, de dos devant un grand chêne dont le tronc laisse filtrer une lumière dorée ; deux dobermans calmes à ses pieds et un carnet posé entre les racines." loading="lazy">
       <div class="seal-cover">
           <i class="seal-glow" aria-hidden="true"></i><i class="seal-slit" aria-hidden="true"></i>
           <span class="wax" aria-hidden="true"><i class="h l"><svg><use href="#star"/></svg></i><i class="h r"><svg><use href="#star"/></svg></i><svg class="crack" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline class="bloom" points="54,-2 46,18 56,38 45,58 55,78 48,102"/><polyline class="core" points="54,-2 46,18 56,38 45,58 55,78 48,102"/></svg></span>
@@ -1062,7 +1068,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   /* ---------- Sceaux : la cire se fend, la lumière passe ---------- */
   function lift(fig){
     if(fig.classList.contains('open')||fig.classList.contains('cracking'))return;
-    var img=fig.querySelector('img');if(img&&img.dataset.alt)img.alt=img.dataset.alt;
+    var img=fig.querySelector('img');if(img&&img.dataset.alt)img.alt=img.dataset.alt;if(img&&img.dataset.full){img.src=img.dataset.full;img.removeAttribute('data-full');}
     var cap=fig.querySelector('figcaption');
     function fin(){fig.classList.add('open');if(cap&&fig.dataset.cap)cap.textContent=fig.dataset.cap;}
     var wax=fig.querySelector('.wax'),cover=fig.querySelector('.seal-cover');
@@ -1949,7 +1955,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
       }
     }
   }
-  function loop(t){frame(t);requestAnimationFrame(loop)}
+  var lt=0;function loop(t){requestAnimationFrame(loop);if(t-lt<33)return;lt=t;frame(t)}
   build();
   if(reduce){frame(0);addEventListener('scroll',function(){frame(0)},{passive:true});}else requestAnimationFrame(loop);
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
@@ -1966,7 +1972,15 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
   [].forEach.call(document.querySelectorAll('h2,h3'),function(h){io.observe(h);});
 })();
 </script>
-<script src="/js/laeria-sweep.js?v=12" defer></script>
+<script>
+/* met en pause les animations des sections qui ne sont pas à l'écran (défilement plus fluide) */
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('pz',!e.isIntersecting);});},{rootMargin:'120px 0px'});
+  [].forEach.call(document.querySelectorAll('section.panel,.laeria,.carnet,.excerpt,.book,.vault,.atlas,.cast-sec,.chapters-head,footer'),function(el){io.observe(el);});
+})();
+</script>
+<script src="/js/laeria-sweep.js?v=13" defer></script>
 <script src="/js/sceau-lumiere.js?v=1" defer></script>
 <script src="/js/intro-stars.js" defer></script>
 <script>

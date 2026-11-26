@@ -15,10 +15,12 @@
       if(!w.classList.contains('sweep')){w.classList.add('sweep');if(io)io.observe(w);}words.push({el:w,ww:ww,bw:ww*.9});
     });
   }
-  var vis=new Set(),io=null,last=0;
+  var vis=new Set(),io=null,last=0,scrolling=false,st;
+  addEventListener('scroll',function(){scrolling=true;clearTimeout(st);st=setTimeout(function(){scrolling=false},160)},{passive:true});
   if('IntersectionObserver' in window){io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)})},{rootMargin:'80px'});}
   function tick(now){
     requestAnimationFrame(tick);
+    if(scrolling)return; /* pas de reflet pendant le défilement : plus fluide */
     if(now-last<33)return; /* ~30 images/s : suffisant pour un reflet, bien plus léger */
     last=now;
     var t=(now%P)/P;
