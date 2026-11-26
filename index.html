@@ -143,8 +143,8 @@ footer{padding-bottom:110px}
 .ilight{position:absolute;left:var(--cx,52%);top:var(--cy,45%);width:70vmin;height:70vmin;margin:-35vmin 0 0 -35vmin;border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(circle,#fff7d6 0,#fde9a3 15%,rgba(253,226,140,.72) 34%,rgba(202,150,83,.22) 54%,rgba(202,150,83,0) 72%)}
 .iflood{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--cx,52%) var(--cy,45%),#fff7d6 0,#fde9a3 38%,#f0c27a 100%)}
 .iworld{position:absolute;inset:0;opacity:0;pointer-events:none}
-.iworld::before{content:"";position:absolute;inset:-12%;background:url(img/ouverture-paysage-flou.webp?v=2) 51.6% 45%/cover no-repeat}
-.iworld::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 55% at 51% 40%,rgba(255,226,150,.42),rgba(255,226,150,0) 70%),radial-gradient(90% 70% at 50% 100%,rgba(240,140,90,.38),rgba(240,140,90,0) 70%),linear-gradient(180deg,rgba(74,44,104,.62) 0%,rgba(150,80,130,.38) 34%,rgba(12,9,20,.12) 62%,rgba(12,9,20,.45) 100%)}
+.iworld::before{content:"";position:absolute;inset:0;background:radial-gradient(80vw 46vh at 12% 8%,rgba(150,104,226,.38),transparent 70%),radial-gradient(90vw 40vh at 50% 38%,rgba(255,196,150,.22),transparent 70%),radial-gradient(64vw 44vh at 86% 24%,rgba(178,128,240,.30),transparent 70%),linear-gradient(180deg,#47337a 0,#5e3d85 40%,#533a80 78%,#3a2b66 100%)}
+.iworld::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 55% at 51% 40%,rgba(255,226,150,.22),rgba(255,226,150,0) 70%)}
 #motes{position:absolute;inset:0;z-index:4;width:100%;height:100%;pointer-events:none}
 .icue{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:6;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font-family:var(--f-label);font-weight:600;font-size:clamp(.86rem,2vw,1.4rem);letter-spacing:.26em;text-transform:uppercase;text-align:center;padding:18px 26px;width:max-content;max-width:94vw;transition:opacity .5s,transform .5s}
 .icue-t{display:block;line-height:1.7}
@@ -161,7 +161,7 @@ footer{padding-bottom:110px}
 .itit .l{display:inline-block;color:#fff3c4;opacity:.8;animation:itt 3.4s ease-in-out infinite;animation-delay:var(--d)}
 @keyframes itt{0%,100%{opacity:.78;color:#f1d58a;text-shadow:0 0 5px rgba(253,226,140,.7),0 0 14px rgba(240,180,80,.5)}42%{opacity:1;color:#fffbe6;text-shadow:0 0 7px #fff7d6,0 0 20px #ffd978,0 0 42px rgba(240,170,70,.85)}58%{opacity:.85;color:#fff0b8;text-shadow:0 0 6px rgba(255,240,190,.9),0 0 16px rgba(253,200,100,.7)}}
 @media(max-width:700px){.itit{font-size:clamp(2.6rem,13vw,4.4rem);letter-spacing:.26em}.istage::before{content:"";position:absolute;left:0;right:0;top:0;height:16vh;z-index:3;pointer-events:none;background:linear-gradient(180deg,#0b0815 0%,rgba(11,8,21,.82) 22%,rgba(11,8,21,.5) 50%,rgba(11,8,21,.18) 78%,rgba(11,8,21,0) 100%);opacity:var(--topShade,1)}}
-.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.16;mix-blend-mode:overlay;background-image:url(/img/grain-gris.png?v=3);background-size:240px}
+.igrain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url(/img/grain-gris.png?v=3);background-size:240px}
 .iskip{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:6;font-family:var(--f-label);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--parch-dim);background:none;border:0;padding:8px 6px;cursor:pointer;transition:opacity .4s,color .2s}
 .iskip:hover{color:var(--gold)}
 .iskip.off{opacity:0;pointer-events:none}
@@ -1772,7 +1772,7 @@ main{overflow-x:clip}
 .itit .l,.hero-in h1.htit .l,.laeria-mot .l,.syl b .l,footer .t .lt-mot .l{-webkit-text-stroke:.04em #d9962c;paint-order:stroke fill}
 .brand .l{-webkit-text-stroke:.012em #dfa63c;paint-order:stroke fill}
 /* le fond d'ouverture garde l'aspect d'un dessin : léger grain de papier */
-.igrain{opacity:.27}
+.igrain{opacity:.07}
 /* ===== Laëria : passage de lumière continu + léger métal doré, contour doré, halo resserré (net, lisible) ===== */
 .sweep{--sx:-300px;--ox:0px;filter:drop-shadow(0 0 3px rgba(255,214,130,.75)) drop-shadow(0 0 12px rgba(240,170,70,.38))}
 .sweep>.l,.sweep .l{display:inline-block;opacity:1!important;animation:none!important;text-shadow:none!important;
