@@ -20,7 +20,7 @@
 ' float beat=1.+.38*pow(sin(t*1.7)*.5+.5,3.);',
 ' float I=(.085+.04*sin(t*.8))*beat+charge*.5;',
 ' float Lg=.26+charge*.30;',
-' float dec=1.-smoothstep(.18,1.3,bt);dec*=dec*(3.-2.*dec);',
+' float dec=1.-smoothstep(3.4,5.2,bt);dec*=dec*(3.-2.*dec);',
 ' float e=1.-pow(1.-clamp(bt/1.5,0.,1.),3.);',
 ' float front=.12+e*1.9;',
 ' float bm=bt>=0.?1.-smoothstep(front*.5,front,r):0.;',
@@ -84,12 +84,12 @@
       if(!st.T0)st.T0=now;
       var t=(now-st.T0)/1000,charge=0,bt=-1,flash=0;
       if(st.S>=1)charge=ease((now-st.tS)/1000);
-      if(st.S>=2){bt=(now-st.tB)/1000;charge=Math.max(0,1-bt*2.2);flash=(bt<.35?ss(0,.35,bt):1-ss(.35,1.2,bt))*.8;}
+      if(st.S>=2){bt=(now-st.tB)/1000;charge=1.-ss(3.4,5.2,bt);flash=(bt<.35?ss(0,.35,bt):1-ss(.35,1.2,bt))*.4;}
       gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.res,cv.width,cv.height);gl.uniform2f(U.ctr,CX,CY);gl.uniform1f(U.t,t);
       gl.uniform1f(U.charge,charge);gl.uniform1f(U.bt,bt);gl.uniform1f(U.flash,flash);gl.uniform1f(U.rm,RM/cv.height);
       gl.drawArrays(gl.TRIANGLES,0,3);
-      if(st.S>=2&&bt>1.9){st.run=false;st.done=true;gl.clear(gl.COLOR_BUFFER_BIT);cv.remove();return;}
+      if(st.S>=2&&bt>5.4){st.run=false;st.done=true;gl.clear(gl.COLOR_BUFFER_BIT);cv.remove();return;}
       if(st.S===0&&!st.vis){st.run=false;return;}
       requestAnimationFrame(frame);
     }
@@ -100,7 +100,8 @@
     if(window.ResizeObserver)new ResizeObserver(size).observe(fig);else addEventListener('resize',size);
     return {
       charge:function(){size();st.S=1;st.tS=performance.now();st.vis=true;go();},
-      burst:function(){st.S=2;st.tB=performance.now();go();}
+      burst:function(){st.S=2;st.tB=performance.now();go();},
+      reset:function(){st.done=false;st.S=0;st.T0=0;st.run=false;if(!cv.parentNode)fig.appendChild(cv);size();st.vis=true;go();}
     };
   }
 
