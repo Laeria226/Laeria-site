@@ -2102,22 +2102,34 @@ html{scrollbar-gutter:stable}
 </script>
 <script data-goatcounter="https://laeria.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
-/* Même « clac » au liseré doré : en descendant (ou remontant), la page s'arrête net quand le trait et l'étoile arrivent en haut de l'écran */
+/* Même « clac » au liseré doré : en descendant (ou remontant), la page se cale sur le trait et l'étoile quand ils arrivent en haut de l'écran */
 (function(){
   var seam=document.querySelector('.seamline');if(!seam||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var lock=false,last=0,prevY=scrollY,de=document.documentElement;
+  var de=document.documentElement,touch=matchMedia('(pointer:coarse)').matches;
   function stopY(){return seam.getBoundingClientRect().top+scrollY}
+  if(touch){
+    /* tactile : on laisse finir l'élan du doigt, puis la page se cale d'un geste net sur le trait (aucune lutte contre le défilement : pas de vibration) */
+    var timer=0,down=false,anim=0,lastY=scrollY,dir=1;
+    function glide(to){var from=scrollY,t0=performance.now(),D=190;anim=1;de.style.scrollBehavior='auto';
+      (function f(t){var k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);scrollTo(0,from+(to-from)*e);if(k<1)requestAnimationFrame(f);else setTimeout(function(){anim=0;lastY=scrollY;de.style.scrollBehavior=''},60)})(t0)}
+    function settle(){if(anim||down)return;var H=innerHeight,t=seam.getBoundingClientRect().top;
+      if((t>0&&t<H*.5)||(t<=0&&t>-H*.12)){if(Math.abs(t)>1)glide(scrollY+t)}}
+    addEventListener('touchstart',function(){down=true;clearTimeout(timer)},{passive:true});
+    addEventListener('touchend',function(){down=false;clearTimeout(timer);timer=setTimeout(settle,140)},{passive:true});
+    addEventListener('scroll',function(){if(anim)return;clearTimeout(timer);if(!down)timer=setTimeout(settle,140)},{passive:true});
+    return;
+  }
+  var lock=false,last=0,prevY=scrollY;
   function block(e){if(lock&&e.cancelable){e.preventDefault();return false}}
   ['wheel','touchmove'].forEach(function(t){addEventListener(t,block,{passive:false})});
   addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
-  var touch=matchMedia('(pointer:coarse)').matches,bd=document.body;
   addEventListener('scroll',function(){
     var y=scrollY,now=Date.now();
     if(lock)return;
     var sy=stopY();
     if(((prevY<sy&&y>=sy)||(prevY>sy&&y<=sy))&&Math.abs(y-prevY)<innerHeight*1.5&&now-last>3000){
-      last=now;lock=true;de.style.scrollBehavior='auto';de.style.overflow='hidden';bd.style.overflow='hidden';scrollTo(0,sy);prevY=sy;
-      setTimeout(function(){de.style.overflow='';bd.style.overflow='';scrollTo(0,sy);lock=false;de.style.scrollBehavior='';prevY=sy;},touch?750:650);return;
+      last=now;lock=true;de.style.scrollBehavior='auto';de.style.overflow='hidden';document.body.style.overflow='hidden';scrollTo(0,sy);prevY=sy;
+      setTimeout(function(){de.style.overflow='';document.body.style.overflow='';scrollTo(0,sy);lock=false;de.style.scrollBehavior='';prevY=sy;},650);return;
     }
     prevY=y;
   },{passive:true});
