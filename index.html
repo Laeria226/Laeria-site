@@ -1952,6 +1952,22 @@ html{scrollbar-gutter:stable}
 .seamline::before{box-shadow:0 0 14px rgba(255,214,130,.65),0 0 34px rgba(255,200,110,.3),0 2px 8px rgba(11,8,21,.45)!important;filter:blur(.35px)}
 .seamsand{position:absolute;left:0;top:-130px;width:100%;height:132px;pointer-events:none}
 .ciel .orn.v6{--mv:radial-gradient(ellipse calc(var(--rx,300px)*1.85) calc(var(--ry,260px)*2) at var(--ox,35%) var(--oy,50%),#000 42%,rgba(0,0,0,.78) 58%,rgba(0,0,0,.4) 76%,rgba(0,0,0,.12) 90%,transparent 100%);--mt:linear-gradient(180deg,transparent 0,rgba(0,0,0,.3) 10%,#000 26%);-webkit-mask-image:var(--mv),var(--mt);-webkit-mask-composite:source-in;mask-image:var(--mv),var(--mt);mask-composite:intersect}
+/* sceau = serrure de la tranche du livre ; un rayon de lumière passe par le trou, la serrure s'ouvre en deux */
+html body .sealed .wax{width:108px;height:134px;filter:drop-shadow(0 5px 9px rgba(10,5,20,.75))}
+html body .sealed .wax .h{display:block!important;border-radius:0!important;background:url(img/serrure.webp?v=1) center/100% 100% no-repeat!important;box-shadow:none!important;filter:none;transition:filter .9s ease}
+html body .sealed .wax .h.l{clip-path:inset(0 49.6% 0 0)!important}
+html body .sealed .wax .h.r{clip-path:inset(0 0 0 49.6%)!important}
+html.seal-gl body .sealed .wax::before{display:block!important}
+html body .sealed .wax::after{display:none!important}
+html body .sealed .wax::before{content:"";position:absolute;inset:auto;left:50%;top:-30%;bottom:-30%;width:26%;translate:-50% 0;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,#fffbee 0,rgba(255,244,200,.95) 26%,rgba(255,220,130,.5) 55%,rgba(255,200,100,0) 100%);animation:serrureRayon 3.4s ease-in-out infinite}
+@keyframes serrureRayon{0%,100%{opacity:.6;transform:scaleX(.75)}50%{opacity:1;transform:scaleX(1.3)}}
+html body .sealed.cracking .wax::before{animation:none;opacity:1;transform:scaleX(2.4);transition:transform 1s cubic-bezier(.3,.5,.3,1),opacity .3s}
+html body .sealed.cracking .wax .h{filter:brightness(1.35) saturate(1.1)}
+html body .sealed.cracking.breaking .wax::before{opacity:0;transform:scaleX(18);transition:transform 1.3s cubic-bezier(.1,.8,.2,1),opacity 1.2s ease .25s}
+html body .sealed.cracking.breaking .wax .h.l{opacity:0!important;transform:translateX(-52%) rotate(-10deg)!important;filter:brightness(2)!important;transition:transform 1.25s cubic-bezier(.3,.1,.2,1),opacity 1s ease .2s,filter .4s!important}
+html body .sealed.cracking.breaking .wax .h.r{opacity:0!important;transform:translateX(52%) rotate(10deg)!important;filter:brightness(2)!important;transition:transform 1.25s cubic-bezier(.3,.1,.2,1),opacity 1s ease .2s,filter .4s!important}
+@media(prefers-reduced-motion:reduce){html body .sealed .wax::before{animation:none}}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -2109,12 +2125,16 @@ html{scrollbar-gutter:stable}
   function stopY(){return seam.getBoundingClientRect().top+scrollY}
   if(touch){
     /* tactile : on laisse finir l'élan du doigt, puis la page se cale d'un geste net sur le trait (aucune lutte contre le défilement : pas de vibration) */
-    var timer=0,down=false,anim=0,lastY=scrollY,dir=1;
+    var timer=0,down=false,anim=0,baseY=scrollY;
     function glide(to){var from=scrollY,t0=performance.now(),D=190;anim=1;de.style.scrollBehavior='auto';
-      (function f(t){var k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);scrollTo(0,from+(to-from)*e);if(k<1)requestAnimationFrame(f);else setTimeout(function(){anim=0;lastY=scrollY;de.style.scrollBehavior=''},60)})(t0)}
-    function settle(){if(anim||down)return;var H=innerHeight,t=seam.getBoundingClientRect().top;
-      if((t>0&&t<H*.5)||(t<=0&&t>-H*.12)){if(Math.abs(t)>1)glide(scrollY+t)}}
-    addEventListener('touchstart',function(){down=true;clearTimeout(timer)},{passive:true});
+      (function f(t){var k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);scrollTo(0,from+(to-from)*e);if(k<1)requestAnimationFrame(f);else setTimeout(function(){anim=0;baseY=scrollY;de.style.scrollBehavior=''},60)})(t0)}
+    /* même principe que sur ordinateur : le trait n'arrête la page que dans le sens où on le franchit.
+       En descendant : il se cale en haut ; en remontant vers la page d'accueil, rien ne te ramène vers l'emblème. */
+    function settle(){if(anim||down)return;var H=innerHeight,t=seam.getBoundingClientRect().top,d=scrollY-baseY;
+      if(d>2){if((t>0&&t<H*.5)||(t<=0&&t>-H*.08)){if(Math.abs(t)>1){glide(scrollY+t);return}}}
+      else if(d<-2){if(t<0&&t>-H*.5){glide(scrollY+t);return}}
+      baseY=scrollY}
+    addEventListener('touchstart',function(){down=true;clearTimeout(timer);if(!anim)baseY=scrollY},{passive:true});
     addEventListener('touchend',function(){down=false;clearTimeout(timer);timer=setTimeout(settle,140)},{passive:true});
     addEventListener('scroll',function(){if(anim)return;clearTimeout(timer);if(!down)timer=setTimeout(settle,140)},{passive:true});
     return;
