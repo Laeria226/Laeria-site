@@ -61,7 +61,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip;overscroll-behavior-y:none}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;background:var(--night);color:var(--parch);font-family:var(--f-body);font-size:1.22rem;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto}
 a{color:inherit}
@@ -226,6 +226,7 @@ footer{padding-bottom:110px}
 @media(max-width:800px){.panel .wrap{grid-template-columns:1fr}.panel:nth-of-type(even) .plate{order:0}.panel .plate{max-width:360px}}
 /* ---------- Sceaux : la cire se fend, la lumière passe ---------- */
 .sealed{overflow:hidden}
+.sealed figcaption{display:none}
 .sealed img{transform:scale(1.06);cursor:default;transition:none}
 .sealed:hover img{transform:scale(1.06)}
 
@@ -1068,9 +1069,9 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   /* ---------- Sceaux : la cire se fend, la lumière passe ---------- */
   function lift(fig){
     if(fig.classList.contains('open')||fig.classList.contains('cracking'))return;
-    var img=fig.querySelector('img');if(img&&img.dataset.alt)img.alt=img.dataset.alt;if(img&&img.dataset.full){img.src=img.dataset.full;img.removeAttribute('data-full');}
+    var img=fig.querySelector('img');if(img&&img.dataset.alt)img.alt=img.dataset.alt;var fullSrc=img&&img.dataset.full;if(fullSrc){var pre=new Image();pre.src=fullSrc;}
     var cap=fig.querySelector('figcaption');
-    function fin(){fig.classList.add('open');if(cap&&fig.dataset.cap)cap.textContent=fig.dataset.cap;}
+    function fin(){if(fullSrc&&img){img.src=fullSrc;img.removeAttribute('data-full');}fig.classList.add('open');if(cap&&fig.dataset.cap)cap.textContent=fig.dataset.cap;}
     var wax=fig.querySelector('.wax'),cover=fig.querySelector('.seal-cover');
     if(reduce||!wax){fin();return;}
     var LUM=window.SceauLumiere&&SceauLumiere.get(fig);
@@ -1505,7 +1506,7 @@ main{position:relative}
    linear-gradient(180deg,#3a2b66 0,#47337a 6%,#5e3d85 14%,#7a4786 24%,#964f86 36%,#ae5a82 48%,#c2687a 60%,#d27a6e 72%,#df9066 82%,#ebaa66 90%,#f3c074 94%,#f3c074 100%);}
 .ciel::after{content:"";position:absolute;inset:0;opacity:.05;background:url(/img/grain-ciel.png?v=1)}
 /* voiles de brume : traînées lentes, comme les nuages de la pochette */
-.ciel .w{position:absolute;left:-20vw;width:90vw;height:11vw;border-radius:50%;opacity:.55;will-change:transform;animation:wderive 46s ease-in-out infinite alternate}
+.ciel .w{position:absolute;left:-20vw;width:90vw;height:11vw;border-radius:50%;opacity:.55;animation:wderive 46s ease-in-out infinite alternate}
 .ciel .w:nth-of-type(even){left:auto;right:-24vw;animation-duration:58s;animation-direction:alternate-reverse}
 @keyframes wderive{from{transform:translateX(-4vw) rotate(-2deg)}to{transform:translateX(7vw) rotate(1.5deg)}}
 /* racines, arbres et mousse en ombre, issus de vos illustrations */
@@ -1694,7 +1695,8 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
 
 .cn-in::before{inset:-8% -26%!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%)}
 
-.ciel{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 280px);mask-image:linear-gradient(180deg,transparent 0,#000 280px)}
+/* fondu du haut : simple bandeau (le masque sur ce calque de 18 000 px de haut dépassait la limite de Safari -> bande noire) */
+.ciel::before{content:"";position:absolute;left:0;right:0;top:0;height:280px;z-index:6;pointer-events:none;background:linear-gradient(180deg,#3a2b66,rgba(58,43,102,0))}
 main{background:#0c0914}
 
 
@@ -1970,6 +1972,28 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
     t.classList.add('shine-once');t.addEventListener('animationend',function(){t.classList.remove('shine-once');},{once:true});
   });},{threshold:.6});
   [].forEach.call(document.querySelectorAll('h2,h3'),function(h){io.observe(h);});
+})();
+</script>
+<script>
+/* Passage du voile : la présentation du site s'arrête un instant, l'élan du défilement ne l'emporte plus (sans toucher à la mise en page : pas de bande noire) */
+(function(){
+  var intro=document.getElementById('haut');if(!intro||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var lock=false,last=0,prevY=scrollY,de=document.documentElement;
+  function stopY(){var r=intro.offsetHeight-innerHeight;return r>innerHeight*.5?intro.getBoundingClientRect().top+scrollY+r*.9:-1}
+  function block(e){if(lock&&e.cancelable){e.preventDefault();return false}}
+  ['wheel','touchmove'].forEach(function(t){addEventListener(t,block,{passive:false})});
+  addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
+  addEventListener('scroll',function(){
+    var y=scrollY,sy=stopY(),now=Date.now();
+    if(lock&&sy>0&&Math.abs(y-sy)>2){scrollTo(0,sy);prevY=sy;return}
+    if(sy>0&&!lock&&((prevY<sy&&y>sy+2)||(prevY>sy&&y<sy-2&&prevY>sy+40))&&now-last>4000){
+      last=now;lock=true;
+      de.style.scrollBehavior='auto';
+      scrollTo(0,sy);
+      setTimeout(function(){lock=false;de.style.scrollBehavior='';},1000);
+    }
+    prevY=scrollY;
+  },{passive:true});
 })();
 </script>
 <script>
