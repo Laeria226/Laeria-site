@@ -76,7 +76,7 @@
     function size(){
       var a=cv.getBoundingClientRect(),b=wax.getBoundingClientRect();if(!a.width)return;
       cv.width=Math.max(2,Math.round(a.width*RS));cv.height=Math.max(2,Math.round(a.height*RS));
-      CX=(b.left+b.width/2-a.left)*RS;CY=(a.height-(b.top+b.height/2-a.top))*RS;RM=b.width/2*RS;
+      CX=(b.left+b.width/2-a.left)*RS;CY=(a.height-(b.top+b.height/2-a.top))*RS;RM=b.width*.17*RS;
       gl.viewport(0,0,cv.width,cv.height);
     }
     function frame(now){
