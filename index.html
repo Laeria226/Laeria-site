@@ -2110,13 +2110,14 @@ html{scrollbar-gutter:stable}
   function block(e){if(lock&&e.cancelable){e.preventDefault();return false}}
   ['wheel','touchmove'].forEach(function(t){addEventListener(t,block,{passive:false})});
   addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
+  var touch=matchMedia('(pointer:coarse)').matches,hold=0;
   addEventListener('scroll',function(){
     var y=scrollY,now=Date.now();
-    if(lock)return;
+    if(lock){if(touch&&hold&&Math.abs(y-hold)>1)scrollTo(0,hold);return}
     var sy=stopY();
-    if(((prevY<sy&&y>=sy)||(prevY>sy&&y<=sy))&&Math.abs(y-prevY)<innerHeight*1.2&&now-last>3000){
-      last=now;lock=true;de.style.scrollBehavior='auto';de.style.overflow='hidden';scrollTo(0,sy);prevY=sy;
-      setTimeout(function(){lock=false;de.style.overflow='';de.style.scrollBehavior='';prevY=scrollY;},650);return;
+    if(((prevY<sy&&y>=sy)||(prevY>sy&&y<=sy))&&Math.abs(y-prevY)<innerHeight*1.5&&now-last>3000){
+      last=now;lock=true;hold=sy;de.style.scrollBehavior='auto';if(!touch)de.style.overflow='hidden';scrollTo(0,sy);prevY=sy;
+      setTimeout(function(){lock=false;hold=0;de.style.overflow='';de.style.scrollBehavior='';prevY=scrollY;},touch?900:650);return;
     }
     prevY=y;
   },{passive:true});
