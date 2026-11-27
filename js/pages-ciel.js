@@ -2,7 +2,7 @@
 (function(){
   var b=document.body;
   var c=document.createElement('div');c.className='ciel';c.setAttribute('aria-hidden','true');
-  c.innerHTML='<img class="orn g" src="/img/fleurs-g.webp" alt="" style="top:1%"><img class="orn d" src="/img/fleurs-d.webp" alt="" style="top:34%"><img class="orn g" src="/img/fleurs-g.webp" alt="" style="top:68%">';
+  c.innerHTML='<img class="orn g" src="/img/fleurs-g.webp?v=2" alt="" style="top:1%"><img class="orn d" src="/img/fleurs-d.webp?v=2" alt="" style="top:34%"><img class="orn g" src="/img/fleurs-g.webp?v=2" alt="" style="top:68%">';
   b.insertBefore(c,b.firstChild);
   var cv=document.createElement('canvas');cv.id='etoiles';cv.setAttribute('aria-hidden','true');b.insertBefore(cv,c.nextSibling);
   document.querySelectorAll('footer .wrap').forEach(function(w){var p=w.querySelector('p');if(!p||w.querySelector('.t'))return;

@@ -27,11 +27,11 @@ html body .syl .sweep .l.l.l.l,html body .syl b .l.l.l.l{-webkit-text-stroke:.02
 html .sweep .l[data-g]{position:relative}
 html .sweep .l[data-g]::after{content:"";position:absolute;left:0;top:50%;margin-top:-.58em;height:1.16em;pointer-events:none;
   background:no-repeat center/100% 100%;-webkit-text-fill-color:initial}
-html .sweep .l[data-g=L]::after{width:.658em;background-image:url(../img/g-L.webp)}
-html .sweep .l[data-g=A]::after{width:.612em;background-image:url(../img/g-A.webp)}
-html .sweep .l[data-g=E]::after{width:.531em;background-image:url(../img/g-E.webp)}
-html .sweep .l[data-g=R]::after{width:.605em;background-image:url(../img/g-R.webp)}
-html .sweep .l[data-g=I]::after{width:.319em;background-image:url(../img/g-I.webp)}
+html .sweep .l[data-g=L]::after{width:.658em;background-image:url(../img/g-L.webp?v=2)}
+html .sweep .l[data-g=A]::after{width:.612em;background-image:url(../img/g-A.webp?v=2)}
+html .sweep .l[data-g=E]::after{width:.531em;background-image:url(../img/g-E.webp?v=2)}
+html .sweep .l[data-g=R]::after{width:.605em;background-image:url(../img/g-R.webp?v=2)}
+html .sweep .l[data-g=I]::after{width:.319em;background-image:url(../img/g-I.webp?v=2)}
 html body .syl .sweep .l::after,html body .syl b.sweep .l::after,html body .brand .l::after{display:none}
 /* « Le livre » : mot dans le texte, plus petit et plus fin, accordé à la lecture */
 html body .mot-laeria{font-size:1.07em!important;letter-spacing:.035em!important;-webkit-text-stroke:.038em #2b0f08!important;
@@ -164,10 +164,10 @@ html body .seal-btn{color:#2b0f08;border:1px solid #2b0f08;font-weight:700;
   box-shadow:inset 0 1px 0 rgba(255,236,186,.7),inset 0 -2px 4px rgba(60,24,10,.5),0 0 0 1px rgba(255,214,130,.5),0 0 14px rgba(255,190,90,.35)}
 html body .seal-btn:hover{color:#1a0905;background:linear-gradient(180deg,#f6d9a2,#e2ab68);box-shadow:inset 0 1px 0 #fff3cf,0 0 20px rgba(255,205,110,.7)}
 /* v11 : sceau anti-spoil = médaillon de bronze gravé (même matière que le lettrage Laëria), halo doré qui respire */
-html body .wax .h{background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat!important;box-shadow:none!important;border-radius:50%}
+html body .wax .h{background:url(../img/sceau-bronze.webp?v=2) center/100% 100% no-repeat!important;box-shadow:none!important;border-radius:50%}
 html body .wax .h svg{display:none}
 html body .wax{background:none!important;box-shadow:none!important}
-html body .alert .wax{background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat!important;border-radius:50%}
+html body .alert .wax{background:url(../img/sceau-bronze.webp?v=2) center/100% 100% no-repeat!important;border-radius:50%}
 html body .sealed .wax{filter:none;box-shadow:none}
 html body .sealed .wax::before{content:"";position:absolute;inset:-26%;border-radius:50%;z-index:-1;pointer-events:none;
   background:radial-gradient(circle,rgba(255,214,120,.55) 0,rgba(255,190,80,.28) 42%,rgba(255,180,70,0) 70%);animation:sceauLueur 4.6s ease-in-out infinite}
@@ -215,7 +215,7 @@ html body .wax .seal-flash{width:1500%}
 html body .wax .seal-ring{width:150%}
 html body .sealed.breaking .h.l{opacity:0!important;transform:none!important;filter:none!important;transition:none!important}
 html body .wax .shard{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:50%;
-  background:url(../img/sceau-bronze.webp) center/100% 100% no-repeat;filter:brightness(1.5);
+  background:url(../img/sceau-bronze.webp?v=2) center/100% 100% no-repeat;filter:brightness(1.5);
   animation:eclat 1.25s cubic-bezier(.12,.7,.25,1) forwards}
 @keyframes eclat{0%{transform:translate(0,0) rotate(0);opacity:1;filter:brightness(2.4)}
   18%{opacity:1;filter:brightness(1.6)}
