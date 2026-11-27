@@ -84,7 +84,7 @@
       if(!st.T0)st.T0=now;
       var t=(now-st.T0)/1000,charge=0,bt=-1,flash=0;
       if(st.S>=1)charge=ease((now-st.tS)/1000);
-      if(st.S>=2){bt=(now-st.tB)/1000;charge=Math.max(0,1-bt*2.2);flash=bt<.07?bt/.07:1-ss(.22,.95,bt);}
+      if(st.S>=2){bt=(now-st.tB)/1000;charge=Math.max(0,1-bt*2.2);flash=(bt<.35?ss(0,.35,bt):1-ss(.35,1.2,bt))*.8;}
       gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(U.res,cv.width,cv.height);gl.uniform2f(U.ctr,CX,CY);gl.uniform1f(U.t,t);
       gl.uniform1f(U.charge,charge);gl.uniform1f(U.bt,bt);gl.uniform1f(U.flash,flash);gl.uniform1f(U.rm,RM/cv.height);
