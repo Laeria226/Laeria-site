@@ -33,7 +33,7 @@
 '  if(bt>=0.){float rb=pow(rr,.8);v+=rb*bm*dec*.85*exp(-r/(.5+e*.7))/(1.+r*2.2)*smoothstep(0.,.06,bt);}',
 '  if(c==0)col.r=v;else if(c==1)col.g=v;else col.b=v;',
 ' }',
-' vec3 warm=mix(vec3(1.,.62,.24),vec3(1.,.93,.74),exp(-r*4.));',
+' vec3 warm=mix(vec3(1.,.62,.24),vec3(1.,.84,.5),exp(-r*4.));',
 ' col*=warm*1.3;',
 ' float ro=max(r-rm,0.);float occ0=bt>=0.?smoothstep(0.,.12,bt):0.;',
 ' float g=(exp(-ro*26.)*(.42+charge*.9)*(.82+.18*sin(t*1.7))+exp(-ro*7.)*(.10+charge*.35))*smoothstep(rm*.9,rm*1.02,r)*(1.-occ0)+exp(-r*11.)*(.2+charge*.5)*occ0;',
@@ -44,9 +44,9 @@
 ' float dx=abs(uv.x);',
 ' float cm=smoothstep(cl,cl-.05,abs(uv.y))*step(.001,cl);',
 ' float line=(exp(-dx*900.)*.9+exp(-dx*90.)*.35+exp(-dx*16.)*.10)*cm*smoothstep(0.,.5,charge);',
-' col+=(g+s)*vec3(1.,.92,.76)+line*vec3(1.,.95,.82);',
+' col+=(g+s)*vec3(1.,.84,.52)+line*vec3(1.,.88,.6);',
 ' col=1.-exp(-col*1.25);',
-' col=mix(col,mix(vec3(1.,.84,.55),vec3(1.,.99,.95),flash*flash),flash);',
+' col=mix(col,mix(vec3(.94,.76,.46),vec3(1.,.9,.62),flash*flash),flash);',
 ' col+=(fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)-.5)/255.;',
 ' col=clamp(col,0.,1.);',
 ' float al=max(col.r,max(col.g,col.b));',
@@ -76,7 +76,7 @@
     function size(){
       var a=cv.getBoundingClientRect(),b=wax.getBoundingClientRect();if(!a.width)return;
       cv.width=Math.max(2,Math.round(a.width*RS));cv.height=Math.max(2,Math.round(a.height*RS));
-      CX=(b.left+b.width/2-a.left)*RS;CY=(a.height-(b.top+b.height/2-a.top))*RS;RM=b.width*.17*RS;
+      CX=(b.left+b.width/2-a.left)*RS;CY=(a.height-(b.top+b.height/2-a.top))*RS;RM=b.width*.05*RS;
       gl.viewport(0,0,cv.width,cv.height);
     }
     function frame(now){
