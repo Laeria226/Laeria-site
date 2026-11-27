@@ -508,7 +508,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 .pz *,.pz *::before,.pz *::after{animation-play-state:paused!important}
 
 </style>
-<link rel="preload" as="image" href="img/ouverture-paysage.webp?v=6" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="img/ouverture-paysage-m2.webp?v=1" media="(max-width:1100px) and (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-paysage.webp?v=6" media="(min-width:1101px), (min-width:701px) and (orientation:portrait)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
 <link rel="stylesheet" href="/css/laeria-bronze.css?v=28">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
@@ -524,7 +524,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   <div class="istage">
     <div class="iworld" aria-hidden="true"></div>
     <div class="igrain" aria-hidden="true"></div>
-    <div class="icam"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-m.webp?v=3"><img class="ipic" src="img/ouverture-paysage.webp?v=6" width="3200" height="1786" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
+    <div class="icam"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-m.webp?v=3"><img class="ipic" src="img/ouverture-paysage.webp?v=6" srcset="img/ouverture-paysage-m2.webp?v=1 1800w, img/ouverture-paysage.webp?v=6 3200w" sizes="100vw" width="3200" height="1786" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
     <div class="iglow" aria-hidden="true"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-lueur.webp"><img src="img/ouverture-lueur-paysage.webp?v=2" alt="" width="784" height="437" draggable="false"></picture></div>
     <div class="ivig" aria-hidden="true"></div>
     <div class="irays" aria-hidden="true"></div>
@@ -2245,7 +2245,7 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
 /* poussière dorée qui monte du liseré */
 (function(){
   var seam=document.querySelector('.seamline'),cv=seam&&seam.querySelector('.seamsand');if(!cv||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var x=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),P=[],vis=false,raf=0,N=innerWidth<700?55:120;
+  var x=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,(matchMedia("(pointer:coarse)").matches?1.5:2)),P=[],vis=false,raf=0,N=innerWidth<700?55:120;
   function size(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
   function mk(init){return{x:Math.random()*W,y:H-2-(init?Math.random()*H:0),v:.12+Math.random()*.4,r:.5+Math.random()*1.1,a:.35+Math.random()*.55,ph:Math.random()*6.28,s:.2+Math.random()*.5,life:init?Math.random():0}}
   function init(){size();P=[];for(var i=0;i<N;i++)P.push(mk(true))}
@@ -2265,7 +2265,7 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
 (function(){
   var tt=document.querySelector('.itit');if(!tt||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var cv=document.createElement('canvas');cv.className='titsand';cv.setAttribute('aria-hidden','true');tt.appendChild(cv);
-  var x=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),P=[],vis=false,raf=0,N=innerWidth<700?44:88,TOP=[],SIDE=[];
+  var x=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,(matchMedia("(pointer:coarse)").matches?1.5:2)),P=[],vis=false,raf=0,N=innerWidth<700?44:88,TOP=[],SIDE=[];
   function edges(){
     TOP=[];SIDE=[];
     var cr=cv.getBoundingClientRect();if(!cr.width)return;
@@ -2339,7 +2339,7 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
     function prep(){
       if(reduce||!plate.complete||!plate.naturalWidth||!im.complete||!im.naturalWidth||job)return;
       var fr=fig.getBoundingClientRect(),cr=cnb.getBoundingClientRect(),wr=wax.getBoundingClientRect();if(!cr.width)return;
-      var M=70,CW=Math.ceil(cr.width+M*2),CH=Math.ceil(cr.height+M*2),dpr=Math.min(devicePixelRatio||1,2),PW=Math.ceil(CW*dpr),PH=Math.ceil(CH*dpr);
+      var M=70,CW=Math.ceil(cr.width+M*2),CH=Math.ceil(cr.height+M*2),dpr=Math.min(devicePixelRatio||1,(matchMedia("(pointer:coarse)").matches?1.5:2)),PW=Math.ceil(CW*dpr),PH=Math.ceil(CH*dpr);
       var rem=document.createElement('canvas');rem.width=PW;rem.height=PH;var o=rem.getContext('2d');
       o.setTransform(dpr,0,0,dpr,0,0);o.drawImage(im,M,M,cr.width,cr.height);
       o.drawImage(plate,wr.left-cr.left+M,wr.top-cr.top+M,wr.width,wr.height);
