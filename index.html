@@ -505,7 +505,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 .pz *,.pz *::before,.pz *::after{animation-play-state:paused!important}
 
 </style>
-<link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="img/ouverture-paysage.webp?v=6" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
 <link rel="stylesheet" href="/css/laeria-bronze.css?v=28">
 <script>document.documentElement.classList.add("js-ipic");setTimeout(function(){var i=document.querySelector(".ipic");if(i)i.classList.add("ok")},6500)</script>
 </head>
@@ -521,8 +521,8 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   <div class="istage">
     <div class="iworld" aria-hidden="true"></div>
     <div class="igrain" aria-hidden="true"></div>
-    <div class="icam"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-m.webp?v=3"><img class="ipic" src="img/ouverture-paysage.webp?v=3" width="2576" height="1923" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
-    <div class="iglow" aria-hidden="true"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-lueur.webp"><img src="img/ouverture-lueur-paysage.webp" alt="" width="784" height="585" draggable="false"></picture></div>
+    <div class="icam"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-m.webp?v=3"><img class="ipic" src="img/ouverture-paysage.webp?v=6" width="3200" height="1786" alt="Le chêne-serrure de Laëria : son tronc s'ouvre sur une rivière au soleil couchant, sous un ciel violet." fetchpriority="high" draggable="false"></picture></div>
+    <div class="iglow" aria-hidden="true"><picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/ouverture-lueur.webp"><img src="img/ouverture-lueur-paysage.webp?v=2" alt="" width="784" height="437" draggable="false"></picture></div>
     <div class="ivig" aria-hidden="true"></div>
     <div class="irays" aria-hidden="true"></div>
     <div class="ilight" aria-hidden="true"></div>
@@ -1009,7 +1009,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
     var G={},IW,IH,FX,FY,KH,TT;
     var portraitQ=window.matchMedia('(max-width:700px) and (orientation:portrait)');
     function geom(){var W=stage.clientWidth,H=stage.clientHeight;
-      if(portraitQ.matches){IW=1568;IH=2100;FX=.516;FY=.445;KH=.31;TT=.255;}else{IW=2576;IH=1923;FX=.51;FY=.46;KH=.31;TT=.285;}
+      if(portraitQ.matches){IW=1568;IH=2100;FX=.516;FY=.445;KH=.31;TT=.255;}else{IW=3200;IH=1786;FX=.51;FY=.46;KH=.31;TT=.268;}
       var s=Math.max(W/IW,H/IH);
       var ox=(W-IW*s)*.516,oy=(H-IH*s)*.33,gap=!portraitQ.matches&&s<W/IW-.0005;
       var pic=intro.querySelector('.ipic'),gimg=iglowEl&&iglowEl.querySelector('img');
@@ -2023,6 +2023,9 @@ html body .sealed:not(.breaking):not(.open)::before{opacity:0!important}
 html body .sealed::before{transition:opacity 2.6s ease}
 html body .sealed:not(.open)::after{display:none!important}
 .seal-part{position:absolute;pointer-events:none;z-index:7}
+/* titre d'ouverture : halos plus fins, moins de flou autour des lettres */
+html body .itit.sweep::before{filter:blur(1.6px)!important}
+html body .itit.sweep::after{filter:blur(8px)!important;opacity:.55}
 /* « Réserver » : une fois sur deux le trait doré fait le tour du cadre, une fois sur deux une brève vibration (cycle de 15 s) */
 @keyframes cadreOr2{0%{--ang:0deg;opacity:0}2.5%{opacity:1}16%{--ang:360deg;opacity:1}19%{--ang:360deg;opacity:0}100%{--ang:360deg;opacity:0}}
 @keyframes cadreVibre2{0%,50%,57.2%,100%{translate:0 0;rotate:0deg}50.8%{translate:-2.5px 0;rotate:-.6deg}51.6%{translate:2.5px 0;rotate:.6deg}52.4%{translate:-2.5px 0;rotate:-.5deg}53.2%{translate:2px 0;rotate:.5deg}54%{translate:-1.5px 0;rotate:-.3deg}54.8%{translate:1.5px 0;rotate:.3deg}55.6%{translate:-.8px 0;rotate:-.15deg}56.4%{translate:.8px 0;rotate:.1deg}57.2%{translate:0 0;rotate:0deg}}
@@ -2130,7 +2133,7 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
 </script>
 <script src="/js/laeria-sweep.js?v=14" defer></script>
 <script src="/js/sceau-lumiere.js?v=5" defer></script>
-<script src="/js/intro-stars.js" defer></script>
+<script src="/js/intro-stars.js?v=2" defer></script>
 <script>
 /* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
 (function(){

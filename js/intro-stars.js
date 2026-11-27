@@ -1,7 +1,7 @@
 /* Scintillement très léger de quelques étoiles de l'image d'ouverture (celles déjà dessinées) */
 (function(){
   var cam=document.querySelector('.icam'),img=cam&&cam.querySelector('.ipic');if(!cam||!img)return;
-  var D=[[.2585,.082,0],[.861,.146,1.7],[.172,.139,.9],[.974,.176,2.6]];      // paysage
+  var D=[[.3156,.0801,0],[.8844,.1445,1.7],[.2488,.1389,.9],[.9788,.1753,2.6]];      // paysage
   var M=[[.079,.080,0],[.699,.024,1.5],[.928,.0675,.7],[.293,.019,2.4]];      // portrait
   var layer=document.createElement('div');layer.className='istars';layer.setAttribute('aria-hidden','true');cam.appendChild(layer);
   var els=[];for(var i=0;i<4;i++){var s=document.createElement('i');layer.appendChild(s);els.push(s)}
