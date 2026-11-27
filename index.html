@@ -129,7 +129,7 @@ footer{padding-bottom:110px}
 
 /* ---------- Ouverture : passer le Voile par la serrure du chêne ---------- */
 .intro{position:relative;height:340vh;background:#0c0914}
-.istage{position:sticky;top:0;height:100vh;height:100svh;height:var(--ih,100svh);overflow:hidden;isolation:isolate;background:#0c0914}
+.istage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate;background:#0c0914}
 .istage.done .icam,.istage.done .iglow,.istage.done .ivig,.istage.done .ilight,.istage.done .iflood{visibility:hidden}
 .istage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26vh;z-index:5;pointer-events:none;background:linear-gradient(transparent,rgba(12,9,20,.82));opacity:var(--cueShade,1)}
 .icam{position:absolute;inset:0;overflow:hidden;transform-origin:var(--kx,52%) var(--ky,45%);will-change:transform;background:#0c0914}
@@ -1024,9 +1024,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       G.zmax=Math.min(5.5,Math.max(2.3,H*1.2/(KH*IH*s)));
       var tt=intro.querySelector('.itit');if(tt){tt.style.left=G.kx.toFixed(1)+'px';tt.style.top=(oy+TT*IH*s).toFixed(1)+'px';tt.style.visibility='visible';}
       stage.style.setProperty('--kx',G.kx.toFixed(1)+'px');stage.style.setProperty('--ky',G.ky.toFixed(1)+'px');}
-    function vhFix(){try{document.documentElement.style.setProperty('--ih',innerHeight+'px')}catch(e){}}
-    vhFix();addEventListener('orientationchange',function(){vhFix();setTimeout(vhFix,350)});
-    geom();window.addEventListener('resize',function(){vhFix();geom()});
+    geom();window.addEventListener('resize',geom);
     var irange=function(){return intro.offsetHeight-innerHeight;};
     var introP=function(){var g=irange();return g>0?clamp(-intro.getBoundingClientRect().top/g):1;};
     function introRender(){
