@@ -1893,6 +1893,8 @@ footer .t .lt-mot .l,.lt-mot .l,.titre-livre .lt-mot .l{-webkit-text-stroke:.02e
 /* emblème un peu plus petit */
 .medal{max-width:min(470px,74vw)!important}
 @media(max-width:700px){.medal{max-width:min(300px,72vw)!important}}
+/* écran tactile : pas de flou ni d’ombre portée sur l’emblème (Safari iOS plantait au zoom) ; le halo doré reste */
+@media (pointer:coarse){.medal::before{filter:none!important;animation:none!important}.medal img{filter:none!important}}
 /* alerte spoil plus compacte */
 .alert{padding-block:10px!important}
 .alert .wrap{gap:14px}
