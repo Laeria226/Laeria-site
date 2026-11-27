@@ -233,7 +233,7 @@ footer{padding-bottom:110px}
 .sealed.open img{filter:blur(0) brightness(1) saturate(1);transform:none;cursor:default;animation:sealReveal 1.9s cubic-bezier(.25,.6,.2,1)}
 @keyframes sealReveal{0%{filter:blur(12px) brightness(2.6) saturate(.25);transform:scale(1.035)}45%{filter:blur(3px) brightness(1.5) saturate(.7)}100%{filter:blur(0) brightness(1) saturate(1);transform:none}}
 .sealed.open{}
-.seal-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px;text-align:center;background:radial-gradient(closest-side,rgba(17,13,27,.62),rgba(17,13,27,.1));box-shadow:inset 0 0 0 2px rgba(196,156,86,.8),inset 0 0 0 5px rgba(28,20,14,.55);cursor:pointer}
+.seal-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px;text-align:center;background:radial-gradient(closest-side,rgba(17,13,27,.5),rgba(17,13,27,.04));box-shadow:inset 0 0 0 2px rgba(196,156,86,.8),inset 0 0 0 5px rgba(28,20,14,.55);cursor:pointer}
 .seal-cover>.seal-tag,.seal-cover>.seal-msg,.seal-cover>.seal-btn{transition:opacity .45s,transform .45s}
 .sealed.cracking .seal-cover>.seal-tag,.sealed.cracking .seal-cover>.seal-msg,.sealed.cracking .seal-cover>.seal-btn{opacity:0;transform:translateY(6px)}
 .seal-glow{position:absolute;left:50%;top:50%;width:220%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;pointer-events:none;opacity:0;transform:scale(.08);background:radial-gradient(circle,#fffaf0 0,#fff0cc 10%,rgba(255,220,160,.75) 24%,rgba(255,200,130,.3) 42%,rgba(255,200,130,0) 64%);mix-blend-mode:screen}
@@ -262,8 +262,8 @@ footer{padding-bottom:110px}
 .sealed.breaking .h.r{transform:translate(14px,8px) rotate(6deg);opacity:0}
 .mote{position:absolute;z-index:3;width:3px;height:3px;border-radius:50%;background:#fff6dc;box-shadow:0 0 6px 2px rgba(255,220,150,.85);pointer-events:none;animation:moteUp var(--t,2.2s) cubic-bezier(.2,.6,.3,1) forwards}
 @keyframes moteUp{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
-.seal-tag{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ember)}
-.seal-msg{font-size:1.12rem;line-height:1.35;max-width:15em}
+.seal-tag{font-family:var(--f-label);font-weight:700;font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 3px rgba(10,6,20,.95),0 0 10px rgba(10,6,20,.9),0 0 22px rgba(10,6,20,.7)}
+.seal-msg{font-size:1.12rem;line-height:1.35;max-width:15em;color:#fff3dc;text-shadow:0 1px 3px rgba(10,6,20,.95),0 0 12px rgba(10,6,20,.85)}
 .seal-btn{font-family:var(--f-label);font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--parch);background:rgba(17,13,27,.4);border:1px solid var(--parch-dim);padding:11px 16px;cursor:pointer;transition:background .25s,color .25s}
 .seal-btn:hover{background:var(--parch);color:var(--night)}
 
@@ -502,6 +502,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 .js .panel.in .plate:hover,.js .excerpt .plate.rv.in:hover,.js .vault .plate.rv.in:hover{transform:translateY(-7px) scale(1.012)}}
 /* animations en pause hors de l'écran */
 .pz *,.pz *::before,.pz *::after{animation-play-state:paused!important}
+
 </style>
 <link rel="preload" as="image" href="img/ouverture-paysage.webp?v=3" media="(min-width:701px), (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="img/ouverture-m.webp?v=3" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
 <link rel="stylesheet" href="/css/laeria-bronze.css?v=28">
@@ -559,16 +560,12 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 </section>
 
 <main>
-<div class="ciel" aria-hidden="true"><i class="w" style="top:4%;background:radial-gradient(closest-side,rgba(255,170,120,.5),transparent)"></i><i class="w" style="top:11%;background:radial-gradient(closest-side,rgba(150,110,240,.55),transparent)"></i><i class="w" style="top:21%;background:radial-gradient(closest-side,rgba(255,140,170,.45),transparent)"></i><i class="w" style="top:30%;background:radial-gradient(closest-side,rgba(255,190,120,.4),transparent)"></i><i class="w" style="top:40%;background:radial-gradient(closest-side,rgba(170,120,240,.5),transparent)"></i><i class="w" style="top:52%;background:radial-gradient(closest-side,rgba(255,160,130,.45),transparent)"></i><i class="w" style="top:61%;background:radial-gradient(closest-side,rgba(255,200,130,.4),transparent)"></i><i class="w" style="top:70%;background:radial-gradient(closest-side,rgba(255,170,130,.5),transparent)"></i><i class="w" style="top:79%;background:radial-gradient(closest-side,rgba(255,210,140,.55),transparent)"></i><i class="w" style="top:86%;background:radial-gradient(closest-side,rgba(255,220,150,.6),transparent)"></i><img class="orn g fl" src="img/fleurs-g-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:0.5%"><img class="orn d fl" src="img/fleurs-d-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:25%"><img class="orn d flip" src="img/arbre-g2-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:33%"><img class="orn g fl" src="img/fleurs-g-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:39%"><img class="soleil" src="img/soleil-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:88%"><img class="vallee" src="img/vallee-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:83%"></div>
+
+<div class="ciel" aria-hidden="true"><i class="w" style="top:4%;background:radial-gradient(closest-side,rgba(255,170,120,.5),transparent)"></i><i class="w" style="top:11%;background:radial-gradient(closest-side,rgba(150,110,240,.55),transparent)"></i><i class="w" style="top:21%;background:radial-gradient(closest-side,rgba(255,140,170,.45),transparent)"></i><i class="w" style="top:30%;background:radial-gradient(closest-side,rgba(255,190,120,.4),transparent)"></i><i class="w" style="top:40%;background:radial-gradient(closest-side,rgba(170,120,240,.5),transparent)"></i><i class="w" style="top:52%;background:radial-gradient(closest-side,rgba(255,160,130,.45),transparent)"></i><i class="w" style="top:61%;background:radial-gradient(closest-side,rgba(255,200,130,.4),transparent)"></i><i class="w" style="top:70%;background:radial-gradient(closest-side,rgba(255,170,130,.5),transparent)"></i><i class="w" style="top:79%;background:radial-gradient(closest-side,rgba(255,210,140,.55),transparent)"></i><i class="w" style="top:86%;background:radial-gradient(closest-side,rgba(255,220,150,.6),transparent)"></i><img class="arch" src="img/arch3r.webp?v=2" alt="" decoding="async"><img class="arch archm" src="img/arch3m.webp?v=1" alt="" decoding="async"><img class="orn d flip" src="img/arbre-g2-m.webp?v=1" alt="" loading="lazy" decoding="async" style="top:33%"><img class="orn d v6" src="img/arch-v.webp?v=2" alt="" loading="lazy" decoding="async" style="top:44.2%"></div>
+<div class="seamline" aria-hidden="true"><canvas class="seamsand"></canvas><svg><use href="#star"/></svg></div>
 <canvas id="etoiles" aria-hidden="true"></canvas>
 
 
-<aside class="alert" aria-label="Alerte spoil">
-  <div class="wrap">
-    <div class="wax" aria-hidden="true"><svg><use href="#star"/></svg></div>
-    <p><strong>Alerte spoil</strong>Cette page présente l’univers sans raconter l’histoire. Les illustrations qui touchent à un secret du livre restent scellées : rien ne se dévoile sans que vous leviez le sceau vous-même.</p>
-  </div>
-</aside>
 
 <section class="laeria" id="laeria">
   <div class="wrap">
@@ -714,7 +711,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
   <div class="fx fx-chene" aria-hidden="true"><canvas></canvas><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
   <div class="wrap">
     <figure class="plate sealed" data-seal>
-      <img src="img/fissure-flou.webp?v=1" data-full="img/fissure.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Un immense chêne aux branches et au tronc tordus, parcouru de lueurs violettes, qui domine les toits d'un quartier de maisons à colombages et à pignons à gradins." loading="lazy">
+      <img src="img/fissure-flou.webp?v=2" data-full="img/fissure.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Un immense chêne aux branches et au tronc tordus, parcouru de lueurs violettes, qui domine les toits d'un quartier de maisons à colombages et à pignons à gradins." loading="lazy">
       <div class="seal-cover">
           <i class="seal-glow" aria-hidden="true"></i><i class="seal-slit" aria-hidden="true"></i>
           <span class="wax" aria-hidden="true"><i class="h l"><svg><use href="#star"/></svg></i><i class="h r"><svg><use href="#star"/></svg></i><svg class="crack" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline class="bloom" points="54,-2 46,18 56,38 45,58 55,78 48,102"/><polyline class="core" points="54,-2 46,18 56,38 45,58 55,78 48,102"/></svg></span>
@@ -901,7 +898,7 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       <p class="lead">Une dernière illustration appartient au secret du livre : l’image qui précède les mots « À suivre… ». Elle ne porte que son titre, mais elle en dit beaucoup. Si vous n’avez pas encore lu le livre, refermez cette porte.</p>
     </div>
     <figure class="plate sealed" data-seal data-cap="La dernière image du livre" style="--tint:rgba(240,235,214,.5)">
-      <img src="img/dame-flou.webp?v=1" data-full="img/dame.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Une silhouette en cape blanche entourée d'un halo, de dos devant un grand chêne dont le tronc laisse filtrer une lumière dorée ; deux dobermans calmes à ses pieds et un carnet posé entre les racines." loading="lazy">
+      <img src="img/dame-flou.webp?v=2" data-full="img/dame.webp" width="1000" height="1589" alt="Illustration scellée." data-alt="Une silhouette en cape blanche entourée d'un halo, de dos devant un grand chêne dont le tronc laisse filtrer une lumière dorée ; deux dobermans calmes à ses pieds et un carnet posé entre les racines." loading="lazy">
       <div class="seal-cover">
           <i class="seal-glow" aria-hidden="true"></i><i class="seal-slit" aria-hidden="true"></i>
           <span class="wax" aria-hidden="true"><i class="h l"><svg><use href="#star"/></svg></i><i class="h r"><svg><use href="#star"/></svg></i><svg class="crack" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline class="bloom" points="54,-2 46,18 56,38 45,58 55,78 48,102"/><polyline class="core" points="54,-2 46,18 56,38 45,58 55,78 48,102"/></svg></span>
@@ -1485,8 +1482,8 @@ footer .t .lt-mot{font-family:"Laeria Titre","Cinzel Decorative",Georgia,serif;f
 <style id="refonte">/* ===================== Refonte « ciel du Voile » v2 =====================
    Un seul ciel diffus pour toute la page (violet → rosé → orange → or), des étoiles, des racines en ombre,
    et aucun bloc : les textes se fondent dans le décor par de simples voiles diffus. */
-html{background:#3a2b66}
-body{background:#3a2b66}
+html{background:#0c0914 linear-gradient(#3a2b66,#3a2b66) 0 0/100% 4000px no-repeat}
+body{background:transparent}
 :root{--parch:#f7eed8;--parch-dim:#eadfc6;--amethyst:#efe0ff;--vc:22,11,40;--va:.74}
 main{position:relative}
 
@@ -1666,7 +1663,6 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
  radial-gradient(70vw 24vw at 50% 360px,rgba(255,196,140,.34),transparent 70%),
  radial-gradient(52vw 20vw at 8% 120px,rgba(255,150,170,.32),transparent 70%),
  radial-gradient(52vw 20vw at 94% 260px,rgba(255,176,120,.28),transparent 70%),
- radial-gradient(60vw 22vw at 20% 900px,rgba(240,140,170,.30),transparent 70%),
  radial-gradient(60vw 22vw at 82% 1180px,rgba(255,180,120,.30),transparent 70%),
  radial-gradient(70vw 22vw at 40% 1500px,rgba(200,140,240,.30),transparent 70%),
  radial-gradient(60vw 22vw at 88% 1850px,rgba(255,160,150,.28),transparent 70%),
@@ -1702,7 +1698,11 @@ main .back-hook{color:#ffe7ae!important;text-shadow:0 1px 2px rgba(16,7,30,.9),0
 .cn-in::before{inset:-8% -26%!important;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%)}
 
 /* fondu du haut : simple bandeau (le masque sur ce calque de 18 000 px de haut dépassait la limite de Safari -> bande noire) */
-.ciel::before{content:"";position:absolute;left:0;right:0;top:0;height:280px;z-index:6;pointer-events:none;background:linear-gradient(180deg,#3a2b66,rgba(58,43,102,0))}
+.ciel::before{content:"";position:absolute;left:0;right:0;top:0;height:100px;z-index:6;pointer-events:none;background:linear-gradient(180deg,rgba(11,8,21,.9),rgba(11,8,21,.45) 45%,rgba(11,8,21,0))}
+.alert{position:relative;z-index:8;background:linear-gradient(90deg,rgba(141,44,39,.22),#120d20 40%),#0b0815!important}
+.ciel .archm{display:none}
+.ciel .arch{position:absolute;left:0;top:0;width:100%;max-width:none;height:auto;opacity:.96}
+@media(max-width:700px){.ciel .arch{display:none}.ciel .archm{display:block;width:150%;left:-25%}}
 main{background:#0c0914}
 
 
@@ -1792,7 +1792,7 @@ main{overflow-x:clip}
 /* ciel : calque très haut -> aucune animation dedans (Safari le recompose sinon en continu) */
 .ciel .w,.ciel .phx{animation:none!important;will-change:auto!important}
 /* fondus des décors du ciel déjà cuits dans les images (plus de masques en direct) */
-.ciel .orn,.ciel .vallee,.ciel .soleil{-webkit-mask-image:none!important;mask-image:none!important}
+.ciel .orn:not(.v6),.ciel .vallee,.ciel .soleil{-webkit-mask-image:none!important;mask-image:none!important}
 /* ===== Laëria : passage de lumière continu + léger métal doré, contour doré, halo resserré (net, lisible) ===== */
 .sweep{--sx:-300px;--ox:0px;filter:drop-shadow(0 0 3px rgba(255,214,130,.75)) drop-shadow(0 0 12px rgba(240,170,70,.38))}
 .sweep>.l,.sweep .l{display:inline-block;opacity:1!important;animation:none!important;text-shadow:none!important;
@@ -1919,6 +1919,39 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 /* mobile : les branches fleuries s'installent dans les respirations entre les chapitres, bien visibles et à demi glissées derrière les planches */
 @media(max-width:700px){.ciel .orn.fl{width:62vw;opacity:.92}.ciel .orn.flip{width:62vw;opacity:.85}.ciel .orn.g{left:-6vw}.ciel .orn.d{right:-6vw}}
 @media(max-width:700px){.ciel .orn.emb{width:50vw;opacity:.95}}
+/* numéros de chapitre toujours lisibles devant les branches */
+.roman{-webkit-text-stroke:1.4px #ffe6b0!important;opacity:1!important;filter:drop-shadow(0 0 5px rgba(18,8,36,.95)) drop-shadow(0 0 14px rgba(18,8,36,.7)) drop-shadow(0 0 10px rgba(255,214,130,.4))!important}
+/* fondu doux du bas de la section « Derrière le voile » vers le pied de page */
+.vault::after{content:"";position:absolute;left:0;right:0;bottom:0;height:min(300px,40vw);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(12,9,20,0),#0c0914)}
+/* plus de reflet balayant les illustrations */
+.js .panel.in .plate::after{animation:none!important;opacity:0!important}
+/* fondu doux entre l'écran du titre et l'arche (branches) */
+.ciel::before{height:210px!important;background:linear-gradient(180deg,#0b0815 0,rgba(11,8,21,.94) 12%,rgba(11,8,21,.8) 28%,rgba(11,8,21,.58) 46%,rgba(11,8,21,.34) 64%,rgba(11,8,21,.14) 82%,rgba(11,8,21,0) 100%)!important}
+@media(max-width:700px){.ciel::before{height:150px!important}}
+/* grain d'arrière-plan plus discret */
+.ciel::after{opacity:.02!important}
+.igrain{opacity:.035!important}
+/* chapitre V : branches plus étendues, au-dessus du numéro */
+.ciel .orn.v6{right:-110px;left:auto;width:min(56vw,800px);opacity:.95}
+@media(max-width:700px){.ciel .orn{display:none!important}}
+/* fondu écran du titre -> ciel : le bas du titre prend la couleur du ciel, les branches restent bien visibles */
+.istage::after{height:22vh!important;background:linear-gradient(180deg,rgba(24,18,46,0) 0%,rgba(24,18,46,.1) 25%,rgba(24,18,46,.34) 55%,rgba(24,18,46,.7) 82%,#18122e 100%)!important}
+@media(max-width:700px){.istage::after{height:14vh!important}}
+.ciel::before{height:110px!important;background:linear-gradient(180deg,#18122e 0,rgba(24,18,46,.82) 18%,rgba(24,18,46,.52) 42%,rgba(24,18,46,.24) 68%,rgba(24,18,46,.07) 88%,rgba(24,18,46,0) 100%)!important}
+@media(max-width:700px){.ciel::before{height:64px!important;background:linear-gradient(180deg,#18122e 0,rgba(24,18,46,.7) 30%,rgba(24,18,46,.3) 62%,rgba(24,18,46,0) 100%)!important}}
+.ciel .w:nth-of-type(-n+2){display:none}
+/* séparation nette entre l'écran du titre et la page de l'emblème : un trait doré pleine largeur + étoile, les branches s'arrêtent dessus */
+.ciel::before{display:none!important}
+.istage:has(.ihero.show)::after{opacity:0!important}
+.seamline{position:absolute;left:0;right:0;top:0;height:0;z-index:8;pointer-events:none}
+.seamline::before{content:"";position:absolute;left:0;right:0;top:-1px;height:3px;background:linear-gradient(90deg,rgba(214,170,86,.55),#f6dc98 14%,#f6dc98 86%,rgba(214,170,86,.55));box-shadow:0 0 10px rgba(255,214,130,.55),0 2px 8px rgba(11,8,21,.55)}
+.seamline svg{position:absolute;left:50%;top:0;width:26px;height:26px;transform:translate(-50%,-50%);fill:#fff0bd;filter:drop-shadow(0 0 7px rgba(255,214,130,.9)) drop-shadow(0 0 2px rgba(120,70,10,.8))}
+
+html{scrollbar-gutter:stable}
+.seamline::after{content:"";position:absolute;left:0;right:0;top:-46px;height:46px;background:linear-gradient(0deg,rgba(255,214,130,.22),rgba(255,214,130,.07) 45%,rgba(255,214,130,0));filter:blur(3px)}
+.seamline::before{box-shadow:0 0 14px rgba(255,214,130,.65),0 0 34px rgba(255,200,110,.3),0 2px 8px rgba(11,8,21,.45)!important;filter:blur(.35px)}
+.seamsand{position:absolute;left:0;top:-130px;width:100%;height:132px;pointer-events:none}
+.ciel .orn.v6{--mv:radial-gradient(ellipse calc(var(--rx,300px)*1.85) calc(var(--ry,260px)*2) at var(--ox,35%) var(--oy,50%),#000 42%,rgba(0,0,0,.78) 58%,rgba(0,0,0,.4) 76%,rgba(0,0,0,.12) 90%,transparent 100%);--mt:linear-gradient(180deg,transparent 0,rgba(0,0,0,.3) 10%,#000 26%);-webkit-mask-image:var(--mv),var(--mt);-webkit-mask-composite:source-in;mask-image:var(--mv),var(--mt);mask-composite:intersect}
 </style>
 <script>/* Ciel : étoiles discrètes, rondes et douces (quelques scintillements effilés), qui s'effacent vers l'horizon doré */
 (function(){
@@ -2023,7 +2056,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
   function upd(){
     var edge=intro?intro.offsetTop+intro.offsetHeight-window.innerHeight+280:0;
     var dark=(window.scrollY||0)<edge;
-    var c=dark?'#0b0815':'#3a2b66';
+    var c='#0b0815';
     if(c===cur)return;cur=c;
     de.style.setProperty('background',c,'important');document.body.style.setProperty('background',c,'important');
     if(meta)meta.setAttribute('content',c);if(tint)tint.style.background=c;
@@ -2068,5 +2101,59 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
 })();
 </script>
 <script data-goatcounter="https://laeria.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+/* Même « clac » au liseré doré : en descendant (ou remontant), la page s'arrête net quand le trait et l'étoile arrivent en haut de l'écran */
+(function(){
+  var seam=document.querySelector('.seamline');if(!seam||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var lock=false,last=0,prevY=scrollY,de=document.documentElement;
+  function stopY(){return seam.getBoundingClientRect().top+scrollY}
+  function block(e){if(lock&&e.cancelable){e.preventDefault();return false}}
+  ['wheel','touchmove'].forEach(function(t){addEventListener(t,block,{passive:false})});
+  addEventListener('keydown',function(e){if(lock&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
+  addEventListener('scroll',function(){
+    var y=scrollY,now=Date.now();
+    if(lock)return;
+    var sy=stopY();
+    if(((prevY<sy&&y>=sy)||(prevY>sy&&y<=sy))&&Math.abs(y-prevY)<innerHeight*1.2&&now-last>3000){
+      last=now;lock=true;de.style.scrollBehavior='auto';de.style.overflow='hidden';scrollTo(0,sy);prevY=sy;
+      setTimeout(function(){lock=false;de.style.overflow='';de.style.scrollBehavior='';prevY=scrollY;},650);return;
+    }
+    prevY=y;
+  },{passive:true});
+})();
+</script>
+<script>
+/* poussière dorée qui monte du liseré */
+(function(){
+  var seam=document.querySelector('.seamline'),cv=seam&&seam.querySelector('.seamsand');if(!cv||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var x=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),P=[],vis=false,raf=0,N=innerWidth<700?55:120;
+  function size(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+  function mk(init){return{x:Math.random()*W,y:H-2-(init?Math.random()*H:0),v:.12+Math.random()*.4,r:.5+Math.random()*1.1,a:.35+Math.random()*.55,ph:Math.random()*6.28,s:.2+Math.random()*.5,life:init?Math.random():0}}
+  function init(){size();P=[];for(var i=0;i<N;i++)P.push(mk(true))}
+  function tick(t){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<P.length;i++){var p=P[i];p.y-=p.v;p.x+=Math.sin(t/900+p.ph)*.15*p.s;
+      var k=(H-p.y)/H;if(k>=1){P[i]=mk(false);continue}
+      var al=p.a*Math.min(1,(1-k)*1.6)*Math.min(1,k*14+.25)*(.7+.3*Math.sin(t/400+p.ph));
+      x.fillStyle='rgba(255,226,160,'+al.toFixed(3)+')';x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fill()}
+    raf=vis?requestAnimationFrame(tick):0}
+  init();addEventListener('resize',init);
+  new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&!raf)raf=requestAnimationFrame(tick)},{rootMargin:'100px'}).observe(seam);
+})();
+</script>
+<script>
+/* l'arbre du chapitre VI se fond selon le même ovale que le halo du texte */
+(function(){
+  var o=document.querySelector('.ciel .orn.v6'),c=document.querySelector('.ciel');if(!o||!c)return;
+  var h=[].slice.call(document.querySelectorAll('.panel h2,.panel h3')).filter(function(e){return /ombres d/i.test(e.textContent)})[0];
+  var bd=h&&h.closest('.body');if(!bd)return;
+  function fit(){var b=bd.getBoundingClientRect(),cr=c.getBoundingClientRect();
+    o.style.setProperty('--ox',(b.left+b.width/2-cr.left-o.offsetLeft).toFixed(0)+'px');
+    o.style.setProperty('--oy',(b.top+b.height/2-cr.top-o.offsetTop).toFixed(0)+'px');
+    o.style.setProperty('--rx',(b.width*.7).toFixed(0)+'px');o.style.setProperty('--ry',(b.height*.66).toFixed(0)+'px')}
+  fit();addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);setTimeout(fit,1500);
+})();
+</script>
+<script>(function(){var a=document.querySelector(".alert"),c=document.querySelector(".ciel");if(!a||!c)return;function f(){c.style.setProperty("--ah",a.offsetHeight+"px")}f();addEventListener("resize",f);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(f)})();</script>
 </body>
 </html>
