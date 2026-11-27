@@ -1013,8 +1013,8 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
       var s=Math.max(W/IW,H/IH);
       var ox=(W-IW*s)*.516,oy=(H-IH*s)*.33,gap=!portraitQ.matches&&s<W/IW-.0005;
       var pic=intro.querySelector('.ipic'),gimg=iglowEl&&iglowEl.querySelector('img');
-      function place(e,l,t,w,hh){if(!e)return;e.style.inset='auto';e.style.left=l+'px';e.style.top=t+'px';e.style.width=w+'px';e.style.height=hh+'px';e.style.objectFit='fill';}
-      function clear(e){if(!e)return;e.style.inset='';e.style.left=e.style.top=e.style.width=e.style.height=e.style.objectFit='';}
+      function place(e,l,t,w,hh){if(!e)return;e.style.inset='auto';e.style.maxWidth='none';e.style.left=l+'px';e.style.top=t+'px';e.style.width=w+'px';e.style.height=hh+'px';e.style.objectFit='fill';}
+      function clear(e){if(!e)return;e.style.inset='';e.style.maxWidth='';e.style.left=e.style.top=e.style.width=e.style.height=e.style.objectFit='';}
       function fade(e,on,f){if(!e)return;var m=on?'linear-gradient(90deg,transparent 0,#000 '+f+'px,#000 calc(100% - '+f+'px),transparent 100%)':'';e.style.webkitMaskImage=m;e.style.maskImage=m;}
       if(gap&&pic){var pw=IW*s,ph=IH*s,ff=Math.round(pw*.14);place(pic,ox,oy,pw,ph);place(gimg,ox,oy,pw,ph);fade(pic,1,ff);fade(gimg,1,ff);}
       else{clear(pic);clear(gimg);fade(pic,0);fade(gimg,0);}G.W=W;G.H=H;G.kx=ox+FX*IW*s;G.ky=oy+FY*IH*s;
@@ -1855,6 +1855,10 @@ background:radial-gradient(circle,rgba(255,255,255,.9) 0,rgba(255,240,215,.35) 1
 animation:istw 4.6s ease-in-out infinite}
 @keyframes istw{0%,100%{opacity:0;transform:translate(-50%,-50%) scale(.85)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1.12)}}
 @media(prefers-reduced-motion:reduce){.istars i{animation:none;opacity:.2}}
+/* mobile : mêmes branches que sur ordinateur autour de l'emblème (même image, recadrée au centre) */
+@media(max-width:700px){.ciel .arch:not(.archm){display:block!important;width:180%;left:-40%;transform:scaleY(1.3);transform-origin:50% 0}.ciel .archm{display:none!important}}
+/* mobile : carnets de l'alerte spoil 30 % plus petits (centrés) */
+@media(max-width:700px){.seal-cover>.cnb{scale:.7}}
 .order .btn.lock-off,.offre .of-c{-webkit-text-stroke:.8px #b87a1a;paint-order:stroke fill}
 .book .order .btn.lock-off{color:#fff1c9!important}
 .offre .of-c:not(.out){color:#fff1c9}
@@ -2133,7 +2137,7 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
 </script>
 <script src="/js/laeria-sweep.js?v=14" defer></script>
 <script src="/js/sceau-lumiere.js?v=5" defer></script>
-<script src="/js/intro-stars.js?v=2" defer></script>
+<script src="/js/intro-stars.js?v=5" defer></script>
 <script>
 /* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
 (function(){
