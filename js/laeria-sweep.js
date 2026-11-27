@@ -20,7 +20,6 @@
   if('IntersectionObserver' in window){io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)})},{rootMargin:'80px'});}
   function tick(now){
     requestAnimationFrame(tick);
-    if(scrolling)return; /* pas de reflet pendant le défilement : plus fluide */
     if(now-last<33)return; /* ~30 images/s : suffisant pour un reflet, bien plus léger */
     last=now;
     var t=(now%P)/P;

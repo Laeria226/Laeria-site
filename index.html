@@ -984,6 +984,12 @@ footer p{color:var(--parch-dim);font-style:italic;margin-top:.4rem}
 
   /* ---------- Couverture en relief ---------- */
   var cover=document.getElementById('cover');
+  if(cover&&!reduce&&window.matchMedia('(hover:hover)').matches){
+    var st=cover.parentElement;
+    st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      cover.style.transform='rotateY('+(x*14)+'deg) rotateX('+(-y*10)+'deg)';cover.style.setProperty('--shine',(50-x*120)+'%');});
+    st.addEventListener('pointerleave',function(){cover.style.transform='';cover.style.setProperty('--shine','100%');});
+  }
 
 
   function clamp(x){return x<0?0:x>1?1:x;}
@@ -1806,7 +1812,7 @@ main{overflow-x:clip}
 /* lisibilité : halos resserrés (plus de flou autour des textes), titres Laëria à contour fin */
 main p,main li,main .eyebrow,main .place-tag,main .epi,main .role,main figcaption,main .legend button,main .syl span,main dd,main dt,main .lead{text-shadow:0 1px 2px rgba(16,7,30,.9),0 0 6px rgba(16,7,30,.55)}
 main .back-hook,.flipbtn,.hero-in .sub,.hero-in .hook,.hero-in .eyebrow,.hero-in .tag,.hero-in .author,.hero-in .down,.cv-eb,.cv-p{text-shadow:0 1px 2px rgba(20,8,36,.9),0 0 6px rgba(20,8,36,.55)}
-h2,h3{filter:none}
+h2,h3{filter:drop-shadow(0 1px 3px rgba(16,7,30,.85)) drop-shadow(0 0 7px rgba(255,214,130,.2))}
 .sweep{filter:drop-shadow(0 0 2px rgba(255,214,130,.7)) drop-shadow(0 0 8px rgba(240,170,70,.3))}
 .itit.sweep .l,.hl.sweep .l,.hero-in h1.htit .sweep .l,.hero-in h1.htit.sweep .l{-webkit-text-stroke:.016em #d9962c}
 /* ===== Fiches personnages dépliantes ===== */
@@ -1959,7 +1965,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
       }
     }
   }
-  var lt=0;function loop(t){requestAnimationFrame(loop);if(t-lt<33)return;lt=t;frame(t)}
+  function loop(t){frame(t);requestAnimationFrame(loop)}
   build();
   if(reduce){frame(0);addEventListener('scroll',function(){frame(0)},{passive:true});}else requestAnimationFrame(loop);
   var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();if(reduce)frame(0)},150)});
@@ -2006,7 +2012,7 @@ background:linear-gradient(0deg,rgba(11,8,21,0) 0%,rgba(11,8,21,.18) 25%,rgba(11
   [].forEach.call(document.querySelectorAll('section.panel,.laeria,.carnet,.excerpt,.book,.vault,.atlas,.cast-sec,.chapters-head,footer'),function(el){io.observe(el);});
 })();
 </script>
-<script src="/js/laeria-sweep.js?v=13" defer></script>
+<script src="/js/laeria-sweep.js?v=14" defer></script>
 <script src="/js/sceau-lumiere.js?v=1" defer></script>
 <script src="/js/intro-stars.js" defer></script>
 <script>
