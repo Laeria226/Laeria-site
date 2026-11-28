@@ -29,6 +29,7 @@
   function check(){
     if(!box)return;
     var paysage=innerWidth>innerHeight&&innerHeight<=600&&mq('(pointer:coarse)');
+    if(!paysage){try{sessionStorage.removeItem(KEY)}catch(e){}}
     if(paysage&&!ok())box.classList.add('on');else box.classList.remove('on');
   }
   function start(){build();check();addEventListener('resize',check);addEventListener('orientationchange',function(){setTimeout(check,250)});}
