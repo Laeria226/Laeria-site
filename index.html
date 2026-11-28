@@ -1987,9 +1987,7 @@ html body .sealed .wax::before{content:"";position:absolute;inset:auto;left:50%;
 html body .sealed.cracking .wax::before{animation:none;opacity:.9;transform:none;transition:opacity .3s}
 html body .sealed.cracking .wax .h{filter:brightness(1.35) saturate(1.1)}
 html body .sealed.cracking.breaking .wax::before{opacity:0;transform:none;transition:opacity .35s}
-/* carnet : les deux moitiés de la serrure s’effacent ensemble au début de la lumière, pour ne pas rester seules à gauche */
-html body .sealed.cracking .cnb .wax .h{opacity:0!important;transition:opacity .45s ease-in!important}
-html body .sealed.cracking.breaking .wax .h.l,html body .sealed.cracking.breaking .wax .h.r{scale:1!important;translate:none!important;transform:none!important;animation:none!important;filter:brightness(1.5)!important;opacity:0!important;transition:opacity .6s ease-out,filter .6s ease-out!important}
+html body .sealed.cracking.breaking .wax .h.l,html body .sealed.cracking.breaking .wax .h.r{scale:1!important;translate:none!important;transform:none!important;animation:none!important;filter:brightness(1.5)!important;opacity:0!important;transition:opacity .3s ease-in,filter .3s ease-in!important}
 html.seal-gl body .sealed.cracking:not(.breaking) .wax .h{animation:none!important;filter:brightness(1.25) saturate(1.1);transition:filter 1s ease}
 html body .sealed .seal-cover{transition:background 1.6s ease}
 @media(prefers-reduced-motion:reduce){html body .sealed .wax::before{animation:none}}
