@@ -81,6 +81,9 @@
     }
     function frame(now){
       if(!st.run)return;
+      /* au repos, la lueur évolue lentement : 30 images/s suffisent (moitié moins de travail pendant le défilement) */
+      if(st.S===0&&st.vis&&st.lastD&&now-st.lastD<30){requestAnimationFrame(frame);return;}
+      st.lastD=now;
       if(!st.T0)st.T0=now;
       var t=(now-st.T0)/1000,charge=0,bt=-1,flash=0;
       if(st.S>=1)charge=ease((now-st.tS)/1000);
@@ -98,6 +101,10 @@
       new IntersectionObserver(function(es){es.forEach(function(e){st.vis=e.isIntersecting;if(st.vis){size();go();}});},{rootMargin:'80px'}).observe(fig);
     }else{st.vis=true;size();go();}
     if(window.ResizeObserver)new ResizeObserver(size).observe(fig);else addEventListener('resize',size);
+    /* premier dessin fait à l’avance, au repos (la compilation graphique ne tombe plus pendant le défilement) */
+    (window.requestIdleCallback||function(f){return setTimeout(f,1200)})(function(){try{if(st.run||st.done)return;size();gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.res,cv.width,cv.height);gl.uniform2f(U.ctr,CX,CY);gl.uniform1f(U.t,0);gl.uniform1f(U.charge,0);gl.uniform1f(U.bt,-1);gl.uniform1f(U.flash,0);gl.uniform1f(U.rm,RM/Math.max(cv.height,1));
+      gl.drawArrays(gl.TRIANGLES,0,3);gl.clear(gl.COLOR_BUFFER_BIT);}catch(e){}},{timeout:4000});
     return {
       charge:function(){size();st.S=1;st.tS=performance.now();st.vis=true;go();},
       burst:function(){st.S=2;st.tB=performance.now();go();},

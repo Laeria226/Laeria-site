@@ -1938,6 +1938,11 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
   if(fb&&window.IntersectionObserver){
     var ob=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});upd();});
     document.querySelectorAll('.btn.buy,#secrets .gate').forEach(function(el){ob.observe(el);});
+    /* ordinateur : le bouton s’efface quand un texte de lecture passe dans le bas de l’écran (extrait, personnages) */
+    if(matchMedia('(min-width:900px) and (pointer:fine)').matches){
+      var ob2=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});upd();},{rootMargin:'-82% 0px 0px 0px'});
+      document.querySelectorAll('#extrait .page,#personnages .cast').forEach(function(el){ob2.observe(el);});
+    }
   }
 
   /* ---------- Défilement ---------- */
@@ -2153,7 +2158,7 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 })();
 </script>
 <script src="/js/laeria-sweep.js?v=14" defer></script>
-<script src="/js/sceau-lumiere.js?v=8" defer></script>
+<script src="/js/sceau-lumiere.js?v=10" defer></script>
 <script src="/js/intro-stars.js?v=5" defer></script>
 <script>
 /* barre d'état du téléphone : sombre sur l'écran d'ouverture (plus de bande violette), violette ensuite */
@@ -2392,6 +2397,10 @@ window.LAERIA_COMMANDES_OUVERTES = false;
 })();
 </script>
 <script>(function(){var a=document.querySelector(".alert"),c=document.querySelector(".ciel");if(!a||!c)return;function f(){c.style.setProperty("--ah",a.offsetHeight+"px")}f();addEventListener("resize",f);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(f)})();</script>
+<script>/* clavier : un élément qui reçoit le focus hors de l’écran est ramené au centre (l’introduction arrêtait le défilement) */
+document.addEventListener('focusin',function(e){var el=e.target;try{if(!el.matches(':focus-visible'))return}catch(x){return}
+var n=0;function go(){if(document.activeElement!==el||n++>8)return;var r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight){if(document.documentElement.style.overflow!=='hidden')el.scrollIntoView({block:'center',behavior:'instant'});setTimeout(go,300)}}
+setTimeout(go,260)});</script>
 <script src="/js/rotate-hint.js?v=1" defer></script>
 </body>
 </html>
