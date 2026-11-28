@@ -2374,12 +2374,13 @@ window.LAERIA_COMMANDES_OUVERTES = false;
       (function f(now){if(!cv.parentNode)return;var t=(now-t0)/1000;c.setTransform(dpr,0,0,dpr,0,0);c.globalCompositeOperation='source-over';c.globalAlpha=1;c.clearRect(0,0,CW,CH);
         o.setTransform(1,0,0,1,0,0);o.globalCompositeOperation='destination-out';
         for(var i=0;i<P.length;i++){var p=P[i];if(!p.off&&t>=p.dl){p.off=1;var q=sq*dpr;o.fillRect(Math.floor((CW/2+p.x)*dpr-q*.2),Math.floor((CH/2+p.y)*dpr-q*.2),Math.ceil(q),Math.ceil(q))}}
-        if(!J.clr&&t>J.last+.05){J.clr=1;o.clearRect(0,0,J.PW,J.PH)}
-        if(!J.clr)c.drawImage(J.rem,0,0,CW,CH);
+        if(!J.clr&&t>J.last+.05){J.clr=1;o.clearRect(0,0,J.PW,J.PH);cv.style.transition='filter .6s ease';cv.style.filter='drop-shadow(0 8px 16px rgba(0,0,0,0))'}
+        /* fin du souffle : les derniers fragments du carnet s'estompent au lieu de rester en points sombres */
+        if(!J.clr){c.globalAlpha=t<J.last*.55?1:Math.max(0,1-(t-J.last*.55)/(J.last*.45));c.drawImage(J.rem,0,0,CW,CH);c.globalAlpha=1}
         c.globalCompositeOperation='lighter';
         for(i=0;i<P.length;i++){p=P[i];if(!p.off||p.gh)continue;var u=(t-p.dl)/2.3;if(u>=1)continue;
           var e=1-Math.pow(1-u,2.2),sw=Math.sin(t*2.4+p.ph+p.y*.02)*14*e,dx=p.vx*e*1.5+sw,dy=p.vy*e*1.5-26*u*u+Math.cos(t*2+p.ph)*8*e;
-          var gold=Math.min(1,u*3.5),r=p.r+(255-p.r)*gold,gg=p.g+(220-p.g)*gold,b=p.b+(140-p.b)*gold;
+          var gold=Math.min(1,.4+u*9),r=p.r+(255-p.r)*gold,gg=p.g+(220-p.g)*gold,b=p.b+(140-p.b)*gold;
           c.globalAlpha=Math.min(1,(1-u)*(1-u)*1.6*(.8+.2*Math.sin(t*14+p.ph)));c.fillStyle='rgb('+(r|0)+','+(gg|0)+','+(b|0)+')';
           var z=p.sz*(1-u*.4);c.beginPath();c.arc(CW/2+p.x+dx,CH/2+p.y+dy,z,0,6.283);c.fill()}
         if(t<D)requestAnimationFrame(f);else cv.remove()})(t0);
