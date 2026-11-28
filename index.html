@@ -2038,6 +2038,11 @@ html body .sealed:not(.breaking):not(.open)::before{opacity:0!important}
 html body .sealed::before{transition:opacity 2.6s ease}
 html body .sealed:not(.open)::after{display:none!important}
 .seal-part{position:absolute;pointer-events:none;z-index:0;filter:drop-shadow(0 8px 16px rgba(0,0,0,.45))}
+/* carnet : serrure d’un seul tenant (Safari affichait mal les deux moitiés découpées sous filtre) */
+html body .sealed .cnb .wax .h.r{display:none!important}
+html body .sealed .cnb .wax .h.l{clip-path:none!important}
+/* illustration : pas de zoom 106 % → 100 % en fin d’ouverture (le cadre apparaissait d’un coup) */
+html body .sealed>img,html body .sealed.open>img{transform:none!important}
 /* titre d'ouverture : halos plus fins, moins de flou autour des lettres */
 html body .itit.sweep::before{filter:blur(1.6px)!important}
 html body .itit.sweep::after{filter:blur(8px)!important;opacity:.55}
@@ -2341,8 +2346,8 @@ html body .navbuy::before{animation:cadreOr2 15s ease-in-out 5s infinite!importa
       var fr=fig.getBoundingClientRect(),cr=cnb.getBoundingClientRect(),wr=wax.getBoundingClientRect();if(!cr.width)return;
       var M=70,CW=Math.ceil(cr.width+M*2),CH=Math.ceil(cr.height+M*2),dpr=Math.min(devicePixelRatio||1,(matchMedia("(pointer:coarse)").matches?1.5:2)),PW=Math.ceil(CW*dpr),PH=Math.ceil(CH*dpr);
       var rem=document.createElement('canvas');rem.width=PW;rem.height=PH;var o=rem.getContext('2d');
-      o.setTransform(dpr,0,0,dpr,0,0);o.drawImage(im,M,M,cr.width,cr.height);
-      o.drawImage(plate,wr.left-cr.left+M,wr.top-cr.top+M,wr.width,wr.height);
+      o.setTransform(dpr,0,0,dpr,0,0);var ir=im.getBoundingClientRect();o.drawImage(im,ir.left-cr.left+M,ir.top-cr.top+M,ir.width,ir.height);
+      o.drawImage(plate,wr.left-cr.left+M,wr.top-cr.top+M,wr.width,wr.height);o.globalCompositeOperation='lighter';o.globalAlpha=.25;o.drawImage(plate,wr.left-cr.left+M,wr.top-cr.top+M,wr.width,wr.height);o.globalCompositeOperation='source-over';o.globalAlpha=1;
       var data=o.getImageData(0,0,PW,PH).data,P=[],step=Math.max(2,Math.round(1.9*dpr)),sq=step/dpr+.9,wx=.9,wy=-.44,span=Math.max(cr.width,cr.height);
       for(var y=0;y<PH;y+=step)for(var x=0;x<PW;x+=step){var k=(y*PW+x)*4;if(data[k+3]<110)continue;
         var px=x/dpr-CW/2,py=y/dpr-CH/2,u0=((px*wx+py*wy)/span+.7)/1.4+nz(px,py)*.16,sp=70+Math.random()*260,an=Math.atan2(wy,wx)+(Math.random()-.5)*.8;
